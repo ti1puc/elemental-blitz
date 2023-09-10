@@ -5,7 +5,8 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement")]
+	#region Fields
+	[Header("Movement")]
     [SerializeField] private float moveSpeed;
 	[SerializeField] private Vector2 minMaxRangeHorizontal;
 	[SerializeField] private Vector2 minMaxRangeVertical;
@@ -13,9 +14,14 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float tiltSpeed;
     [SerializeField] private float tiltAngleHorizontal;
 	[SerializeField] private float tiltAngleVertical;
+	[Header("Shoot")]
+	[SerializeField] private KeyCode shootKey = KeyCode.Z;
 	[Header("References")]
-	[SerializeField] private Transform visual;
+	[SerializeField] private Transform playerVisual;
+	[SerializeField] private PoolGroup poolGroup;
+	#endregion
 
+	#region Unity Messages
 	private void Update()
     {
         // horizontal calculations
@@ -38,6 +44,13 @@ public class PlayerController : MonoBehaviour
 
 		// slight tilt player (only visual to not affect movement)
 		Quaternion targetAngle = Quaternion.Euler(xTilt, 0, zTilt);
-		visual.rotation = Quaternion.Lerp(visual.rotation, targetAngle, Time.deltaTime * tiltSpeed);
+		playerVisual.rotation = Quaternion.Lerp(playerVisual.rotation, targetAngle, Time.deltaTime * tiltSpeed);
+
+		// check if player is shooting and spawn bullets
+		if (Input.GetKeyDown(shootKey))
+		{
+			poolGroup.FindObjectPooler(0).SpawnPoolableObject();
+		}
 	}
+	#endregion
 }
