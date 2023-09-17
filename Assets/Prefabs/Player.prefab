@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102343952395075802}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0.56, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 2.6868}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1007360777806786334}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!33 &7089367580608136966
 MeshFilter:
@@ -107,13 +107,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123648632915808180}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4188625169015406835}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2851709574417803414
 MonoBehaviour:
@@ -131,6 +131,7 @@ MonoBehaviour:
   - poolableObjectPrefab: {fileID: 4635188853923083530, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
     defaultCapacity: 6
     maxCapacity: 20
+    followParentPosition: 0
 --- !u!1 &5589196398016151172
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,13 +157,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5589196398016151172}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -0.56, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 2.6868}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1007360777806786334}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!33 &3456656465981065432
 MeshFilter:
@@ -224,6 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4188625169015406835}
   - component: {fileID: 6788227725991961681}
+  - component: {fileID: 3028015762788472842}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -238,7 +240,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6557878004546176592}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -247,6 +248,7 @@ Transform:
   - {fileID: 1007360777806786334}
   - {fileID: 116628696592959415}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6788227725991961681
 MonoBehaviour:
@@ -266,9 +268,23 @@ MonoBehaviour:
   tiltSpeed: 16
   tiltAngleHorizontal: 16
   tiltAngleVertical: 10
-  shootKey: 122
   playerVisual: {fileID: 1007360777806786334}
+--- !u!114 &3028015762788472842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557878004546176592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517fd622595739f4194e1f8188980866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootInterval: 0.2
   poolGroup: {fileID: 2851709574417803414}
+  canHoldKey: 1
+  shootKey: 122
 --- !u!1 &7619456777033401584
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +308,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7619456777033401584}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -301,4 +316,5 @@ Transform:
   - {fileID: 31164797628664443}
   - {fileID: 4463960051741039200}
   m_Father: {fileID: 4188625169015406835}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

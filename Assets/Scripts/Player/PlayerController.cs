@@ -14,11 +14,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float tiltSpeed;
     [SerializeField] private float tiltAngleHorizontal;
 	[SerializeField] private float tiltAngleVertical;
-	[Header("Shoot")]
-	[SerializeField] private KeyCode shootKey = KeyCode.Z;
 	[Header("References")]
 	[SerializeField] private Transform playerVisual;
-	[SerializeField] private PoolGroup poolGroup;
 	#endregion
 
 	#region Unity Messages
@@ -45,12 +42,6 @@ public class PlayerController : MonoBehaviour
 		// slight tilt player (only visual to not affect movement)
 		Quaternion targetAngle = Quaternion.Euler(xTilt, 0, zTilt);
 		playerVisual.rotation = Quaternion.Lerp(playerVisual.rotation, targetAngle, Time.deltaTime * tiltSpeed);
-
-		// check if player is shooting and spawn bullets
-		if (Input.GetKeyDown(shootKey))
-		{
-			poolGroup.FindObjectPooler(0).SpawnPoolableObject();
-		}
 	}
 	#endregion
 }

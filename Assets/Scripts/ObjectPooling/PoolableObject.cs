@@ -13,7 +13,6 @@ public abstract class PoolableObject : MonoBehaviour
 	#endregion
 
 	#region Abstract Methods
-	public abstract void ResetPosition();
 	#endregion
 
 	#region Public Methods

@@ -57,8 +57,8 @@ public class ObjectPooler
 	// method called when the object is 'getted', activating gameObject is essential
 	private void OnGetPoolableObjectFromPool(PoolableObject poolableObject)
 	{
+		poolableObject.transform.position = parentObject.transform.position;
 		poolableObject.gameObject.SetActive(true);
-		poolableObject.ResetPosition();
 	}
 
 	// method called when the object is released, deactivating gameObject is essential
