@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c852af001dae0064e9acaa832f1dadb7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -193,7 +193,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c852af001dae0064e9acaa832f1dadb7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 6788227725991961681}
   - component: {fileID: 3028015762788472842}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player_PRF
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,8 +263,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 18
-  minMaxRangeHorizontal: {x: -25, y: 25}
-  minMaxRangeVertical: {x: -11, y: 30}
+  minMaxRangeHorizontal: {x: -24, y: 24}
+  minMaxRangeVertical: {x: -10.8, y: 30}
   tiltSpeed: 16
   tiltAngleHorizontal: 16
   tiltAngleVertical: 10
@@ -283,6 +283,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootInterval: 0.2
   poolGroup: {fileID: 2851709574417803414}
+  shootCooldown: 0
+  canShoot: 1
   canHoldKey: 1
   shootKey: 122
 --- !u!1 &7619456777033401584
