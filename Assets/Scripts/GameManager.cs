@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
-public class GameController : MonoBehaviour
+public class GameManager : SingletonManager
 {
     #region Fields
     public float score = 0;
@@ -14,35 +15,31 @@ public class GameController : MonoBehaviour
     public Animator scoreAnimator;
 
     private float scoreDelay = 0;
-
     #endregion
 
     #region Properties
-    #endregion
+	#endregion
 
-    #region Unity Messages
+	#region Unity Messages
+	protected override void Awake()
+	{
+		base.Awake();
+	}
 
-    private void Update()
+	private void Update()
     {
         // score
-        if (scoreDelay < score) Score();
- 
+        if (scoreDelay < score)
+            Score();
 
-        // just to test. delete later
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            score += 10;
-        }
-        // just to test. delete later
     }
     #endregion
 
     #region Public Methods
+	#endregion
 
-    #endregion
-
-    #region Private Methods
-    private void Score()
+	#region Private Methods
+	private void Score()
     {
         string formattedScore = scoreDelay.ToString("N0");
         scoreUi.text = formattedScore;
@@ -54,5 +51,11 @@ public class GameController : MonoBehaviour
 
         if(scoreDelay >= score) scoreAnimator.enabled = false;
     }
-    #endregion
+
+    [Button]
+    private void TestIncreaseScore()
+	{
+		score += 10;
+	}
+	#endregion
 }
