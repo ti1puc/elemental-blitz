@@ -33,15 +33,11 @@ public class BaseBullet : PoolableObject
 		// if bullet goes too far from obj destroy it
 		distanceFromSpawn = Vector3.Distance(initialPosition, transform.position);
 		if (distanceFromSpawn > maxDistance)
-			DestroyBullet();
+			DestroyPoolable();
 	}
 	#endregion
 
 	#region Public Methods
-	public void DestroyBullet()
-	{
-		killAction?.Invoke(this);
-	}
 	#endregion
 
 	#region Private Methods

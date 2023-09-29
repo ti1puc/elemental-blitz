@@ -9,14 +9,23 @@ using UnityEngine;
 public abstract class PoolableObject : MonoBehaviour
 {
 	#region Fields
-	public Action<PoolableObject> killAction;
+	public Action<PoolableObject> KillAction;
 	#endregion
 
-	#region Abstract Methods
+	#region Abstract & Virtual Methods
+	/// <summary>
+	/// Method called when object is spawned using pool. Override this on your class
+	/// </summary>
+	public virtual void OnSpawn() { }
+	/// <summary>
+	/// Method called when object is destroyed using pool. Override this on your class
+	/// </summary>
+	public virtual void OnDestroyed() { }
 	#endregion
 
 	#region Public Methods
-	public void SetKillAction(Action<PoolableObject> killAction) => this.killAction = killAction;
+	public void DestroyPoolable() => KillAction?.Invoke(this);
+	public void SetKillAction(Action<PoolableObject> killAction) => KillAction = killAction;
 	#endregion
 
 }

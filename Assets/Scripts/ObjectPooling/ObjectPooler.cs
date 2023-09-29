@@ -37,10 +37,12 @@ public class ObjectPooler
 	/// <summary>
 	/// On spawn the object is simply activated (get) and their killAction is setted
 	/// </summary>
-	public void SpawnPoolableObject()
+	public PoolableObject SpawnPoolableObject()
 	{
 		PoolableObject poolableObject = pool.Get();
 		poolableObject.SetKillAction(ObjectKillAction);
+
+		return poolableObject;
 	}
 	#endregion
 
@@ -49,9 +51,9 @@ public class ObjectPooler
 	private PoolableObject CreatePoolableObject()
 	{
 		if (followParentPosition)
-			return GameObject.Instantiate(poolableObjectPrefab, parentObject.transform.position, poolableObjectPrefab.transform.rotation, parentObject.transform);
+			return GameObject.Instantiate(poolableObjectPrefab, parentObject.transform.position, parentObject.transform.rotation, parentObject.transform);
 		else
-			return GameObject.Instantiate(poolableObjectPrefab, parentObject.transform.position, poolableObjectPrefab.transform.rotation);
+			return GameObject.Instantiate(poolableObjectPrefab, parentObject.transform.position, parentObject.transform.rotation);
 	}
 
 	// method called when the object is 'getted', activating gameObject is essential
@@ -59,12 +61,14 @@ public class ObjectPooler
 	{
 		poolableObject.transform.position = parentObject.transform.position;
 		poolableObject.gameObject.SetActive(true);
+		poolableObject.OnSpawn();
 	}
 
 	// method called when the object is released, deactivating gameObject is essential
 	private void OnReleasePoolableObjectToPool(PoolableObject poolableObject)
 	{
 		poolableObject.gameObject.SetActive(false);
+		poolableObject.OnDestroyed();
 	}
 	#endregion
 

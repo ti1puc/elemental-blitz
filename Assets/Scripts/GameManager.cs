@@ -9,6 +9,9 @@ using UnityEngine.UI;
 public class GameManager : SingletonManager
 {
     #region Fields
+    [Header("Random")]
+    [SerializeField] private int seed;
+    [Header("Score")]
     public float score = 0;
     public TextMeshPro scoreUi;
     public float delayScoreSpeed = 20;
@@ -24,6 +27,7 @@ public class GameManager : SingletonManager
 	protected override void Awake()
 	{
 		base.Awake();
+		Random.InitState(seed);
 	}
 
 	private void Update()
