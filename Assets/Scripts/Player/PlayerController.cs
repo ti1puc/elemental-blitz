@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using NaughtyAttributes;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,9 +17,16 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float tiltAngleVertical;
 	[Header("References")]
 	[SerializeField] private Transform playerVisual;
+	[Header("Debug")]
+	[SerializeField, ReadOnly] private HealthController healthController;
 	#endregion
 
 	#region Unity Messages
+	private void Awake()
+	{
+		healthController = GetComponent<HealthController>();
+	}
+
 	private void Update()
     {
         // horizontal calculations

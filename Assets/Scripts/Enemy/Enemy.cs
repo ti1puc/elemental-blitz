@@ -11,12 +11,27 @@ public class Enemy : PoolableObject
 	[SerializeField] protected Transform enemyVisual;
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private EnemySpawner parentEnemySpawner;
+	[SerializeField, ReadOnly] private PowerupDrop powerupDrop;
+	[SerializeField, ReadOnly] private HealthController healthController;
 	#endregion
 
 	#region Properties
 	#endregion
 
 	#region Unity Messages
+	private void Awake()
+	{
+		powerupDrop = GetComponent<PowerupDrop>();
+		healthController = GetComponent<HealthController>();
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		// checar se tomou dano
+
+		// diminuir o dano que tomou, o segundo parametro é a funcao q vai chamar se a vida chegar em 0, nesse caso é pra destruir o inimigo
+		healthController.TakeDamage(0, DestroyEnemy);
+	}
 	#endregion
 
 	#region Public Methods
@@ -25,8 +40,12 @@ public class Enemy : PoolableObject
 		parentEnemySpawner = spawner;
 	}
 
+	[Button]
 	public void DestroyEnemy()
 	{
+		if (powerupDrop)
+			powerupDrop.TrySpawnPowerup();
+
 		DestroyPoolable();
 	}
 	#endregion
