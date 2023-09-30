@@ -27,22 +27,11 @@ public class Enemy01Movement : Enemy
 	#region Properties
 	#endregion
 
-	#region Base Methods
-	// método chamado quando o PoolableObject (classe pai dessa) é spawnado
-	public override void OnSpawn()
-	{
-		Direction();
-	}
-	#endregion
-
 	#region Unity Messages
-	public void Start()
+	public void OnEnable()
 	{
 		// ao ser criado ele pode vir da direita, ou da esquerda
-		// Direction();
-
-		// mudei pro método de OnSpawn, ele é chamado em todo spawn de inimigos enquanto esse Start vai ser chamado só 1 vez no inicio
-		// dessa forma, o inimigo vai ficar mudando de direção todo spawn
+		 Direction();
 	}
 
 	private void Update()

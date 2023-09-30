@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class PowerupDrop : PoolGroup
+public class PowerupDrop : MonoBehaviour
 {
-    #region Fields
-    [Header("Settings")]
+	#region Fields
+	[Header("Settings")]
+	[SerializeField] private List<GameObject> powerupsPrefabs = new List<GameObject>();
     [SerializeField, Range(0, 100)] private float dropChance;
 	//[Header("References")]
 	//[Header("Debug")]
@@ -33,16 +34,16 @@ public class PowerupDrop : PoolGroup
     #region Private Methods
 	private void SpawnRandomPowerup()
 	{
-        int random = Random.Range(0, ObjectPoolers.Count-1);
+        int random = Random.Range(0, powerupsPrefabs.Count-1);
 		SpawnPowerup(random);
 	}
 
 	private void SpawnPowerup(int index = 0)
 	{
-		if (index >= ObjectPoolers.Count) // n vai achar o pooler pq o index requisitado é maior, por isso return
+		if (index >= powerupsPrefabs.Count) // n vai achar o pooler pq o index requisitado é maior, por isso return
 			return;
 
-		FindObjectPooler(index).SpawnPoolableObject();
+		ObjectPoolManager.SpawnGameObject(powerupsPrefabs[index]);
 	}
     #endregion
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerupBase : PoolableObject
+public class PowerupBase : MonoBehaviour
 {
     #region Fields
     //[Header("Settings")]
@@ -19,7 +19,7 @@ public class PowerupBase : PoolableObject
     #region Public Methods
     public void DestroyPowerup()
     {
-        DestroyPoolable();
+        ObjectPoolManager.DespawnGameObject(gameObject);
     }
     #endregion
     

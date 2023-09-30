@@ -9,7 +9,8 @@ public abstract class ShootBase : MonoBehaviour
     [Header("Settings")]
 	[SerializeField] protected float shootInterval;
 	[Header("References")]
-	[SerializeField] protected PoolGroup poolGroup;
+	[SerializeField] protected Transform spawnPosition;
+	[SerializeField] protected List<GameObject> bulletPrefabs = new List<GameObject>();
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private float shootCooldown = 0;
 	[SerializeField, ReadOnly] private bool canShoot = true;
@@ -37,7 +38,7 @@ public abstract class ShootBase : MonoBehaviour
 	#endregion
 
 	#region Public Methods
-	public void Shoot(int poolGroupIndex = 0)
+	public void Shoot(int index = 0)
 	{
 		// do not shoot if you cant
 		if (!canShoot) return;
@@ -45,7 +46,8 @@ public abstract class ShootBase : MonoBehaviour
 		// 
 
 		// find and spawn bullet
-		poolGroup.FindObjectPooler(poolGroupIndex).SpawnPoolableObject();
+		GameObject bullet = bulletPrefabs[index];
+		ObjectPoolManager.SpawnGameObject(bullet, spawnPosition.position, spawnPosition.rotation);
 		canShoot = false;
 	}
 

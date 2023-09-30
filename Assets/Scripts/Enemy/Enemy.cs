@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : PoolableObject
+public class Enemy : MonoBehaviour
 {
 	#region Fields
 	//[Header("Settings")]
@@ -46,14 +46,10 @@ public class Enemy : PoolableObject
 		if (powerupDrop)
 			powerupDrop.TrySpawnPowerup();
 
-		DestroyPoolable();
-	}
-	#endregion
+		if (parentEnemySpawner)
+			parentEnemySpawner.DecreaseEnemyCount();
 
-	#region Base Methods
-	public override void OnDestroyed()
-	{
-		parentEnemySpawner.DecreaseEnemyCount();
+		ObjectPoolManager.DespawnGameObject(gameObject);
 	}
 	#endregion
 

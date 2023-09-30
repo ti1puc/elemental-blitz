@@ -92,7 +92,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 116628696592959415}
-  - component: {fileID: 2851709574417803414}
   m_Layer: 0
   m_Name: Shoot Spawner
   m_TagString: Untagged
@@ -115,23 +114,6 @@ Transform:
   m_Father: {fileID: 4188625169015406835}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2851709574417803414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123648632915808180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ce26f1b1f2974d468967b717b08ccd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPoolers:
-  - poolableObjectPrefab: {fileID: 4635188853923083530, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
-    defaultCapacity: 6
-    maxCapacity: 20
-    followParentPosition: 0
 --- !u!1 &3593602551390657882
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +343,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootInterval: 0.2
-  poolGroup: {fileID: 2851709574417803414}
+  spawnPosition: {fileID: 116628696592959415}
+  bulletPrefabs:
+  - {fileID: 4804628582512739663, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
   shootCooldown: 0
   canShoot: 1
   canHoldKey: 1

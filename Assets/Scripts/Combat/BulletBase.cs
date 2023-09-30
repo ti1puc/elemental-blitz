@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletBase : PoolableObject
+public class BulletBase : MonoBehaviour
 {
 	#region Fields
 	[Header("Settings")]
@@ -39,16 +39,18 @@ public class BulletBase : PoolableObject
 		// if bullet goes too far from obj destroy it
 		distanceFromSpawn = Vector3.Distance(initialPosition, transform.position);
 		if (distanceFromSpawn > maxDistance)
-			DestroyPoolable();
+			DestroyBullet();
 	}
     #endregion
 
     #region Public Methods
+	public void DestroyBullet()
+	{
+		ObjectPoolManager.DespawnGameObject(gameObject);
+	}
+
 	public void ChangeElements()
 	{
-
-
-
 
 		//for player
         GameObject gameManager = GameObject.Find("Player");
