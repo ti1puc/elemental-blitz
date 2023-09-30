@@ -13,17 +13,23 @@ public class BaseBullet : PoolableObject
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private float distanceFromSpawn;
 	[SerializeField, ReadOnly] private Vector3 initialPosition;
-	#endregion
+	[Header("Elementos")]
+	[SerializeField] private ElementManager.Element currentElement;
 
-	#region Properties
-	#endregion
 
-	#region Unity Messages
-	private void OnEnable()
+    #endregion
+
+    #region Properties
+    #endregion
+
+    #region Unity Messages
+    private void OnEnable()
 	{
 		// hold and update initial position every time bullet obj is enabled
 		initialPosition = transform.position;
-	}
+		ChangeElements();
+
+    }
 
 	private void Update()
 	{
@@ -35,11 +41,24 @@ public class BaseBullet : PoolableObject
 		if (distanceFromSpawn > maxDistance)
 			DestroyPoolable();
 	}
-	#endregion
+    #endregion
 
-	#region Public Methods
-	#endregion
+    #region Public Methods
+	public void ChangeElements()
+	{
 
-	#region Private Methods
-	#endregion
+
+
+
+		//for player
+        GameObject gameManager = GameObject.Find("Player");
+        ElementManager elementManager = gameManager.GetComponent<ElementManager>();
+
+        currentElement = elementManager.selectedElement;
+        gameObject.tag = currentElement.ToString();
+    }
+    #endregion
+
+    #region Private Methods
+    #endregion
 }

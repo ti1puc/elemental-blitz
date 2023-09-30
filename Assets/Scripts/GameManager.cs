@@ -17,14 +17,21 @@ public class GameManager : SingletonManager
     public float delayScoreSpeed = 20;
     public Animator scoreAnimator;
 
+
     private float scoreDelay = 0;
     #endregion
 
     #region Properties
-	#endregion
+    #endregion
 
-	#region Unity Messages
-	protected override void Awake()
+    #region Unity Messages
+
+    public void Start()
+    {
+        
+    }
+
+    protected override void Awake()
 	{
 		base.Awake();
 		Random.InitState(seed);
@@ -40,10 +47,10 @@ public class GameManager : SingletonManager
     #endregion
 
     #region Public Methods
-	#endregion
+    #endregion
 
-	#region Private Methods
-	private void Score()
+    #region Private Methods
+    private void Score()
     {
         string formattedScore = scoreDelay.ToString("N0");
         scoreUi.text = formattedScore;
@@ -51,9 +58,9 @@ public class GameManager : SingletonManager
         scoreDelay += Time.deltaTime * delayScoreSpeed;
         scoreUi.text = formattedScore;
 
-        scoreAnimator.enabled = true;
+        scoreAnimator.SetBool("playAnimation", true);
 
-        if(scoreDelay >= score) scoreAnimator.enabled = false;
+        if(scoreDelay >= score) scoreAnimator.SetBool("playAnimation", false);
     }
 
     [Button]

@@ -13,13 +13,16 @@ public abstract class ShootBase : MonoBehaviour
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private float shootCooldown = 0;
 	[SerializeField, ReadOnly] private bool canShoot = true;
-	#endregion
 
-	#region Properties
-	#endregion
+    #endregion
 
-	#region Unity Messages
-	protected virtual void Update()
+    #region Properties
+    #endregion
+
+    #region Unity Messages
+
+
+    protected virtual void Update()
 	{
 		// only count cooldown if you cant shoot
 		if (canShoot) return;
@@ -39,12 +42,16 @@ public abstract class ShootBase : MonoBehaviour
 		// do not shoot if you cant
 		if (!canShoot) return;
 
+		// 
+
 		// find and spawn bullet
 		poolGroup.FindObjectPooler(poolGroupIndex).SpawnPoolableObject();
 		canShoot = false;
 	}
-	#endregion
 
-	#region Private Methods
-	#endregion
+
+    #endregion
+
+    #region Private Methods
+    #endregion
 }

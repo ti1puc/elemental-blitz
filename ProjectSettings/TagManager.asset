@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Lightning
+  - Water
+  - Fire
   - PlayerBullet
   layers:
   - Default
