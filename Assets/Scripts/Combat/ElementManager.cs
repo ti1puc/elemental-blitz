@@ -5,6 +5,14 @@ using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 
+
+public enum Element
+{
+    Lightning,
+    Water,
+    Fire
+
+}
 public class ElementManager : MonoBehaviour
 {
     #region Fields
@@ -34,13 +42,7 @@ public class ElementManager : MonoBehaviour
     #endregion
 
     #region Public Methods
-    public enum Element
-    {
-        Lightning,
-        Water,
-        Fire
 
-    }
     #endregion
 
     #region Private Methods

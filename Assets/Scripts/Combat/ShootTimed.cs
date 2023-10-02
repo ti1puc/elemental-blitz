@@ -5,20 +5,23 @@ using UnityEngine;
 
 public class ShootTimed : ShootBase
 {
-	#region Fields
-	//[Header("Settings")]
-	//[Header("References")]
-	//[Header("Debug")]
-	#endregion
+    #region Fields
+    //[Header("Settings")]
+    //[Header("References")]
+    //[Header("Debug")]
+    [Header("Element")]
+    [SerializeField] public Element currentElement_;
+    #endregion
 
-	#region Properties
-	#endregion
+    #region Properties
+    #endregion
 
-	#region Unity Messages
-	protected override void Update()
+    #region Unity Messages
+    protected override void Update()
 	{
 		base.Update();
-		Shoot();
+        int elementIndex = (int)currentElement_;
+        Shoot(elementIndex);
 	}
 	#endregion
 

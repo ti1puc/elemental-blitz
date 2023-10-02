@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,9 @@ public class ShootInput : ShootBase
 	[Header("Input Settings")]
 	[SerializeField] private bool canHoldKey;
 	[SerializeField] private KeyCode shootKey = KeyCode.Z;
-	//[Header("References")]
+    //[Header("References")]
+    [Header("Element")]
+    [SerializeField] private Element currentElement_;
 	#endregion
 
 	#region Properties
@@ -19,10 +22,24 @@ public class ShootInput : ShootBase
 	{
 		base.Update();
 
-		if (canHoldKey && Input.GetKey(shootKey))
-			Shoot();
+        //find Player and get element
+        ElementManager elementManager = gameObject.GetComponent<ElementManager>();
+        currentElement_ = elementManager.selectedElement;
+
+		int elementIndex = (int)currentElement_;
+
+		
+
+        if (canHoldKey && Input.GetKey(shootKey))
+		{
+            Shoot(elementIndex);
+        }
 		else if (Input.GetKeyDown(shootKey))
-			Shoot();
+		{
+
+            Shoot(elementIndex);
+        }
+			
 	}
 	#endregion
 

@@ -13,8 +13,6 @@ public class BulletBase : MonoBehaviour
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private float distanceFromSpawn;
 	[SerializeField, ReadOnly] private Vector3 initialPosition;
-	[Header("Elementos")]
-	[SerializeField] private ElementManager.Element currentElement;
 
 
     #endregion
@@ -27,7 +25,6 @@ public class BulletBase : MonoBehaviour
 	{
 		// hold and update initial position every time bullet obj is enabled
 		initialPosition = transform.position;
-		ChangeElements();
 
     }
 
@@ -49,16 +46,6 @@ public class BulletBase : MonoBehaviour
 		ObjectPoolManager.DespawnGameObject(gameObject);
 	}
 
-	public void ChangeElements()
-	{
-
-		//for player
-        GameObject gameManager = GameObject.Find("Player");
-        ElementManager elementManager = gameManager.GetComponent<ElementManager>();
-
-        currentElement = elementManager.selectedElement;
-        gameObject.tag = currentElement.ToString();
-    }
     #endregion
 
     #region Private Methods

@@ -159,8 +159,8 @@ GameObject:
   - component: {fileID: 4403126314510866781}
   - component: {fileID: 6076182304652072206}
   m_Layer: 0
-  m_Name: Bullet_PRF
-  m_TagString: PlayerBullet
+  m_Name: enemyWater
+  m_TagString: enemyWater
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,7 +198,6 @@ MonoBehaviour:
   maxDistance: 80
   distanceFromSpawn: 0
   initialPosition: {x: 0, y: 0, z: 0}
-  currentElement: 0
 --- !u!54 &4403126314510866781
 Rigidbody:
   m_ObjectHideFlags: 0
