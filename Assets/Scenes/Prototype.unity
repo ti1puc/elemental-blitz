@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43739924, g: 0.48519528, b: 0.5654665, a: 1}
+  m_IndirectSpecularColor: {r: 0.4373999, g: 0.4851961, b: 0.5654678, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,9 +130,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 613458650400136975, guid: 0781b156a2049624da36326cb755a6a8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 613458650400136975, guid: 0781b156a2049624da36326cb755a6a8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3757487377882957421, guid: 0781b156a2049624da36326cb755a6a8, type: 3}
       propertyPath: m_Name
       value: Enemy01_PRF
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173401605557874442, guid: 0781b156a2049624da36326cb755a6a8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173401605557874442, guid: 0781b156a2049624da36326cb755a6a8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173401605557874442, guid: 0781b156a2049624da36326cb755a6a8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8249604440371185624, guid: 0781b156a2049624da36326cb755a6a8, type: 3}
       propertyPath: m_RootOrder
@@ -933,7 +953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
   seed: 2272
-  score: 10
+  score: 0
   scoreUi: {fileID: 1486930216}
   delayScoreSpeed: 20
   scoreAnimator: {fileID: 1486930218}
@@ -1020,6 +1040,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 310408823159761623, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 836038858209588896, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 836038858209588896, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3028015762788472842, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
       propertyPath: bulletPrefabs.Array.size
       value: 3
@@ -1048,6 +1080,22 @@ PrefabInstance:
       propertyPath: bulletPrefabs.Array.data[5]
       value: 
       objectReference: {fileID: 4804628582512739663, guid: 84cbefc0322050446a8b7de318d21928, type: 3}
+    - target: {fileID: 3236702950449504309, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115893638424194727, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115893638424194727, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115893638424194727, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4188625169015406835, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1091,6 +1139,10 @@ PrefabInstance:
     - target: {fileID: 4188625169015406835, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4783412602324264936, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: maxHealth
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6557878004546176592, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
       propertyPath: m_Name
