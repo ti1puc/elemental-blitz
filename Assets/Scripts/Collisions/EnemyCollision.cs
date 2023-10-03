@@ -6,7 +6,10 @@ public class EnemyCollision : MonoBehaviour
 {
 	#region Fields
 	//[Header("Settings")]
-	//[Header("References")]
+	[Header("References")]
+	public Enemy enemy;
+	public ShootTimed shoot;
+	public HealthController healthController;
 	//[Header("Debug")]
 	#endregion
 
@@ -17,6 +20,20 @@ public class EnemyCollision : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		// tomar dano e tal
+		if(other.CompareTag("Fire"))
+        {
+			// tal
+		}
+		if (other.CompareTag("Lightning"))
+		{
+			// tal
+			healthController.TakeDamage(20, enemy.DestroyEnemy);
+			GameManager.IncreaseScore(10);
+		}
+		if (other.CompareTag("Water"))
+		{
+			// tal
+		}
 	}
 	#endregion
 

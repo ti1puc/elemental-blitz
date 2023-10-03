@@ -6,9 +6,13 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
-public class GameManager : SingletonManager
+public class GameManager : MonoBehaviour
 {
     #region Fields
+    public static GameManager Instance { get; private set; }
+
+    [Header("Settings")]
+    [SerializeField] protected bool dontDestroyOnLoad = true;
     [Header("Random")]
     [SerializeField] private int seed;
     [Header("Score")]
@@ -31,11 +35,22 @@ public class GameManager : SingletonManager
         
     }
 
-    protected override void Awake()
+    private void Awake()
 	{
-		base.Awake();
 		Random.InitState(seed);
-	}
+
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+        if (dontDestroyOnLoad)
+            DontDestroyOnLoad(gameObject);
+    }
 
 	private void Update()
     {
@@ -47,6 +62,10 @@ public class GameManager : SingletonManager
     #endregion
 
     #region Public Methods
+    public static void IncreaseScore(int scoreAdd)
+    {
+        Instance.score += scoreAdd;
+    }
     #endregion
 
     #region Private Methods
