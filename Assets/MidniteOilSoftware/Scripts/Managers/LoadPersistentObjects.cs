@@ -8,13 +8,13 @@ public static class LoadPersistentObjects
     /// as a child so this effectively loads the ObjectPoolManager when the game starts
     /// and ensures that it exists across all scenes.
     /// </summary>
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    public static void Execute()
-    {
-        var resource = Resources.Load("Managers");
-        if (resource != null)
-        {
-            Object.DontDestroyOnLoad(Object.Instantiate(resource));
-        }
-    }
+    //[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    //public static void Execute()
+    //{
+    //    var resource = Resources.Load("Managers");
+    //    if (resource != null)
+    //    {
+    //        Object.DontDestroyOnLoad(Object.Instantiate(resource));
+    //    }
+    //}
 }

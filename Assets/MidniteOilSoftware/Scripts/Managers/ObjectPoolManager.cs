@@ -201,7 +201,7 @@ public class ObjectPoolManager : MonoBehaviour
 	{
 		var queue = GetPool(prefab);
 		var go = Instantiate(prefab);
-		DontDestroyOnLoad(go);
+		//DontDestroyOnLoad(go);
 		go.SetActive(setActive);
 		go.name = prefab.name;
 		return go;
@@ -211,7 +211,7 @@ public class ObjectPoolManager : MonoBehaviour
 		bool setActive)
 	{
 		GameObject go = Instantiate(prefab, position, rotation);
-		DontDestroyOnLoad(go);
+		//DontDestroyOnLoad(go);
 		go.SetActive(setActive);
 		go.name = prefab.name;
 		return go;

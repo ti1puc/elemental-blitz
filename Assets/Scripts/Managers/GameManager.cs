@@ -20,15 +20,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int seed;
     [Header("Score")]
     public float score = 0;
-    public TextMeshPro scoreUi;
+    [SerializeField] private float scoreToWin = 150;
+	public TextMeshPro scoreUi;
     public float delayScoreSpeed = 20;
     public Animator scoreAnimator;
-    private float scoreDelay = 0;
     [Header("References")]
     public GameObject player_;
     public Button retryButton;
-    
 
+    private float scoreDelay = 0;
+    private HealthController playerLife;
     #endregion
 
     #region Properties
@@ -36,38 +37,44 @@ public class GameManager : MonoBehaviour
 
     #region Unity Messages
 
-    public void Start()
-    {
-        //deixando botão desativado
-        retryButton.gameObject.SetActive(false);
-    }
-
     private void Awake()
 	{
+        // inicializa a funçao que faz esse manager persistir em qualquer cena e ser accessado sem precisar de referencia
+        InitializeSingleton();
 		Random.InitState(seed);
 
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
+        // colocando o Retry no clique do botão por codigo
+        retryButton.onClick.AddListener(Retry);
+	}
 
-        if (dontDestroyOnLoad)
-            DontDestroyOnLoad(gameObject);
-    }
+	private void OnDestroy()
+	{
+        // removendo a funçào do clique quando o objeto for destruido
+        // porque pode acontecer de ficar registrado a funçao e gerar erros
+        retryButton.onClick.RemoveListener(Retry);
+	}
+
+	private void Start()
+	{
+        // pegando a vida e colocando numa variavel cacheada
+        playerLife = player_.GetComponent<HealthController>();
+
+		//deixando botão desativado
+		retryButton.gameObject.SetActive(false);
+	}
 
 	private void Update()
     {
         // score
         if (scoreDelay < score) Score();
 
-        if (score >= 150) Win();
+        if (score >= scoreToWin) Win();
 
-        HealthController life = player_.GetComponent<HealthController>();
-        if (life.CurrentHealth <= 0) Defeat();
+		// evita usar GetComponent no Update por que isso vai rodar em todo frame, aí fica muito pesado
+		// melhor buscar esse component 1 vez só no Awake ou Start
+		//HealthController life = player_.GetComponent<HealthController>();
+
+		if (playerLife.CurrentHealth <= 0) Defeat();
     }
     #endregion
 
@@ -76,6 +83,8 @@ public class GameManager : MonoBehaviour
     {
         Instance.score += scoreAdd;
     }
+
+    [Button]
     public void Retry()
     {
         SceneManager.LoadScene("Prototype");
@@ -83,6 +92,25 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Private Methods
+    private void InitializeSingleton()
+    {
+		if (Instance == null)
+		{
+			Instance = this;
+
+			if (dontDestroyOnLoad)
+				DontDestroyOnLoad(gameObject);
+		}
+		else if (Instance != this)
+		{
+			Destroy(Instance.gameObject);
+			Instance = this;
+
+			if (dontDestroyOnLoad)
+				DontDestroyOnLoad(gameObject);
+		}
+	}
+
     private void Score()
     {
         string formattedScore = scoreDelay.ToString("N0");
@@ -110,9 +138,8 @@ public class GameManager : MonoBehaviour
         player_.SetActive(false);
     }
 
-
     [Button]
-    private void TestIncreaseScore()
+    private void IncreaseScoreBy10()
 	{
 		score += 10;
 	}
