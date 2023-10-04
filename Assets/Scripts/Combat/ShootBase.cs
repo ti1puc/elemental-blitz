@@ -16,15 +16,18 @@ public abstract class ShootBase : MonoBehaviour
 	[SerializeField, ReadOnly] private bool canShoot = true;
 
 
-    #endregion
+	#endregion
 
-    #region Properties
-    #endregion
+	#region Properties
+	#endregion
 
-    #region Unity Messages
+	#region Unity Messages
+	private void Awake()
+	{
+		shootCooldown = shootInterval;
+	}
 
-
-    protected virtual void Update()
+	protected virtual void Update()
 	{
 		// only count cooldown if you cant shoot
 		if (canShoot) return;
