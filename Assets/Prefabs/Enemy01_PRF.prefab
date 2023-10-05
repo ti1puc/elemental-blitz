@@ -396,7 +396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerupsPrefabs:
   - {fileID: 5931513096093191774, guid: 29bf54f93043c474fa49bac4766cac7e, type: 3}
-  dropChance: 50
+  dropChance: 20
 --- !u!114 &5063971749467614889
 MonoBehaviour:
   m_ObjectHideFlags: 0
