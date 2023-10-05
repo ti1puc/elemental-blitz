@@ -1,10 +1,8 @@
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Enemy01Movement : Enemy
 {
