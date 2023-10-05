@@ -11,18 +11,19 @@ public class PowerupDrop : MonoBehaviour
 	[Header("Settings")]
 	[SerializeField] private List<GameObject> powerupsPrefabs = new List<GameObject>();
     [SerializeField, Range(0, 100)] private float dropChance;
-	//[Header("References")]
-	//[Header("Debug")]
-	#endregion
+    //[Header("References")]
+    //[Header("Debug")]
 
-	#region Properties
-	#endregion
+    #endregion
 
-	#region Unity Messages
-	#endregion
+    #region Properties
+    #endregion
 
-	#region Public Methods
-	[Button]
+    #region Unity Messages
+    #endregion
+
+    #region Public Methods
+    [Button]
 	public void TrySpawnPowerup()
     {
         int random = Random.Range(0, 101); // 101 pq random.Range usando int é exclusivo. vira 0-100
@@ -40,10 +41,11 @@ public class PowerupDrop : MonoBehaviour
 
 	private void SpawnPowerup(int index = 0)
 	{
-		if (index >= powerupsPrefabs.Count) // n vai achar o pooler pq o index requisitado é maior, por isso return
-			return;
+		//if (index >= powerupsPrefabs.Count) // n vai achar o pooler pq o index requisitado é maior, por isso return
+		//return;
 
 		ObjectPoolManager.SpawnGameObject(powerupsPrefabs[index]);
+
 	}
     #endregion
 }

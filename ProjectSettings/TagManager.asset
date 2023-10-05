@@ -11,6 +11,7 @@ TagManager:
   - enemyWater
   - enemyFire
   - Enemy
+  - pUpHeal
   layers:
   - Default
   - TransparentFX

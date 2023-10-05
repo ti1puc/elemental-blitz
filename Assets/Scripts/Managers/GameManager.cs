@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int seed;
     [Header("Score")]
     public float score = 0;
-    [SerializeField] private float scoreToWin = 150;
+    [SerializeField] public int scoreToWin = 150;
 	public TextMeshPro scoreUi;
     public float delayScoreSpeed = 20;
     public Animator scoreAnimator;

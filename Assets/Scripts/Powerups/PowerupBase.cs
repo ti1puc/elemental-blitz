@@ -8,14 +8,17 @@ public class PowerupBase : MonoBehaviour
     //[Header("Settings")]
     //[Header("References")]
     //[Header("Debug")]
+    [Header("Power Up Heal")]
+    public int heal_ = 5;
     #endregion
-    
+
     #region Properties
     #endregion
-    
+
     #region Unity Messages
+
     #endregion
-    
+
     #region Public Methods
     public void DestroyPowerup()
     {
