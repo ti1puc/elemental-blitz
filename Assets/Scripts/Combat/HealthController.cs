@@ -32,10 +32,8 @@ public class HealthController : MonoBehaviour
     {
         if (currentHealth < maxHealth)
         {
-            
-                currentHealth += heal;
-                healthBar.ChangeLife(currentHealth);
-
+            currentHealth += heal;
+            healthBar.ChangeLife(currentHealth);
         }
 
         // um fix pra caso a vida passar do máximo
@@ -46,8 +44,15 @@ public class HealthController : MonoBehaviour
 	public void TakeDamage(int damage, Action onDeath = null)
     {
         currentHealth -= damage;
-        onDeath?.Invoke();
-        healthBar.ChangeLife(currentHealth);
+
+		if (currentHealth <= 0)
+        {
+			onDeath?.Invoke();
+			healthBar.ChangeLife(0);
+            return;
+		}
+
+		healthBar.ChangeLife(currentHealth);
     }
     #endregion
 
