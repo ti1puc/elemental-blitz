@@ -34,8 +34,9 @@ public class PlayerCollision : MonoBehaviour
            if(currentElement_ == Element.Lightning)
             {
                 bulletBase = other.gameObject.GetComponent<BulletBase>();
-                healthController.TakeDamage(damage, bulletBase.DestroyBullet);
+                bulletBase.DestroyBullet();
 
+				healthController.TakeDamage(damage);
             }
  
         }

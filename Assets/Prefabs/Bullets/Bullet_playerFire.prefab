@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3666379006384357963}
   - component: {fileID: 7856369890864564400}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8235907925683817661}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 650185946384992406}
   - component: {fileID: 5812705718998998749}
   - component: {fileID: 1707146180866458051}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: fire2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 4635188853923083530}
   - component: {fileID: 4403126314510866781}
   - component: {fileID: 6076182304652072206}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet_playerFire
   m_TagString: Fire
   m_Icon: {fileID: 0}

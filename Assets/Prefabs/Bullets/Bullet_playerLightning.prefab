@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7398765720248380120}
   - component: {fileID: 4835068161815516654}
   - component: {fileID: 7302145848673912931}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: lighning2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3666379006384357963}
   - component: {fileID: 6162349371217761389}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8235907925683817661}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 4635188853923083530}
   - component: {fileID: 4403126314510866781}
   - component: {fileID: 6076182304652072206}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet_playerLightning
   m_TagString: Lightning
   m_Icon: {fileID: 0}
