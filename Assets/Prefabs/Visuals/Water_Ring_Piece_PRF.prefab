@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8734740060218082588}
   - component: {fileID: 376294097832807314}
   - component: {fileID: 5366835832936487198}
+  - component: {fileID: 9191381069445276324}
   m_Layer: 0
   m_Name: Water_Ring_Piece_PRF
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 13182134f5ec6d542aa15e4e91a9e8cf, type: 3}
+  m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,3 +98,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66bd6ea6df5866f4abdff4285e4782bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9191381069445276324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287109139172495101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63dad7060998d5d42913bba7e8a91236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 376294097832807314}
+  framesDaAnimacao:
+  - {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  - {fileID: 1134098943, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  - {fileID: 531055577, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  - {fileID: -105680745, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  - {fileID: -1575870516, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  velocidadeDaAnimacao: 7.5
