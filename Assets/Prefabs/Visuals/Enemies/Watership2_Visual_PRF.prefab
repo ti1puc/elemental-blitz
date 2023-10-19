@@ -2421,7 +2421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1afee2f0990ae842a330d47ea946dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0
+  rotateSpeed: 35
   rotateAxis: 2
   numberOfPieces: 16
   ringRadius: 5

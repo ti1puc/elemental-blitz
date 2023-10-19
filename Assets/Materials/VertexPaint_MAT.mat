@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Watership2_MAT
+  m_Name: VertexPaint_MAT
   m_Shader: {fileID: -6465566751694194690, guid: 9b63398725edd8743a47fad88b9028dd, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []

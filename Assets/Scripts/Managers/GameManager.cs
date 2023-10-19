@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
     [Button]
     public void Retry()
     {
-        SceneManager.LoadScene("Prototype");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     #endregion
 
