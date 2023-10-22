@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -9,67 +10,45 @@ public class GameManager : MonoBehaviour
     #region Fields
     public static GameManager Instance { get; private set; }
 
-    [Header("Settings")]
+    [Header("Singleton")]
     [SerializeField] protected bool dontDestroyOnLoad = true;
     [Header("Random")]
     [SerializeField] private int seed;
-    [Header("Score")]
-    public float score = 0;
-    [SerializeField] public int scoreToWin = 150;
-	public TextMeshPro scoreUi;
-    public float delayScoreSpeed = 20;
-    public Animator scoreAnimator;
-    [Header("References")]
-    public GameObject player_;
-    public Button retryButton;
+    [Header("Playtime")]
+    // SCORE -> passei as coisas de score pro UIManager
+    [Header("Debug")]
+	[SerializeField, ReadOnly] private float score = 0;
+    [SerializeField, ReadOnly] private bool isGameOverWin;
+    [SerializeField, ReadOnly] private bool isGameOverDefeat;
+	#endregion
 
-    private float scoreDelay = 0;
-    private HealthController playerLife;
-    #endregion
+	#region Properties
+	public static float Score => Instance.score;
+	public static bool IsGameOver => Instance.isGameOverWin || Instance.isGameOverDefeat;
+    public static bool IsGameOverWin => Instance.isGameOverWin;
+	public static bool IsGameOverDefeat => Instance.isGameOverDefeat;
+	#endregion
 
-    #region Properties
-    #endregion
+	#region Unity Messages
 
-    #region Unity Messages
-
-    private void Awake()
-	{
+	private void Awake()
+    {
         // inicializa a funçao que faz esse manager persistir em qualquer cena e ser accessado sem precisar de referencia
         InitializeSingleton();
-		Random.InitState(seed);
+        Random.InitState(seed);
 
-        // colocando o Retry no clique do botão por codigo
-        retryButton.onClick.AddListener(Retry);
-	}
-
-	private void OnDestroy()
-	{
-        // removendo a funçào do clique quando o objeto for destruido
-        // porque pode acontecer de ficar registrado a funçao e gerar erros
-        retryButton.onClick.RemoveListener(Retry);
-	}
-
-	private void Start()
-	{
-        // pegando a vida e colocando numa variavel cacheada
-        playerLife = player_.GetComponent<HealthController>();
-
-		//deixando botão desativado
-		retryButton.gameObject.SetActive(false);
-	}
+        // despausa o game no inicio da cena
+        Time.timeScale = 1f;
+    }
 
 	private void Update()
     {
-        // score
-        if (scoreDelay < score) Score();
-
-        if (score >= scoreToWin) Win();
-
 		// evita usar GetComponent no Update por que isso vai rodar em todo frame, aí fica muito pesado
 		// melhor buscar esse component 1 vez só no Awake ou Start
 		//HealthController life = player_.GetComponent<HealthController>();
 
-		if (playerLife.CurrentHealth <= 0) Defeat();
+		if (PlayerManager.PlayerLife.CurrentHealth <= 0)
+            Defeat();
     }
     #endregion
 
@@ -79,15 +58,31 @@ public class GameManager : MonoBehaviour
         Instance.score += scoreAdd;
     }
 
-    [Button]
-    public void Retry()
+    public static void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-    #endregion
+	}
 
-    #region Private Methods
-    private void InitializeSingleton()
+	public static void Win()
+	{
+		// pause game
+		Time.timeScale = 0f;
+
+		Instance.isGameOverWin = true;
+		Instance.isGameOverDefeat = false;
+	}
+	public static void Defeat()
+	{
+		// pause game
+		Time.timeScale = 0f;
+
+		Instance.isGameOverWin = false;
+		Instance.isGameOverDefeat = true;
+	}
+	#endregion
+
+	#region Private Methods
+	private void InitializeSingleton()
     {
 		if (Instance == null)
 		{
@@ -104,39 +99,6 @@ public class GameManager : MonoBehaviour
 			if (dontDestroyOnLoad)
 				DontDestroyOnLoad(gameObject);
 		}
-	}
-
-    private void Score()
-    {
-        string formattedScore = scoreDelay.ToString("N0");
-        scoreUi.text = formattedScore;
-
-        scoreDelay += Time.deltaTime * delayScoreSpeed;
-        scoreUi.text = formattedScore;
-
-        scoreAnimator.SetBool("playAnimation", true);
-
-        if(scoreDelay >= score) scoreAnimator.SetBool("playAnimation", false);
-    }
-
-    private void Win()
-    {
-        scoreUi.text = "You win!";
-        retryButton.gameObject.SetActive(true);
-        player_.SetActive(false);
-
-    }
-    private void Defeat()
-    {
-        scoreUi.text = "You lose!";
-        retryButton.gameObject.SetActive(true);
-        player_.SetActive(false);
-    }
-
-    [Button]
-    private void IncreaseScoreBy10()
-	{
-		score += 10;
 	}
 	#endregion
 }

@@ -9,7 +9,9 @@ public class EnemySpawner : MonoBehaviour
 	[Header("Settings")]
 	[SerializeField] private float spawnInterval;
 	[SerializeField] private int maxEnemies;
-	[SerializeField] private List<GameObject> enemiesPrefabs = new List<GameObject>();
+	[SerializeField] private Vector2 moveRangeX;
+	[SerializeField] private Vector2 moveRangeZ;
+	[SerializeField] private GameObject enemyPrefab;
 	//[Header("References")]
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private float timer;
@@ -44,15 +46,14 @@ public class EnemySpawner : MonoBehaviour
 	#endregion
 
 	#region Public Methods
-	public void SpawnEnemy(int index = 0)
+	public void SpawnEnemy()
 	{
 		if (!CanSpawn) return;
 
 		// find and spawn enemy
-		GameObject enemyPrefab = enemiesPrefabs[index];
 		GameObject enemyObj = ObjectPoolManager.SpawnGameObject(enemyPrefab, transform.position, transform.rotation);
 		Enemy enemy = enemyObj.GetComponent<Enemy>();
-		enemy.SetParentSpawner(this);
+		enemy.InitializeEnemy(moveRangeX, moveRangeZ, this);
 
 		currentEnemies++;
 	}

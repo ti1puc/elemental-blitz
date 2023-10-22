@@ -37,7 +37,7 @@ public class RingCreationHandler : MonoBehaviour
 				throw new ArgumentOutOfRangeException(name);
 		}
 
-		transform.Rotate(rotateDir * (rotateSpeed * Time.deltaTime));
+		transform.Rotate(rotateDir * (rotateSpeed * Time.deltaTime), Space.Self);
 	}
 
 	[Button(null, EButtonEnableMode.Editor)]

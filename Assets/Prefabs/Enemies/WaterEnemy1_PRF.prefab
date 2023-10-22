@@ -213,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2937505078769783968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.69}
+  m_LocalPosition: {x: 0, y: 0, z: 7.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -353,12 +353,19 @@ MonoBehaviour:
   parentEnemySpawner: {fileID: 0}
   powerupDrop: {fileID: 0}
   healthController: {fileID: 0}
-  moveSpeed: -5.5
-  horizontalSpd: -4
-  spawnX: 22
-  spawnZ: 42
-  maxZ: -30
-  tiltSpeed: 16
+  shootBase: {fileID: 0}
+  isHitable: 0
+  moveRangeX: {x: 0, y: 0}
+  moveRangeZ: {x: 0, y: 0}
+  hasInitialized: 0
+  makeHitableAfterPosZ: 58
+  straightVerticalSpeed: 60
+  moveStaightUntilPosZ: 50
+  minStraightSpeed: 10
+  distanceToStartTransition: 7
+  verticalSpeed: 7
+  horizontalSpeed: 5.5
+  tiltSpeed: 2
   tiltAngleHorizontal: 16
   tiltAngleVertical: 10
   toRight: 0

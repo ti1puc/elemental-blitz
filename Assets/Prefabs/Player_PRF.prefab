@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4463960051741039200}
   - component: {fileID: 7089367580608136966}
   - component: {fileID: 4640401431828187890}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6012116111064943139}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 836038858209588896}
   - component: {fileID: 697157822174523104}
   - component: {fileID: 3278516720921896687}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 3773238568747520126}
   - component: {fileID: 883375462919077192}
   - component: {fileID: 7246134611111294269}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 5179385719872817136}
   - component: {fileID: 4245621147436825195}
   - component: {fileID: 5997909593584961646}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 4376967924312660929}
   - component: {fileID: 8831577675120291802}
   - component: {fileID: 6866845416534673149}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 31164797628664443}
   - component: {fileID: 3456656465981065432}
   - component: {fileID: 2918750666994978749}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -693,7 +693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6412108339553116419}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,6 +733,8 @@ GameObject:
   - component: {fileID: 6788227725991961681}
   - component: {fileID: 3028015762788472842}
   - component: {fileID: 4783412602324264936}
+  - component: {fileID: 8348538085054358860}
+  - component: {fileID: -2899747635400695227}
   m_Layer: 0
   m_Name: Player_PRF
   m_TagString: Player
@@ -771,8 +773,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 18
-  minMaxRangeHorizontal: {x: -24, y: 24}
-  minMaxRangeVertical: {x: -10.8, y: 30}
+  minMaxRangeHorizontal: {x: -37, y: 37}
+  minMaxRangeVertical: {x: -11, y: 50}
   tiltSpeed: 16
   tiltAngleHorizontal: 16
   tiltAngleVertical: 10
@@ -793,7 +795,9 @@ MonoBehaviour:
   shootInterval: 0.2
   spawnPosition: {fileID: 116628696592959415}
   bulletPrefabs:
+  - {fileID: 4804628582512739663, guid: c08e8fe42ac1ed241a8569a64d6c8c47, type: 3}
   - {fileID: 4804628582512739663, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
+  - {fileID: 4804628582512739663, guid: 58cdbe0eadbac80488b11db3d436fab1, type: 3}
   shootCooldown: 0
   canShoot: 1
   canHoldKey: 1
@@ -811,9 +815,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2dae31910796148872b906f2a9fdd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 25
+  maxHealth: 30
   healthBar: {fileID: 7246134611111294269}
   currentHealth: 0
+--- !u!114 &8348538085054358860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557878004546176592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81ab702ecf8af6489f1ee0675da4ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedElement: 0
+  unlockedElement: 0
+--- !u!114 &-2899747635400695227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557878004546176592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e50cbe1a8b2184a94ba6ae785a8492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7619456777033401584
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,7 +889,7 @@ GameObject:
   - component: {fileID: 4115893638424194727}
   - component: {fileID: 8133555687033146812}
   - component: {fileID: 256861554425540026}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

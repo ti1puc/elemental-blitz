@@ -1,39 +1,33 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
+using NaughtyAttributes;
 
 public class PlayerCollision : MonoBehaviour
 {
-    #region Fields
     [Header("Settings")]
     [SerializeField] public int damage =  2;
     [Header("References")]
-     private GameObject playerObj;
     public HealthController healthController;
-    public BulletBase bulletBase;   
-    //[Header("Debug")]
     [Header("Element")]
     [SerializeField] private Element currentElement_;
-    #endregion
+    [Header("Debug")]
+    [SerializeField, ReadOnly] private ElementManager elementManager;
 
-    #region Properties
-    private void Start()
-    {
-        playerObj = GameObject.FindGameObjectWithTag("Player");
-    }
-    #endregion
+    private void Awake()
+	{
+		//find Player and get element
+		elementManager = PlayerManager.Player.GetComponent<ElementManager>();
+	}
 
-    #region Unity Messages
     private void OnTriggerEnter(Collider other)
 	{
         if (other.CompareTag("enemyWater")) 
         {
            if(currentElement_ == Element.Lightning)
             {
-                bulletBase = other.gameObject.GetComponent<BulletBase>();
+				BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
                 bulletBase.DestroyBullet();
 
 				healthController.TakeDamage(damage);
@@ -50,7 +44,6 @@ public class PlayerCollision : MonoBehaviour
 
 
     }
-    #endregion
 
     #region Public Methods
     #endregion
@@ -58,8 +51,9 @@ public class PlayerCollision : MonoBehaviour
     #region Private Methods
     private void Update()
     {
-        //find Player and get element
-        ElementManager elementManager = playerObj.GetComponent<ElementManager>();
+        // buscar scripts no update é pesado pq roda em todo frame, melhor colocar no Awake ou Start e guardar em uma variavel
+        //ElementManager elementManager = playerObj.GetComponent<ElementManager>();
+
         currentElement_ = elementManager.selectedElement;
     }
 
