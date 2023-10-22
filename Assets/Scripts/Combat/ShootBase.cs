@@ -7,6 +7,7 @@ public abstract class ShootBase : MonoBehaviour
 {
     [Header("Settings")]
 	[SerializeField] protected float shootInterval;
+	[SerializeField] protected bool usSpawnScale;
 	[Header("References")]
 	[SerializeField] protected Transform spawnPosition;
 	[SerializeField] protected List<GameObject> bulletPrefabs = new List<GameObject>();
@@ -44,8 +45,9 @@ public abstract class ShootBase : MonoBehaviour
         if (!canShoot) return;
 
 		// find and spawn bullet
-		GameObject bullet = bulletPrefabs[index];
-		ObjectPoolManager.SpawnGameObject(bullet, spawnPosition.position, spawnPosition.rotation);
+		GameObject bulletPrefab = bulletPrefabs[index];
+		GameObject bullet = ObjectPoolManager.SpawnGameObject(bulletPrefab, spawnPosition.position, spawnPosition.rotation);
+		bullet.transform.localScale = spawnPosition.localScale;
 		
         canShoot = false;
 	}
