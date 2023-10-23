@@ -647,9 +647,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8beba263358d305479a1d19ccd72fee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xPosCorrection: 0
+  zPosCorrection: 0
   enemy: {fileID: 5838591165604073167}
   elementManager: {fileID: 8634080915492616532}
   healthController: {fileID: 5858266055589942580}
+  distancePlayer: 0
+  distanceXZero: 0
+  differenceXZero: 0
+  direction: 0
 --- !u!1 &4725621298718538256
 GameObject:
   m_ObjectHideFlags: 0
