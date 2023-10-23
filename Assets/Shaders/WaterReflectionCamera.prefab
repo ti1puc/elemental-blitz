@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 618927285322003183}
   - component: {fileID: 618927285322003180}
   - component: {fileID: 618927285322003181}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterReflectionCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

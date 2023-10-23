@@ -5,45 +5,36 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-	#region Fields
-	//[Header("Settings")]
+	[Header("Settings")]
+	[SerializeField] private bool resetShootCooldownOnHitable = true;
+	[SerializeField] private int scoreToGive = 10;
 	[Header("References")]
 	[SerializeField] protected Transform enemyVisual;
 	[SerializeField, ReadOnly] protected EnemySpawner parentEnemySpawner;
 	[SerializeField, ReadOnly] protected PowerupDrop powerupDrop;
 	[SerializeField, ReadOnly] protected HealthController healthController;
-	[SerializeField, ReadOnly] protected ShootBase shootBase;
+	[SerializeField, ReadOnly] protected ShootBase[] shootBases;
 	[Header("Debug")]
 	[SerializeField, ReadOnly] protected bool isHitable;
 	[SerializeField, ReadOnly] protected Vector2 moveRangeX;
 	[SerializeField, ReadOnly] protected Vector2 moveRangeZ;
 	[SerializeField, ReadOnly] protected bool hasInitialized;
-	#endregion
 
-	#region Properties
-	#endregion
+	public bool IsHitable => isHitable;
+	public int ScoreToGive => scoreToGive;
 
 	#region Unity Messages
 	protected virtual void Awake()
 	{
 		powerupDrop = GetComponent<PowerupDrop>();
 		healthController = GetComponent<HealthController>();
-		shootBase = GetComponent<ShootBase>();
+		shootBases = GetComponents<ShootBase>();
+		if (shootBases.Length <= 0)
+			shootBases = GetComponentsInChildren<ShootBase>();
 
-		// desabilita o tiro até que o inimigo seja hitable
-		shootBase.DisableShoot = true;
-	}
-
-	protected virtual void OnTriggerEnter(Collider other)
-	{
-		// os inimigos primeiro aparecem na tela, aí rola um feedback mostrando que é possivel atirar nele
-		// até esse feedback visual aparecer o inimigo não pode ser hitable
-		if (isHitable == false) return;
-
-		// checar se tomou dano aqui
-
-		// diminuir o dano que tomou, o segundo parametro é a funcao q vai chamar se a vida chegar em 0, nesse caso é pra destruir o inimigo
-		healthController.TakeDamage(0, PlayerDestroyEnemy);
+        // desabilita o tiro até que o inimigo seja hitable
+        foreach (var shootBase in shootBases)
+			shootBase.DisableShoot = true;
 	}
 	#endregion
 
@@ -59,13 +50,15 @@ public class Enemy : MonoBehaviour
 	}
 
 	/// <summary>
-	/// chamar essa funcao se for destruido pelo Player, por que ela tem o codigo de spawnar powerup
+	/// chamar essa funcao se for destruido pelo Player, por que ela tem o codigo de spawnar powerup e de ganahr ponto
 	/// </summary>
 	[Button]	
 	public void PlayerDestroyEnemy()
 	{
 		if (powerupDrop)
 			powerupDrop.TrySpawnPowerup();
+
+		GameManager.IncreaseScore(ScoreToGive);
 
 		DestroyEnemy();
 	}
@@ -95,7 +88,13 @@ public class Enemy : MonoBehaviour
 		if (isHitable) return; // pra evitar chamar a funcao varias vezes
 
 		isHitable = true;
-		shootBase.DisableShoot = false;
+		EnableShoot();
+
+		if (resetShootCooldownOnHitable)
+		{
+			foreach (var shootBase in shootBases)
+				shootBase.ShootCooldown = 0;
+		}
 	}
 
 	/// <summary>
@@ -106,6 +105,24 @@ public class Enemy : MonoBehaviour
 		if (isHitable == false) return; // pra evitar chamar a funcao varias vezes
 
 		isHitable = false;
-		shootBase.DisableShoot = true;
+		DisableShoot();
+	}
+
+	/// <summary>
+	/// essa funcao habilita o tiro
+	/// </summary>
+	protected virtual void EnableShoot()
+	{
+		foreach (var shootBase in shootBases)
+			shootBase.DisableShoot = false;
+	}
+
+	/// <summary>
+	/// essa funcao desabilita o tiro
+	/// </summary>
+	protected virtual void DisableShoot()
+	{
+		foreach (var shootBase in shootBases)
+			shootBase.DisableShoot = true;
 	}
 }

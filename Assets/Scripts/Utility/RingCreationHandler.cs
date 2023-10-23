@@ -16,8 +16,12 @@ public class RingCreationHandler : MonoBehaviour
 	[SerializeField] private int numberOfPieces = 16;
 	[SerializeField] private float ringRadius = 5;
 	[SerializeField] private Axis createAxis = Axis.Z;
+	[SerializeField] private bool setRotationOutwards;
 	[Header("References")]
-	[SerializeField] private GameObject ringPiecePrefab;
+	[SerializeField] private bool useCustomPrefab = true;
+	// esse ShowIf faz a variavel mostrar na Unity só se o bool for true, já o HideIf é o contrario
+	[SerializeField, ShowIf("useCustomPrefab")] private GameObject ringPiecePrefab;
+	[SerializeField, HideIf("useCustomPrefab")] private string emptyObjectName;
 
 	private void Update()
 	{
@@ -86,7 +90,28 @@ public class RingCreationHandler : MonoBehaviour
 			Vector3 spawnPos = transform.localPosition + (spawnDir * ringRadius);
 
 			// spawn
-			Instantiate(ringPiecePrefab, spawnPos, Quaternion.identity, transform);
+			if (useCustomPrefab)
+			{
+				GameObject obj = Instantiate(ringPiecePrefab, spawnPos, Quaternion.identity, transform);
+
+				if (setRotationOutwards)
+				{
+					obj.transform.LookAt(spawnDir);
+					obj.transform.Rotate(Vector3.up * 180);
+				}
+			}
+			else
+			{
+				GameObject emptyObj = new GameObject(emptyObjectName + "(Clone)");
+				emptyObj.transform.position = spawnPos;
+				emptyObj.transform.SetParent(transform);
+
+				if (setRotationOutwards)
+				{
+					emptyObj.transform.LookAt(spawnDir);
+					emptyObj.transform.Rotate(Vector3.up * 180);
+				}
+			}
 		}
 	}
 }

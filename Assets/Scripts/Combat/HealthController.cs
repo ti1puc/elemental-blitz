@@ -20,7 +20,7 @@ public class HealthController : MonoBehaviour
 	#endregion
 
 	#region Unity Messages
-	private void Awake()
+	private void OnEnable()
 	{
         currentHealth = maxHealth;
         healthBar.ChangeMaxLife(maxHealth);

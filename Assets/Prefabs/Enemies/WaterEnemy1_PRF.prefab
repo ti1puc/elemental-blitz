@@ -281,7 +281,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 2, z: 3}
+  m_Size: {x: 4, y: 4, z: 7.92}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1664061211958933636
 MonoBehaviour:
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 2576873844277990944}
-  shoot: {fileID: 7439276249954128261}
+  elementManager: {fileID: 2455647442740590178}
   healthController: {fileID: 5063971749467614889}
 --- !u!1 &3757487377882957421
 GameObject:
@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 7439276249954128261}
   - component: {fileID: 3122603158826327670}
   - component: {fileID: 5063971749467614889}
+  - component: {fileID: 2455647442740590178}
   m_Layer: 0
   m_Name: WaterEnemy1_PRF
   m_TagString: Enemy
@@ -349,11 +350,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1716c6620113d459a97da8def0648e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetShootCooldownOnHitable: 1
+  scoreToGive: 10
   enemyVisual: {fileID: 2735396492928206934}
   parentEnemySpawner: {fileID: 0}
   powerupDrop: {fileID: 0}
   healthController: {fileID: 0}
-  shootBase: {fileID: 0}
+  shootBases: []
   isHitable: 0
   moveRangeX: {x: 0, y: 0}
   moveRangeZ: {x: 0, y: 0}
@@ -382,15 +385,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootInterval: 1
-  usSpawnScale: 0
+  useSpawnScale: 1
+  lightningBulletPrefab: {fileID: 0}
+  waterBulletPrefab: {fileID: 931399182766102073, guid: 0299e304698e61a4bb69f43096fc7024, type: 3}
+  fireBulletPrefab: {fileID: 0}
   spawnPosition: {fileID: 5167892324817810709}
-  bulletPrefabs:
-  - {fileID: 4804628582512739663, guid: 91948d452e7882c4ea8085d26558dc3f, type: 3}
-  - {fileID: 4804628582512739663, guid: 658992b5bc378114eacc1b904f279aa2, type: 3}
-  - {fileID: 4804628582512739663, guid: 84cbefc0322050446a8b7de318d21928, type: 3}
+  elementManager: {fileID: 2455647442740590178}
   shootCooldown: 0
   canShoot: 1
-  currentElement_: 1
 --- !u!114 &3122603158826327670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +423,22 @@ MonoBehaviour:
   maxHealth: 10
   healthBar: {fileID: 2929282218809616149}
   currentHealth: 0
+--- !u!114 &2455647442740590178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3757487377882957421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81ab702ecf8af6489f1ee0675da4ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canChangeElement: 0
+  unlockedElements: 01000000
+  selectedElement: 1
+  selectedElementIndex: 0
 --- !u!1 &5659960152496562604
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,15 +807,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7659327684664198424, guid: 8066d48c91072464d8f7b30d8ac0be9c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7659327684664198424, guid: 8066d48c91072464d8f7b30d8ac0be9c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7659327684664198424, guid: 8066d48c91072464d8f7b30d8ac0be9c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7659327684664198424, guid: 8066d48c91072464d8f7b30d8ac0be9c, type: 3}
       propertyPath: m_LocalPosition.x

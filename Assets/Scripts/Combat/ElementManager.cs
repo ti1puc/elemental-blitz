@@ -1,42 +1,36 @@
-using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using TMPro;
 using UnityEngine;
-
+using NaughtyAttributes;
 
 public enum Element
 {
     Lightning,
     Water,
     Fire
-
 }
+
 public class ElementManager : MonoBehaviour
 {
-    #region Fields
+    [Header("Settings")]
+    [SerializeField] private bool canChangeElement;
     [Header("Element")]
-    [SerializeField] public Element selectedElement;
-    [SerializeField] public Element unlockedElement;
-    #endregion
+    [SerializeField] public List<Element> unlockedElements = new List<Element>();
+    [SerializeField, ReadOnly] private Element selectedElement;
+	[SerializeField, ReadOnly] private int selectedElementIndex = 0;
 
-    #region Properties
-    #endregion
+    public Element SelectedElement => selectedElement;
 
     #region Unity Messages
-
     public void Start()
     {
-        selectedElement = Element.Lightning;
-        unlockedElement = Element.Fire;
-    }
-
-
+        selectedElement = unlockedElements[0];
+		selectedElementIndex = 0;
+	}
 
     private void Update()
     {
-        chageElement();
+        ChangeElement();
 
     }
     #endregion
@@ -47,16 +41,22 @@ public class ElementManager : MonoBehaviour
 
     #region Private Methods
 
-    private void chageElement()
+    private void ChangeElement()
     {
+        if (canChangeElement == false) return;
+
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            selectedElement++;
-            if(selectedElement > unlockedElement)
-            {
-                selectedElement = Element.Lightning;
-            }
-        }
+            selectedElementIndex++;
+
+            if (selectedElementIndex <= unlockedElements.Count - 1)
+			    selectedElement = unlockedElements[selectedElementIndex];
+            else
+			{
+				selectedElement = unlockedElements[0];
+				selectedElementIndex = 0;
+			}
+		}
     }
 
     #endregion

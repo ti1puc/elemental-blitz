@@ -11,7 +11,7 @@ public class SpriteMaterialHandler : MonoBehaviour
 	[SerializeField] private Texture2D mainTexture;
 	[SerializeField] private bool useGlow;
 	[SerializeField, ShowIf("useGlow")] private Texture2D glowMask;
-	[SerializeField, ShowIf("useGlow"), ColorUsageAttribute(false, true)] private Color glowColor;
+	[SerializeField, ShowIf("useGlow"), ColorUsageAttribute(true, true)] private Color glowColor;
 	[SerializeField, ShowIf("useGlow")] private float glowFactor;
 	[SerializeField] private bool useOutline;
 	[SerializeField, ShowIf("useOutline")] private Color outlineColor;
@@ -60,6 +60,7 @@ public class SpriteMaterialHandler : MonoBehaviour
 	private void UpdateMaterial()
 	{
 		if (spriteRenderer == null) return;
+		if (mainTexture == null) return;
 
 		MaterialPropertyBlock.SetTexture("_MainTex", mainTexture);
 		MaterialPropertyBlock.SetInteger("_UseGlow", useGlow ? 1 : 0);

@@ -7,18 +7,32 @@ public abstract class ShootBase : MonoBehaviour
 {
     [Header("Settings")]
 	[SerializeField] protected float shootInterval;
-	[SerializeField] protected bool usSpawnScale;
+	[SerializeField] protected bool useSpawnScale;
+	[Header("Bullets")]
+	[SerializeField] protected GameObject lightningBulletPrefab;
+	[SerializeField] protected GameObject waterBulletPrefab;
+	[SerializeField] protected GameObject fireBulletPrefab;
 	[Header("References")]
 	[SerializeField] protected Transform spawnPosition;
-	[SerializeField] protected List<GameObject> bulletPrefabs = new List<GameObject>();
 	[Header("Debug")]
+	[SerializeField, ReadOnly] protected ElementManager elementManager;
 	[SerializeField, ReadOnly] private float shootCooldown = 0;
 	[SerializeField, ReadOnly] private bool canShoot = false;
 
 	public bool DisableShoot { get; set; }
+	public float ShootCooldown
+	{
+		get => shootCooldown;
+		set => shootCooldown = value;
+	}
 
 	private void Awake()
 	{
+		// tenta achar o ElementManager caso nao foi settado no Inspector
+		elementManager = GetComponent<ElementManager>();
+		if (elementManager == null)
+			elementManager = GetComponentInParent<ElementManager>();
+
 		shootCooldown = shootInterval;
 		canShoot = false;
 	}
@@ -39,15 +53,39 @@ public abstract class ShootBase : MonoBehaviour
 		}
 	}
 
-	public void Shoot(int index = 0)
+	public void Shoot()
 	{
         // do not shoot if you cant
         if (!canShoot) return;
+		if (elementManager == null) return;
+
+		// get element from ShootBase element manager
+		Element elementIndex = elementManager.SelectedElement;
+
+		GameObject bulletPrefab = null;
+		switch (elementIndex)
+		{
+			case Element.Lightning:
+				bulletPrefab = lightningBulletPrefab;
+				break;
+			case Element.Water:
+				bulletPrefab = waterBulletPrefab;
+				break;
+			case Element.Fire:
+				bulletPrefab = fireBulletPrefab;
+				break;
+			default:
+				// erro
+				break;
+		}
+
+		if (bulletPrefab == null) return;
 
 		// find and spawn bullet
-		GameObject bulletPrefab = bulletPrefabs[index];
 		GameObject bullet = ObjectPoolManager.SpawnGameObject(bulletPrefab, spawnPosition.position, spawnPosition.rotation);
-		bullet.transform.localScale = spawnPosition.localScale;
+
+		if (useSpawnScale)
+			bullet.transform.localScale = spawnPosition.localScale;
 		
         canShoot = false;
 	}

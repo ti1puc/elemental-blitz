@@ -15,7 +15,7 @@ public class PlayerCollision : MonoBehaviour
     [Header("Debug")]
     [SerializeField, ReadOnly] private ElementManager elementManager;
 
-    private void Awake()
+    private void Start()
 	{
 		//find Player and get element
 		elementManager = PlayerManager.Player.GetComponent<ElementManager>();
@@ -54,7 +54,7 @@ public class PlayerCollision : MonoBehaviour
         // buscar scripts no update é pesado pq roda em todo frame, melhor colocar no Awake ou Start e guardar em uma variavel
         //ElementManager elementManager = playerObj.GetComponent<ElementManager>();
 
-        currentElement_ = elementManager.selectedElement;
+        currentElement_ = elementManager.SelectedElement;
     }
 
     #endregion

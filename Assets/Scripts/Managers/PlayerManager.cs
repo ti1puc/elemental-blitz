@@ -4,28 +4,20 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-	[Header("Settings")]
-	[SerializeField] private bool dontDestroyOnLoad = true;
-
-	public static PlayerManager Player { get; private set; }
+	public static PlayerManager Instance { get; private set; }
 	public static HealthController PlayerLife { get; private set; }
+	public static GameObject Player => Instance.gameObject;
 
 	private void Awake()
 	{
-		if (Player == null)
+		if (Instance == null)
 		{
-			Player = this;
-
-			if (dontDestroyOnLoad)
-				DontDestroyOnLoad(gameObject);
+			Instance = this;
 		}
-		else if (Player != this)
+		else if (Instance != this)
 		{
-			Destroy(Player.gameObject);
-			Player = this;
-
-			if (dontDestroyOnLoad)
-				DontDestroyOnLoad(gameObject);
+			Destroy(Instance.gameObject);
+			Instance = this;
 		}
 
 		PlayerLife = GetComponent<HealthController>();

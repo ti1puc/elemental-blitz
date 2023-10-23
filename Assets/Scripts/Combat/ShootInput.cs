@@ -10,8 +10,6 @@ public class ShootInput : ShootBase
 	[SerializeField] private bool canHoldKey;
 	[SerializeField] private KeyCode shootKey = KeyCode.Z;
     //[Header("References")]
-    [Header("Element")]
-    [SerializeField] private Element currentElement_;
 	#endregion
 
 	#region Properties
@@ -22,24 +20,14 @@ public class ShootInput : ShootBase
 	{
 		base.Update();
 
-        //find Player and get element
-        ElementManager elementManager = gameObject.GetComponent<ElementManager>();
-        currentElement_ = elementManager.selectedElement;
-
-		int elementIndex = (int)currentElement_;
-
-		
-
         if (canHoldKey && Input.GetKey(shootKey))
 		{
-            Shoot(elementIndex);
+            Shoot();
         }
 		else if (Input.GetKeyDown(shootKey))
 		{
-
-            Shoot(elementIndex);
+            Shoot();
         }
-			
 	}
 	#endregion
 

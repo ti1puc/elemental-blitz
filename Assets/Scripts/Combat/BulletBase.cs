@@ -5,33 +5,34 @@ using UnityEngine;
 
 public class BulletBase : MonoBehaviour
 {
-	#region Fields
 	[Header("Settings")]
-	[SerializeField] private float moveSpeed;
-	[SerializeField] private float maxDistance = 50;
+	[SerializeField] protected int damage = 1;
+	[SerializeField] protected float moveSpeed;
+	[SerializeField] protected float moveSpeedUpCorrection;
+	[SerializeField] protected float maxDistance = 50;
 	//[Header("References")]
 	[Header("Debug")]
-	[SerializeField, ReadOnly] private float distanceFromSpawn;
-	[SerializeField, ReadOnly] private Vector3 initialPosition;
+	[SerializeField, ReadOnly] protected float distanceFromSpawn;
+	[SerializeField, ReadOnly] protected Vector3 initialPosition;
 
+	public int Damage => damage;
 
-    #endregion
-
-    #region Properties
-    #endregion
-
-    #region Unity Messages
-    private void OnEnable()
+	#region Unity Messages
+	protected virtual void OnEnable()
 	{
 		// hold and update initial position every time bullet obj is enabled
 		initialPosition = transform.position;
-
     }
 
-	private void Update()
+	protected virtual void Update()
 	{
 		float zPos = moveSpeed * Time.deltaTime;
-		transform.Translate(0, 0, zPos);
+		float yPos = moveSpeedUpCorrection * Time.deltaTime;
+
+		if (transform.position.y < 0)
+			transform.Translate(0, yPos, zPos);
+		else
+			transform.Translate(0, 0, zPos);
 
 		// if bullet goes too far from obj destroy it
 		distanceFromSpawn = Vector3.Distance(initialPosition, transform.position);

@@ -9,8 +9,6 @@ public class ShootTimed : ShootBase
     //[Header("Settings")]
     //[Header("References")]
     //[Header("Debug")]
-    [Header("Element")]
-    [SerializeField] public Element currentElement_;
     #endregion
 
     #region Properties
@@ -20,8 +18,7 @@ public class ShootTimed : ShootBase
     protected override void Update()
 	{
 		base.Update();
-        int elementIndex = (int)currentElement_;
-        Shoot(elementIndex);
+        Shoot();
 	}
 	#endregion
 

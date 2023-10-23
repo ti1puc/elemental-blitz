@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
 
 	[Header("References")]
 	[SerializeField] private Button retryButton;
+	[SerializeField] private Slider levelProgression;
 
 	#region Unity Messages
 	private void Awake()
@@ -36,6 +37,9 @@ public class UIManager : MonoBehaviour
 	
 	private void Update()
 	{
+		// progressao do level
+		Progression();
+
 		// score
 		if (scoreDelay < GameManager.Score)
 			Score();
@@ -71,5 +75,10 @@ public class UIManager : MonoBehaviour
 
 		if (scoreDelay >= GameManager.Score)
 			scoreAnimator.SetBool("playAnimation", false);
+	}
+
+	private void Progression()
+	{
+		levelProgression.value = WaveManager.TotalPlaytimeInMinutes / WaveManager.LevelTotalDuration;
 	}
 }

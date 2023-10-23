@@ -191,8 +191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   healthController: {fileID: 4783412602324264936}
-  bulletBase: {fileID: 0}
   currentElement_: 0
+  elementManager: {fileID: 0}
 --- !u!1 &3680468034906759489
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,16 +793,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootInterval: 0.2
+  useSpawnScale: 0
+  lightningBulletPrefab: {fileID: 8896277486971171956, guid: 649e614ec273f904391e25fe34405f26, type: 3}
+  waterBulletPrefab: {fileID: 965689371872142419, guid: d0264690a6271994d801f1a38b36a63c, type: 3}
+  fireBulletPrefab: {fileID: 8643246626001196841, guid: 156021531a152aa49b16de503173b01e, type: 3}
   spawnPosition: {fileID: 116628696592959415}
-  bulletPrefabs:
-  - {fileID: 4804628582512739663, guid: c08e8fe42ac1ed241a8569a64d6c8c47, type: 3}
-  - {fileID: 4804628582512739663, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
-  - {fileID: 4804628582512739663, guid: 58cdbe0eadbac80488b11db3d436fab1, type: 3}
+  elementManager: {fileID: 8348538085054358860}
   shootCooldown: 0
   canShoot: 1
   canHoldKey: 1
   shootKey: 122
-  currentElement_: 0
 --- !u!114 &4783412602324264936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,8 +830,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81ab702ecf8af6489f1ee0675da4ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canChangeElement: 1
+  unlockedElements: 000000000100000002000000
   selectedElement: 0
-  unlockedElement: 0
+  selectedElementIndex: 0
 --- !u!114 &-2899747635400695227
 MonoBehaviour:
   m_ObjectHideFlags: 0

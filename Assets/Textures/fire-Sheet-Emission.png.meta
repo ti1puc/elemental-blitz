@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 78ebfebce0ef1034f9da179103317a0b
+guid: 5f6370ded009e9f41a24bfed0a4f41e3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,8 +36,8 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
+    wrapU: 0
+    wrapV: 0
     wrapW: 0
   nPOTScale: 0
   lightmap: 0
@@ -53,7 +53,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 0
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lighning-Sheet_0
+      name: fire-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,20 +113,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 918fddb560194b7478f558d1df7c1887
-      internalID: -621177187
+      spriteID: 0f2fce5f7bc6bc245b4c97a6a3ac8097
+      internalID: 253849132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lighning-Sheet_1
+      name: fire-Sheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -134,20 +134,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c18eecf0b6f0b0741a7fb2ae77a683b0
-      internalID: -1567719355
+      spriteID: a5c92c84e42cd014a91fef8a263f7100
+      internalID: 651351644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lighning-Sheet_2
+      name: fire-Sheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -155,20 +155,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6420fdb7dabad6a458499dcc3169dcd6
-      internalID: 434998729
+      spriteID: fcad46102b446cf40aeb597a85cafd1f
+      internalID: 413553121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lighning-Sheet_3
+      name: fire-Sheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -176,14 +176,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 711eee94568d1004fa2a2e6c0f5bce48
-      internalID: -1797954443
+      spriteID: 28c46976cc2656e4289629731e961b6f
+      internalID: -899423283
       vertices: []
       indices: 
       edges: []
@@ -191,20 +191,18 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a61e0b020d36ffd43a21e161ad4a82ea
+    spriteID: 53a6aa39cf27ff047adaa812a6931d23
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: 1783a6cdaf3f43749868f70928664d8e, type: 3}
-      name: _GlowMask
+    secondaryTextures: []
     nameFileIdTable:
-      lighning-Sheet_0: -621177187
-      lighning-Sheet_1: -1567719355
-      lighning-Sheet_2: 434998729
-      lighning-Sheet_3: -1797954443
+      fire-Sheet_0: 253849132
+      fire-Sheet_1: 651351644
+      fire-Sheet_2: 413553121
+      fire-Sheet_3: -899423283
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

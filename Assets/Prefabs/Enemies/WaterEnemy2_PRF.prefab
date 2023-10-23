@@ -61,7 +61,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 2, z: 3}
+  m_Size: {x: 19.63, y: 10, z: 39.04}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4248104946438114067
 MonoBehaviour:
@@ -75,9 +75,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8beba263358d305479a1d19ccd72fee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1018173263143511479}
-  shoot: {fileID: 5394815917292216850}
+  xPosCorrection: 15
+  zPosCorrection: 0.8
+  enemy: {fileID: 2095183221418348164}
+  elementManager: {fileID: 5004053444613407630}
   healthController: {fileID: 7756734929034419518}
+  distancePlayer: 0
+  distanceXZero: 0
+  differenceXZero: 0
+  direction: 0
 --- !u!1 &371475938211129143
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371475938211129143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.37}
+  m_LocalPosition: {x: 0, y: 6.15, z: 11.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -118,10 +124,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6890465288993125455}
-  - component: {fileID: 1018173263143511479}
+  - component: {fileID: 2095183221418348164}
   - component: {fileID: 5394815917292216850}
   - component: {fileID: 483597291564592609}
   - component: {fileID: 7756734929034419518}
+  - component: {fileID: 5004053444613407630}
   m_Layer: 0
   m_Name: WaterEnemy2_PRF
   m_TagString: Enemy
@@ -148,7 +155,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1018173263143511479
+--- !u!114 &2095183221418348164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,22 +164,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1857423647001359866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b1716c6620113d459a97da8def0648e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b638db7e02d401498826fd5ecbb9bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetShootCooldownOnHitable: 1
+  scoreToGive: 10
   enemyVisual: {fileID: 582572619254119361}
   parentEnemySpawner: {fileID: 0}
   powerupDrop: {fileID: 0}
   healthController: {fileID: 0}
-  moveSpeed: -5.5
-  horizontalSpd: -4
-  spawnX: 22
-  spawnZ: 42
-  maxZ: -30
-  tiltSpeed: 16
-  tiltAngleHorizontal: 16
-  tiltAngleVertical: 10
+  shootBases: []
+  isHitable: 0
+  moveRangeX: {x: 0, y: 0}
+  moveRangeZ: {x: 0, y: 0}
+  hasInitialized: 0
+  makeHitableAfterPosZ: 100
+  moveSpeed: 7
+  stopOnPosZ: 80
+  stopForSeconds: 10
+  straightVerticalSpeed: 40
+  moveStaightUntilPosZ: 100
+  minStraightSpeed: 7
   toRight: 0
+  hasStopped: 0
+  stoppedTimer: 0
 --- !u!114 &5394815917292216850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,15 +200,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552d0989f2fb6c845ba44ad615046267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 1
+  shootInterval: 4
+  useSpawnScale: 0
+  lightningBulletPrefab: {fileID: 0}
+  waterBulletPrefab: {fileID: 8097450851172223967, guid: ee8ac79812308514280284c34caf0883, type: 3}
+  fireBulletPrefab: {fileID: 0}
   spawnPosition: {fileID: 7663904577265911426}
-  bulletPrefabs:
-  - {fileID: 4804628582512739663, guid: 91948d452e7882c4ea8085d26558dc3f, type: 3}
-  - {fileID: 4804628582512739663, guid: 658992b5bc378114eacc1b904f279aa2, type: 3}
-  - {fileID: 4804628582512739663, guid: 84cbefc0322050446a8b7de318d21928, type: 3}
+  elementManager: {fileID: 5004053444613407630}
   shootCooldown: 0
   canShoot: 1
-  currentElement_: 1
 --- !u!114 &483597291564592609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,9 +236,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2dae31910796148872b906f2a9fdd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 40
   healthBar: {fileID: 379785075183883394}
   currentHealth: 0
+--- !u!114 &5004053444613407630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857423647001359866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81ab702ecf8af6489f1ee0675da4ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canChangeElement: 0
+  unlockedElements: 01000000
+  selectedElement: 1
+  selectedElementIndex: 0
 --- !u!1 &2544966077591855092
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,8 +788,8 @@ Transform:
   m_GameObject: {fileID: 8898285115642196506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1388639504619801132}
   m_Father: {fileID: 6890465288993125455}

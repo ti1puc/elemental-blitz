@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Enemy01Movement : Enemy
+public class EnemyDiagonalMovement : Enemy
 {
 	[Header("Hitable")]
 	[SerializeField] private float makeHitableAfterPosZ = 50;

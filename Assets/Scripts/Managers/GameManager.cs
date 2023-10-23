@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] protected bool dontDestroyOnLoad = true;
     [Header("Random")]
     [SerializeField] private int seed;
-    [Header("Playtime")]
     // SCORE -> passei as coisas de score pro UIManager
     [Header("Debug")]
 	[SerializeField, ReadOnly] private float score = 0;
