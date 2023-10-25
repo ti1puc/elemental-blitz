@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyCollision : MonoBehaviour
@@ -14,6 +15,12 @@ public class EnemyCollision : MonoBehaviour
 	public ElementManager elementManager;
 	public HealthController healthController;
     [SerializeField] public Element currentElement_;
+    [Header("feedback damage")]
+    public Material materialDamage; 
+    public Material materialOriginal;
+    public Renderer renderer;
+    public float durationMax = 0.10f;
+    
     [Header("Debug")]
 	[SerializeField, ReadOnly] private float distancePlayer;
 	[SerializeField, ReadOnly] private float distanceXZero;
@@ -37,6 +44,19 @@ public class EnemyCollision : MonoBehaviour
 			differenceXZero = 0;
 
 		transform.localPosition = new Vector3(direction * differenceXZero, transform.localPosition.y, zPosCorrection * distancePlayer);
+
+        
+        if(durationMax >= 0)
+        {
+            durationMax -= Time.deltaTime; 
+        }
+        else
+        {
+            renderer.material = materialOriginal;
+        }
+           
+     
+
 	}
 	#endregion
 
@@ -74,6 +94,10 @@ public class EnemyCollision : MonoBehaviour
                 healthController.TakeDamage(bullet_.Damage / 2, enemy.PlayerDestroyEnemy);
                 bullet_.DestroyBullet();
             }
+
+            
+            renderer.material = materialDamage;
+            durationMax = 0.10f;
         }
         #endregion
 
@@ -98,6 +122,9 @@ public class EnemyCollision : MonoBehaviour
                 healthController.TakeDamage(bullet_.Damage * 2, enemy.PlayerDestroyEnemy);
                 bullet_.DestroyBullet();
             }
+
+            renderer.material = materialDamage;
+            durationMax = 0.10f;
         }
         #endregion
 
@@ -122,9 +149,16 @@ public class EnemyCollision : MonoBehaviour
                 //healthController.TakeDamage(bullet_.Damage / 2, enemy.PlayerDestroyEnemy);
                 bullet_.DestroyBullet();
             }
+
+            
+                renderer.material = materialDamage;
+                durationMax = 0.10f;
+
+
         }
         #endregion
 
+  
     }
     #endregion
 }

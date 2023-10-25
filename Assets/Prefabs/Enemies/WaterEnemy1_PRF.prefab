@@ -295,9 +295,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8beba263358d305479a1d19ccd72fee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xPosCorrection: 0
+  zPosCorrection: 0
   enemy: {fileID: 2576873844277990944}
   elementManager: {fileID: 2455647442740590178}
   healthController: {fileID: 5063971749467614889}
+  currentElement_: 0
+  materialDamage: {fileID: 2100000, guid: 204a0cb46b8d5324ab9b11028de8d7ba, type: 2}
+  materialOriginal: {fileID: 2100000, guid: 858b102a3c6665343a286881f63824be, type: 2}
+  renderer: {fileID: 7459424564889671981}
+  distancePlayer: 0
+  distanceXZero: 0
+  differenceXZero: 0
+  direction: 0
 --- !u!1 &3757487377882957421
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,5 +876,10 @@ PrefabInstance:
 --- !u!4 &3185656555842923040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7659327684664198424, guid: 8066d48c91072464d8f7b30d8ac0be9c, type: 3}
+  m_PrefabInstance: {fileID: 5079739531084754744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7459424564889671981 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2448813803903825429, guid: 8066d48c91072464d8f7b30d8ac0be9c, type: 3}
   m_PrefabInstance: {fileID: 5079739531084754744}
   m_PrefabAsset: {fileID: 0}

@@ -80,6 +80,10 @@ MonoBehaviour:
   enemy: {fileID: 2095183221418348164}
   elementManager: {fileID: 5004053444613407630}
   healthController: {fileID: 7756734929034419518}
+  currentElement_: 0
+  materialDamage: {fileID: 2100000, guid: 204a0cb46b8d5324ab9b11028de8d7ba, type: 2}
+  materialOriginal: {fileID: 2100000, guid: 858b102a3c6665343a286881f63824be, type: 2}
+  renderer: {fileID: 9153544066327413974}
   distancePlayer: 0
   distanceXZero: 0
   differenceXZero: 0
@@ -855,5 +859,10 @@ PrefabInstance:
 --- !u!4 &1388639504619801132 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3528464285415361112, guid: 1e1428ecaa871c246b67b94ae68ae37b, type: 3}
+  m_PrefabInstance: {fileID: 2572382043998896244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &9153544066327413974 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6680250036064961698, guid: 1e1428ecaa871c246b67b94ae68ae37b, type: 3}
   m_PrefabInstance: {fileID: 2572382043998896244}
   m_PrefabAsset: {fileID: 0}
