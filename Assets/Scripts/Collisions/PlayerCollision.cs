@@ -23,26 +23,105 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
 	{
+        //if collide with water element
+        #region colision with water
         if (other.CompareTag("enemyWater")) 
         {
+            // if current element = lighning
            if(currentElement_ == Element.Lightning)
             {
 				BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
                 bulletBase.DestroyBullet();
 
-				healthController.TakeDamage(damage);
+				//healthController.TakeDamage(damage);  // damage = 0;
             }
- 
-        }
 
+            if (currentElement_ == Element.Fire)
+            {
+                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
+                bulletBase.DestroyBullet();
+
+                healthController.TakeDamage(damage * 2);// Damage * 2
+            }
+
+            if (currentElement_ == Element.Water)
+            {
+                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
+                bulletBase.DestroyBullet();
+
+                healthController.TakeDamage(damage/2); // Damage / 2
+            }
+        }
+        #endregion
+
+        #region colision with lighning
+        if (other.CompareTag("enemyLightning"))
+        {
+            // if current element = lighning
+            if (currentElement_ == Element.Lightning)
+            {
+                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
+                bulletBase.DestroyBullet();
+
+                healthController.TakeDamage(damage / 2);  
+            }
+
+            if (currentElement_ == Element.Fire)
+            {
+                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
+                bulletBase.DestroyBullet();
+
+                healthController.TakeDamage(0);
+            }
+
+            if (currentElement_ == Element.Water)
+            {
+                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
+                bulletBase.DestroyBullet();
+
+                healthController.TakeDamage(damage * 2); 
+            }
+        }
+        #endregion
+
+        #region colision with fire
+        if (other.CompareTag("enemyFire"))
+        {
+            // if current element = lighning
+            if (currentElement_ == Element.Lightning)
+            {
+                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
+                bulletBase.DestroyBullet();
+
+                healthController.TakeDamage(damage * 2);
+            }
+
+            if (currentElement_ == Element.Fire)
+            {
+                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
+                bulletBase.DestroyBullet();
+
+                healthController.TakeDamage(damage / 2);
+            }
+
+            if (currentElement_ == Element.Water)
+            {
+                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
+                bulletBase.DestroyBullet();
+
+                healthController.TakeDamage(0);
+            }
+        }
+        #endregion
+
+        #region colision with power ups
         if (other.CompareTag("pUpHeal"))
         {
             PowerupBase pupb_ = other.gameObject.GetComponent<PowerupBase>();
             healthController.Heal(pupb_.heal_);
             pupb_.DestroyPowerup();
         }
-
-
+        #endregion  
     }
 
     #region Public Methods

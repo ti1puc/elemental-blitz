@@ -13,7 +13,8 @@ public class EnemyCollision : MonoBehaviour
 	public Enemy enemy;
 	public ElementManager elementManager;
 	public HealthController healthController;
-	[Header("Debug")]
+    [SerializeField] public Element currentElement_;
+    [Header("Debug")]
 	[SerializeField, ReadOnly] private float distancePlayer;
 	[SerializeField, ReadOnly] private float distanceXZero;
 	[SerializeField, ReadOnly] private float differenceXZero;
@@ -44,26 +45,86 @@ public class EnemyCollision : MonoBehaviour
 	{
 		// os inimigos primeiro aparecem na tela, aí rola um feedback mostrando que é possivel atirar nele
 		// até esse feedback visual aparecer o inimigo não pode ser hitable
+
 		if (enemy == null) return;
 		if (enemy.IsHitable == false) return;
 		
 		BulletBase bullet_ = other.gameObject.GetComponent<BulletBase>();
-        // tomar dano e tal
+
+
+        #region colision with water
+        if (other.CompareTag("Water"))
+        {
+            // if current element = lighning
+            if (currentElement_ == Element.Lightning)
+            {
+               // healthController.TakeDamage(bullet_.Damage, enemy.PlayerDestroyEnemy);
+                bullet_.DestroyBullet();
+
+            }
+
+            if (currentElement_ == Element.Fire)
+            {
+                healthController.TakeDamage(bullet_.Damage * 2, enemy.PlayerDestroyEnemy);
+                bullet_.DestroyBullet();
+            }
+
+            if (currentElement_ == Element.Water)
+            {
+                healthController.TakeDamage(bullet_.Damage / 2, enemy.PlayerDestroyEnemy);
+                bullet_.DestroyBullet();
+            }
+        }
+        #endregion
+
+        #region colision with lighning
+        if (other.CompareTag("Lightning"))
+        {
+            // if current element = lighning
+            if (currentElement_ == Element.Lightning)
+            {
+                healthController.TakeDamage(bullet_.Damage / 2, enemy.PlayerDestroyEnemy);
+                bullet_.DestroyBullet();
+            }
+
+            if (currentElement_ == Element.Fire)
+            {
+               // healthController.TakeDamage(bullet_.Damage * 2, enemy.PlayerDestroyEnemy);
+                bullet_.DestroyBullet();
+            }
+
+            if (currentElement_ == Element.Water)
+            {
+                healthController.TakeDamage(bullet_.Damage * 2, enemy.PlayerDestroyEnemy);
+                bullet_.DestroyBullet();
+            }
+        }
+        #endregion
+
+        #region colision with fire
         if (other.CompareTag("Fire"))
         {
-			// tal
-		}
-		if (other.CompareTag("Lightning"))
-		{
-			// tal
-			healthController.TakeDamage(bullet_.Damage, enemy.PlayerDestroyEnemy);
-			bullet_.DestroyBullet();
-			
-		}
-		if (other.CompareTag("Water"))
-		{
-			// tal
-		}
-	}
-	#endregion
+            // if current element = lighning
+            if (currentElement_ == Element.Lightning)
+            {
+                healthController.TakeDamage(bullet_.Damage * 2, enemy.PlayerDestroyEnemy);
+                bullet_.DestroyBullet();
+            }
+
+            if (currentElement_ == Element.Fire)
+            {
+                healthController.TakeDamage(bullet_.Damage / 2, enemy.PlayerDestroyEnemy);
+                bullet_.DestroyBullet();
+            }
+
+            if (currentElement_ == Element.Water)
+            {
+                //healthController.TakeDamage(bullet_.Damage / 2, enemy.PlayerDestroyEnemy);
+                bullet_.DestroyBullet();
+            }
+        }
+        #endregion
+
+    }
+    #endregion
 }

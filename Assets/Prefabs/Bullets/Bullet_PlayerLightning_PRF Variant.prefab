@@ -53,20 +53,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 660039499108516791, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: framesDaAnimacao.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 660039499108516791, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: framesDaAnimacao.Array.data[0]
       value: 
-      objectReference: {fileID: -621177187, guid: 78ebfebce0ef1034f9da179103317a0b, type: 3}
+      objectReference: {fileID: -194394644, guid: 382ccaed8902a764e9e2595a80a93608, type: 3}
     - target: {fileID: 660039499108516791, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: framesDaAnimacao.Array.data[1]
       value: 
-      objectReference: {fileID: -1567719355, guid: 78ebfebce0ef1034f9da179103317a0b, type: 3}
+      objectReference: {fileID: 2072244119, guid: 382ccaed8902a764e9e2595a80a93608, type: 3}
     - target: {fileID: 660039499108516791, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: framesDaAnimacao.Array.data[2]
       value: 
-      objectReference: {fileID: 434998729, guid: 78ebfebce0ef1034f9da179103317a0b, type: 3}
+      objectReference: {fileID: -1690695063, guid: 382ccaed8902a764e9e2595a80a93608, type: 3}
     - target: {fileID: 660039499108516791, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: framesDaAnimacao.Array.data[3]
       value: 
@@ -90,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 2555459572870860586, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: glowMask
       value: 
-      objectReference: {fileID: 2800000, guid: 1783a6cdaf3f43749868f70928664d8e, type: 3}
+      objectReference: {fileID: 2800000, guid: 8c45411aef3bcf14094e64a3e27c0efe, type: 3}
     - target: {fileID: 2555459572870860586, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: colorLerp
       value: 1
@@ -122,7 +122,7 @@ PrefabInstance:
     - target: {fileID: 2555459572870860586, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: mainTexture
       value: 
-      objectReference: {fileID: 2800000, guid: 78ebfebce0ef1034f9da179103317a0b, type: 3}
+      objectReference: {fileID: 2800000, guid: 382ccaed8902a764e9e2595a80a93608, type: 3}
     - target: {fileID: 2555459572870860586, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: outlineThickness
       value: 2
@@ -147,10 +147,18 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5039027933761165535, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039027933761165535, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7593276277968822142, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -621177187, guid: 78ebfebce0ef1034f9da179103317a0b, type: 3}
+      objectReference: {fileID: -1690695063, guid: 382ccaed8902a764e9e2595a80a93608, type: 3}
     - target: {fileID: 7593276277968822142, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
