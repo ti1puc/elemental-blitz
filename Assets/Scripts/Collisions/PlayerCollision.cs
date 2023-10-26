@@ -6,135 +6,111 @@ using NaughtyAttributes;
 
 public class PlayerCollision : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] public int damage =  2;
-    [Header("References")]
-    public HealthController healthController;
-    [Header("Element")]
-    [SerializeField] private Element currentElement_;
-    [Header("Debug")]
-    [SerializeField, ReadOnly] private ElementManager elementManager;
+	[Header("Settings")]
+	[SerializeField] public int damage = 2;
+	[Header("References")]
+	[SerializeField] private ElementManager elementManager;
+	public HealthController healthController;
+	[Header("feedback damage")]
+	public Material materialDamage;
+	public Material materialOriginal;
+	public Renderer[] renderers;
+	public float durationMax = 0.10f;
+	//[Header("Debug")]
 
-    private void Start()
+	#region Unity Messages
+	private void Update()
 	{
-		//find Player and get element
-		elementManager = PlayerManager.Player.GetComponent<ElementManager>();
+		// buscar scripts no update é pesado pq roda em todo frame, melhor colocar no Awake ou Start e guardar em uma variavel
+		//ElementManager elementManager = playerObj.GetComponent<ElementManager>();
+
+		if (durationMax >= 0)
+		{
+			durationMax -= Time.deltaTime;
+		}
+		else
+		{
+			foreach (var renderer in renderers)
+				renderer.material = materialOriginal;
+		}
 	}
 
-    private void OnTriggerEnter(Collider other)
+	private void OnTriggerEnter(Collider other)
 	{
-        //if collide with water element
-        #region colision with water
-        if (other.CompareTag("enemyWater")) 
-        {
-            // if current element = lighning
-           if(currentElement_ == Element.Lightning)
-            {
-				BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
-                bulletBase.DestroyBullet();
+		//if collide with water element
 
-				//healthController.TakeDamage(damage);  // damage = 0;
-            }
+		BulletBase bullet_ = other.gameObject.GetComponent<BulletBase>();
 
-            if (currentElement_ == Element.Fire)
-            {
-                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
-                bulletBase.DestroyBullet();
+		#region colision with water
+		if (other.CompareTag("enemyWater"))
+		{
+			// if current element = lighning
+			if (elementManager.CurrentElement == Element.Lightning)
+				TakeDamage(bullet_, 0, false);
 
-                healthController.TakeDamage(damage * 2);// Damage * 2
-            }
+			if (elementManager.CurrentElement == Element.Fire)
+				TakeDamage(bullet_, 1, true);
 
-            if (currentElement_ == Element.Water)
-            {
-                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
-                bulletBase.DestroyBullet();
+			if (elementManager.CurrentElement == Element.Water)
+				TakeDamage(bullet_, .5f, true);
+		}
+		#endregion
 
-                healthController.TakeDamage(damage/2); // Damage / 2
-            }
-        }
-        #endregion
+		#region colision with lighning
+		if (other.CompareTag("enemyLightning"))
+		{
+			// if current element = lighning
+			if (elementManager.CurrentElement == Element.Lightning)
+				TakeDamage(bullet_, .5f, true);
 
-        #region colision with lighning
-        if (other.CompareTag("enemyLightning"))
-        {
-            // if current element = lighning
-            if (currentElement_ == Element.Lightning)
-            {
-                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
-                bulletBase.DestroyBullet();
+			if (elementManager.CurrentElement == Element.Fire)
+				TakeDamage(bullet_, 0, false);
 
-                healthController.TakeDamage(damage / 2);  
-            }
+			if (elementManager.CurrentElement == Element.Water)
+				TakeDamage(bullet_, 1, true);
+		}
+		#endregion
 
-            if (currentElement_ == Element.Fire)
-            {
-                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
-                bulletBase.DestroyBullet();
+		#region colision with fire
+		if (other.CompareTag("enemyFire"))
+		{
+			// if current element = lighning
+			if (elementManager.CurrentElement == Element.Lightning)
+				TakeDamage(bullet_, 1, true);
 
-                healthController.TakeDamage(0);
-            }
+			if (elementManager.CurrentElement == Element.Fire)
+				TakeDamage(bullet_, .5f, true);
 
-            if (currentElement_ == Element.Water)
-            {
-                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
-                bulletBase.DestroyBullet();
+			if (elementManager.CurrentElement == Element.Water)
+				TakeDamage(bullet_, 0, false);
+		}
+		#endregion
 
-                healthController.TakeDamage(damage * 2); 
-            }
-        }
-        #endregion
+		#region colision with power ups
+		if (other.CompareTag("pUpHeal"))
+		{
+			PowerupBase pupb_ = other.gameObject.GetComponent<PowerupBase>();
+			healthController.Heal(pupb_.heal_);
+			pupb_.DestroyPowerup();
+		}
+		#endregion
+	}
+	#endregion
 
-        #region colision with fire
-        if (other.CompareTag("enemyFire"))
-        {
-            // if current element = lighning
-            if (currentElement_ == Element.Lightning)
-            {
-                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
-                bulletBase.DestroyBullet();
+	#region Private Methods
+	// criei essa funcao só pra facilitar
+	private void TakeDamage(BulletBase bullet, float damageMultiplier, bool showHitVfx)
+	{
+		healthController.TakeDamage(Mathf.CeilToInt(bullet.Damage * damageMultiplier));
+		bullet.DestroyBullet();
 
-                healthController.TakeDamage(damage * 2);
-            }
+		if (showHitVfx)
+		{
+			foreach (var renderer in renderers)
+				renderer.material = materialDamage;
 
-            if (currentElement_ == Element.Fire)
-            {
-                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
-                bulletBase.DestroyBullet();
-
-                healthController.TakeDamage(damage / 2);
-            }
-
-            if (currentElement_ == Element.Water)
-            {
-                BulletBase bulletBase = other.gameObject.GetComponent<BulletBase>();
-                bulletBase.DestroyBullet();
-
-                healthController.TakeDamage(0);
-            }
-        }
-        #endregion
-
-        #region colision with power ups
-        if (other.CompareTag("pUpHeal"))
-        {
-            PowerupBase pupb_ = other.gameObject.GetComponent<PowerupBase>();
-            healthController.Heal(pupb_.heal_);
-            pupb_.DestroyPowerup();
-        }
-        #endregion  
-    }
-
-    #region Public Methods
-    #endregion
-
-    #region Private Methods
-    private void Update()
-    {
-        // buscar scripts no update é pesado pq roda em todo frame, melhor colocar no Awake ou Start e guardar em uma variavel
-        //ElementManager elementManager = playerObj.GetComponent<ElementManager>();
-
-        currentElement_ = elementManager.SelectedElement;
-    }
-
-    #endregion
+			durationMax = 0.10f;
+		}
+	}
+	#endregion
 }

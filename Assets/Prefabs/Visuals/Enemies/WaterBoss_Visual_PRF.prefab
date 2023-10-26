@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -132,12 +132,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 6891672074469056884}
 --- !u!1 &858211062973552231
 GameObject:
@@ -214,7 +217,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -271,12 +274,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 1800342428762377968}
 --- !u!1 &1520454143218220800
 GameObject:
@@ -353,7 +359,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -410,12 +416,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 4378404458039209423}
 --- !u!1 &1816867286618907976
 GameObject:
@@ -492,7 +501,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -549,12 +558,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 190784132277530833}
 --- !u!1 &1896826993398800991
 GameObject:
@@ -631,7 +643,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -688,12 +700,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 4152379693571264677}
 --- !u!1 &2140577459407647333
 GameObject:
@@ -770,7 +785,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -827,12 +842,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 1891085772735354117}
 --- !u!1 &2386308459952974446
 GameObject:
@@ -909,7 +927,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -966,12 +984,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 6712973463671723741}
 --- !u!1 &2668838365570983715
 GameObject:
@@ -1048,7 +1069,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1105,12 +1126,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 8854637804554288555}
 --- !u!1 &3191300386698252077
 GameObject:
@@ -1187,7 +1211,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1244,12 +1268,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 3556218965314164079}
 --- !u!1 &3483863732779108311
 GameObject:
@@ -1326,7 +1353,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1383,12 +1410,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 4544183025194816168}
 --- !u!1 &3567783415384391576
 GameObject:
@@ -1631,7 +1661,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1688,12 +1718,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 3139718743322057220}
 --- !u!1 &5307430143602057248
 GameObject:
@@ -1770,7 +1803,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1827,12 +1860,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 5326182338072549216}
 --- !u!1 &6331271546641228013
 GameObject:
@@ -1909,7 +1945,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1966,12 +2002,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 7170033189577016935}
 --- !u!1 &7007898349409159026
 GameObject:
@@ -2048,7 +2087,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2105,12 +2144,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 766466690760601749}
 --- !u!1 &7569113243769142000
 GameObject:
@@ -2187,7 +2229,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2244,12 +2286,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 4733181527918384826}
 --- !u!1 &7727389179804300926
 GameObject:
@@ -2326,7 +2371,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2383,12 +2428,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 1627608506179908794}
 --- !u!1 &7763669636377327992
 GameObject:
@@ -2465,7 +2513,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2522,12 +2570,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 6724155619283732291}
 --- !u!1 &8120940430749494081
 GameObject:
@@ -2604,7 +2655,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2661,12 +2712,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 5073993068978224703}
 --- !u!1 &8152552621988445695
 GameObject:
@@ -2727,7 +2781,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8269141776297365836}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.052335896, y: 0, z: 0, w: 0.9986295}
   m_LocalPosition: {x: 0, y: 3.56, z: 3.86}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
@@ -2772,7 +2826,10 @@ MonoBehaviour:
   numberOfPieces: 20
   ringRadius: 7.8
   createAxis: 1
+  setRotationOutwards: 0
+  useCustomPrefab: 1
   ringPiecePrefab: {fileID: 287109139172495101, guid: f44f66ab9bbe542488bd899a4d79c8d1, type: 3}
+  emptyObjectName: 
 --- !u!1 &8878805478359375431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2931,7 +2988,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2988,12 +3045,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 7805316027327206041}
 --- !u!1 &9162597483896909407
 GameObject:
@@ -3070,7 +3130,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -716036484, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3127,10 +3187,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: 5a47e7689ed5c9842b635251c5dd371d, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}
+  glowFactor: 0
   useOutline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineThickness: 2
+  colorLerp: 0
   spriteRenderer: {fileID: 4461232210430478395}

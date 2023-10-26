@@ -655,7 +655,9 @@ MonoBehaviour:
   currentElement_: 0
   materialDamage: {fileID: 2100000, guid: 204a0cb46b8d5324ab9b11028de8d7ba, type: 2}
   materialOriginal: {fileID: 2100000, guid: 858b102a3c6665343a286881f63824be, type: 2}
-  renderer: {fileID: 1225105453952654760}
+  renderers:
+  - {fileID: 1225105453952654760}
+  durationMax: 0.1
   distancePlayer: 0
   distanceXZero: 0
   differenceXZero: 0

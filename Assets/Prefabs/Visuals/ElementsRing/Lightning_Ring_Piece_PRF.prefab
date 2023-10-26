@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -621177187, guid: 78ebfebce0ef1034f9da179103317a0b, type: 3}
+  m_Sprite: {fileID: 637819075, guid: bd5850a9a48f3294a84e5b177bb5a1db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -113,10 +113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3262675143358422707}
   framesDaAnimacao:
-  - {fileID: -621177187, guid: 78ebfebce0ef1034f9da179103317a0b, type: 3}
-  - {fileID: -1567719355, guid: 78ebfebce0ef1034f9da179103317a0b, type: 3}
-  - {fileID: 434998729, guid: 78ebfebce0ef1034f9da179103317a0b, type: 3}
-  - {fileID: -1797954443, guid: 78ebfebce0ef1034f9da179103317a0b, type: 3}
+  - {fileID: 637819075, guid: bd5850a9a48f3294a84e5b177bb5a1db, type: 3}
+  - {fileID: -1349071558, guid: bd5850a9a48f3294a84e5b177bb5a1db, type: 3}
   velocidadeDaAnimacao: 7.5
 --- !u!114 &5253107126815035437
 MonoBehaviour:
@@ -130,7 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ce3c5485692b24984708130572084d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainTexture: {fileID: 2800000, guid: 78ebfebce0ef1034f9da179103317a0b, type: 3}
+  mainTexture: {fileID: 2800000, guid: bd5850a9a48f3294a84e5b177bb5a1db, type: 3}
+  colorTint: {r: 1, g: 1, b: 1, a: 1}
   useGlow: 0
   glowMask: {fileID: 2800000, guid: 0e3a229ca70042847a068c19e9a61068, type: 3}
   glowColor: {r: 0.34122464, g: 2.2038302, b: 2.6792452, a: 0}

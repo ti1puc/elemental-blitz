@@ -14,18 +14,26 @@ public class WaveManager : MonoBehaviour
 
 	[Header("Settings")]
 	[SerializeField] private float delayBetweenWaves;
-	[SerializeField] private float delayBeforeBossFight;
+	[SerializeField] private float delayToSpawnBoss = 3;
 	[SerializeField] private List<Wave> waves = new List<Wave>();
-	[Header("Debug")]
+	[Header("References")]
+	[SerializeField] private GameObject bossPrefab;
+	[SerializeField] private Transform bossSpawnPoint;
+	[Header("Debug: Wave")]
 	[SerializeField, ReadOnly] private int currentWaveIndex;
 	[SerializeField, ReadOnly] private Wave currentWave;
 	[SerializeField, ReadOnly] private float delayTimer;
 	[SerializeField, ReadOnly] private bool isWaitingNextWave;
 	[SerializeField, ReadOnly] private float wavePlaytime;
 	[SerializeField, ReadOnly] private float wavePlaytimeInMinutes;
+	[Header("Debug: Total Playtime")]
 	[SerializeField, ReadOnly] private float totalPlaytime;
 	[SerializeField, ReadOnly] private float totalPlaytimeInMinutes;
 	[SerializeField, ReadOnly] private float levelTotalDuration;
+	[Header("Debug: Boss")]
+	[SerializeField, ReadOnly] private bool hasStartedBossFight;
+	[SerializeField, ReadOnly] private GameObject boss;
+	[SerializeField, ReadOnly] private float bossSpawnTimer;
 
 	public static WaveManager Instance { get; private set; }
 	public static int CurrentWave => Instance.currentWaveIndex;
@@ -40,6 +48,7 @@ public class WaveManager : MonoBehaviour
 			return Instance.levelTotalDuration;
         }
 	}
+	public static bool HasStartedBossFight => Instance.hasStartedBossFight;
 
 	private void Awake()
 	{
@@ -61,6 +70,17 @@ public class WaveManager : MonoBehaviour
 	{
 		totalPlaytime += Time.deltaTime;
 		totalPlaytimeInMinutes = totalPlaytime / 60f;
+
+		if (HasStartedBossFight)
+		{
+			bossSpawnTimer += Time.deltaTime;
+			if (bossSpawnTimer > delayToSpawnBoss && boss == null)
+			{
+				boss = ObjectPoolManager.Instantiate(bossPrefab, bossSpawnPoint.transform.position, bossSpawnPoint.transform.rotation);
+			}
+
+			return;
+		}
 
 		if (isWaitingNextWave)
 		{
@@ -89,7 +109,8 @@ public class WaveManager : MonoBehaviour
 			currentWaveIndex++;
 			if (currentWaveIndex > waves.Count - 1)
 			{
-				// start boss fight here
+				// flag sinalizando que vai começar a boss fight
+				hasStartedBossFight = true;
 				return;
 			}
 

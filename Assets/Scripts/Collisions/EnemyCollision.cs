@@ -14,14 +14,13 @@ public class EnemyCollision : MonoBehaviour
 	public Enemy enemy;
 	public ElementManager elementManager;
 	public HealthController healthController;
-    [SerializeField] public Element currentElement_;
-    [Header("feedback damage")]
-    public Material materialDamage; 
-    public Material materialOriginal;
-    public Renderer renderer;
-    public float durationMax = 0.10f;
-    
-    [Header("Debug")]
+	[Header("feedback damage")]
+	public Material materialDamage;
+	public Material materialOriginal;
+	public Renderer[] renderers;
+	public float durationMax = 0.10f;
+
+	[Header("Debug")]
 	[SerializeField, ReadOnly] private float distancePlayer;
 	[SerializeField, ReadOnly] private float distanceXZero;
 	[SerializeField, ReadOnly] private float differenceXZero;
@@ -45,18 +44,16 @@ public class EnemyCollision : MonoBehaviour
 
 		transform.localPosition = new Vector3(direction * differenceXZero, transform.localPosition.y, zPosCorrection * distancePlayer);
 
-        
-        if(durationMax >= 0)
-        {
-            durationMax -= Time.deltaTime; 
-        }
-        else
-        {
-            renderer.material = materialOriginal;
-        }
-           
-     
 
+		if (durationMax >= 0)
+		{
+			durationMax -= Time.deltaTime;
+		}
+		else
+		{
+			foreach (var renderer in renderers)
+				renderer.material = materialOriginal;
+		}
 	}
 	#endregion
 
@@ -68,97 +65,70 @@ public class EnemyCollision : MonoBehaviour
 
 		if (enemy == null) return;
 		if (enemy.IsHitable == false) return;
-		
+
 		BulletBase bullet_ = other.gameObject.GetComponent<BulletBase>();
 
+		#region colision with water
+		if (other.CompareTag("Water"))
+		{
+			// if current element = lighning
+			if (elementManager.CurrentElement == Element.Lightning)
+				TakeDamage(bullet_, 0, false);
 
-        #region colision with water
-        if (other.CompareTag("Water"))
-        {
-            // if current element = lighning
-            if (currentElement_ == Element.Lightning)
-            {
-               // healthController.TakeDamage(bullet_.Damage, enemy.PlayerDestroyEnemy);
-                bullet_.DestroyBullet();
+			if (elementManager.CurrentElement == Element.Fire)
+				TakeDamage(bullet_, 1, true);
 
-            }
+			if (elementManager.CurrentElement == Element.Water)
+				TakeDamage(bullet_, .5f, true);
+		}
+		#endregion
 
-            if (currentElement_ == Element.Fire)
-            {
-                healthController.TakeDamage(bullet_.Damage * 2, enemy.PlayerDestroyEnemy);
-                bullet_.DestroyBullet();
-            }
+		#region colision with lighning
+		if (other.CompareTag("Lightning"))
+		{
+			// if current element = lighning
+			if (elementManager.CurrentElement == Element.Lightning)
+				TakeDamage(bullet_, .5f, true);
 
-            if (currentElement_ == Element.Water)
-            {
-                healthController.TakeDamage(bullet_.Damage / 2, enemy.PlayerDestroyEnemy);
-                bullet_.DestroyBullet();
-            }
+			if (elementManager.CurrentElement == Element.Fire)
+				TakeDamage(bullet_, 0, false);
 
-            
-            renderer.material = materialDamage;
-            durationMax = 0.10f;
-        }
-        #endregion
+			if (elementManager.CurrentElement == Element.Water)
+				TakeDamage(bullet_, 1, true);
+		}
+		#endregion
 
-        #region colision with lighning
-        if (other.CompareTag("Lightning"))
-        {
-            // if current element = lighning
-            if (currentElement_ == Element.Lightning)
-            {
-                healthController.TakeDamage(bullet_.Damage / 2, enemy.PlayerDestroyEnemy);
-                bullet_.DestroyBullet();
-            }
+		#region colision with fire
+		if (other.CompareTag("Fire"))
+		{
+			// if current element = lighning
+			if (elementManager.CurrentElement == Element.Lightning)
+				TakeDamage(bullet_, 1, true);
 
-            if (currentElement_ == Element.Fire)
-            {
-               // healthController.TakeDamage(bullet_.Damage * 2, enemy.PlayerDestroyEnemy);
-                bullet_.DestroyBullet();
-            }
+			if (elementManager.CurrentElement == Element.Fire)
+				TakeDamage(bullet_, .5f, true);
 
-            if (currentElement_ == Element.Water)
-            {
-                healthController.TakeDamage(bullet_.Damage * 2, enemy.PlayerDestroyEnemy);
-                bullet_.DestroyBullet();
-            }
+			if (elementManager.CurrentElement == Element.Water)
+				TakeDamage(bullet_, 0, false);
+		}
+		#endregion
+	}
+	#endregion
 
-            renderer.material = materialDamage;
-            durationMax = 0.10f;
-        }
-        #endregion
+	#region Private Methods
+	// criei esse funcao só pra facilitar
+	private void TakeDamage(BulletBase bullet, float damageMultiplier, bool showHitVfx)
+	{
+		healthController.TakeDamage(Mathf.CeilToInt(bullet.Damage * damageMultiplier), enemy.PlayerDestroyEnemy);
+		bullet.DestroyBullet();
 
-        #region colision with fire
-        if (other.CompareTag("Fire"))
-        {
-            // if current element = lighning
-            if (currentElement_ == Element.Lightning)
-            {
-                healthController.TakeDamage(bullet_.Damage * 2, enemy.PlayerDestroyEnemy);
-                bullet_.DestroyBullet();
-            }
+		if (showHitVfx)
+		{
+			foreach (var renderer in renderers)
+				renderer.material = materialDamage;
 
-            if (currentElement_ == Element.Fire)
-            {
-                healthController.TakeDamage(bullet_.Damage / 2, enemy.PlayerDestroyEnemy);
-                bullet_.DestroyBullet();
-            }
-
-            if (currentElement_ == Element.Water)
-            {
-                //healthController.TakeDamage(bullet_.Damage / 2, enemy.PlayerDestroyEnemy);
-                bullet_.DestroyBullet();
-            }
-
-            
-                renderer.material = materialDamage;
-                durationMax = 0.10f;
-
-
-        }
-        #endregion
-
-  
-    }
-    #endregion
+			durationMax = 0.10f;
+		}
+	}
+	#endregion
 }

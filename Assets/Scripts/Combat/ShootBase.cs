@@ -60,7 +60,7 @@ public abstract class ShootBase : MonoBehaviour
 		if (elementManager == null) return;
 
 		// get element from ShootBase element manager
-		Element elementIndex = elementManager.SelectedElement;
+		Element elementIndex = elementManager.CurrentElement;
 
 		GameObject bulletPrefab = null;
 		switch (elementIndex)

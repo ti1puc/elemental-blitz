@@ -16,6 +16,9 @@ public class LookAtMainCamera : MonoBehaviour
 
 	private void Update()
 	{
+		// melhoria de performance
+		if (gameObject.activeSelf == false) return;
+
 		UpdateLookAtRotation();
 	}
 	#endregion

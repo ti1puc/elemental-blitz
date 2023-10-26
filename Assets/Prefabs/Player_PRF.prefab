@@ -190,9 +190,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  elementManager: {fileID: 8348538085054358860}
   healthController: {fileID: 4783412602324264936}
-  currentElement_: 0
-  elementManager: {fileID: 0}
+  materialDamage: {fileID: 2100000, guid: 204a0cb46b8d5324ab9b11028de8d7ba, type: 2}
+  materialOriginal: {fileID: 2100000, guid: c852af001dae0064e9acaa832f1dadb7, type: 2}
+  renderers:
+  - {fileID: 2918750666994978749}
+  - {fileID: 4640401431828187890}
+  durationMax: 0.1
 --- !u!1 &3680468034906759489
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,8 +837,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canChangeElement: 1
   unlockedElements: 000000000100000002000000
-  selectedElement: 0
-  selectedElementIndex: 0
+  currentElement: 0
+  currentElementIndex: 0
 --- !u!114 &-2899747635400695227
 MonoBehaviour:
   m_ObjectHideFlags: 0

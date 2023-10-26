@@ -16,16 +16,16 @@ public class ElementManager : MonoBehaviour
     [SerializeField] private bool canChangeElement;
     [Header("Element")]
     [SerializeField] public List<Element> unlockedElements = new List<Element>();
-    [SerializeField, ReadOnly] private Element selectedElement;
-	[SerializeField, ReadOnly] private int selectedElementIndex = 0;
+    [SerializeField, ReadOnly] private Element currentElement;
+	[SerializeField, ReadOnly] private int currentElementIndex = 0;
 
-    public Element SelectedElement => selectedElement;
+    public Element CurrentElement => currentElement;
 
     #region Unity Messages
     public void Start()
     {
-        selectedElement = unlockedElements[0];
-		selectedElementIndex = 0;
+        currentElement = unlockedElements[0];
+		currentElementIndex = 0;
 	}
 
     private void Update()
@@ -47,14 +47,14 @@ public class ElementManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            selectedElementIndex++;
+            currentElementIndex++;
 
-            if (selectedElementIndex <= unlockedElements.Count - 1)
-			    selectedElement = unlockedElements[selectedElementIndex];
+            if (currentElementIndex <= unlockedElements.Count - 1)
+			    currentElement = unlockedElements[currentElementIndex];
             else
 			{
-				selectedElement = unlockedElements[0];
-				selectedElementIndex = 0;
+				currentElement = unlockedElements[0];
+				currentElementIndex = 0;
 			}
 		}
     }

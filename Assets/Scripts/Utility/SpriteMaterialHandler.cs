@@ -9,6 +9,7 @@ public class SpriteMaterialHandler : MonoBehaviour
 	#region Fields
 	[Header("Settings")]
 	[SerializeField] private Texture2D mainTexture;
+	[SerializeField] private Color colorTint;
 	[SerializeField] private bool useGlow;
 	[SerializeField, ShowIf("useGlow")] private Texture2D glowMask;
 	[SerializeField, ShowIf("useGlow"), ColorUsageAttribute(true, true)] private Color glowColor;
@@ -63,6 +64,7 @@ public class SpriteMaterialHandler : MonoBehaviour
 		if (mainTexture == null) return;
 
 		MaterialPropertyBlock.SetTexture("_MainTex", mainTexture);
+		MaterialPropertyBlock.SetColor("_ColorTint", colorTint);
 		MaterialPropertyBlock.SetInteger("_UseGlow", useGlow ? 1 : 0);
 		MaterialPropertyBlock.SetInteger("_UseOutline", useOutline ? 1 : 0);
 		MaterialPropertyBlock.SetFloat("_ColorLerp", colorLerp);
