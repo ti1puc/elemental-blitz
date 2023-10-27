@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.56184906, g: 0.72206545, b: 0.81800187, a: 1}
+  m_IndirectSpecularColor: {r: 0.5619456, g: 0.7221119, b: 0.81800896, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1878,6 +1878,50 @@ PrefabInstance:
     - target: {fileID: 1070964973271073346, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592971997892988095, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -37776979, guid: 0b7ea244a02e5174f92f22f856132001, type: 3}
+    - target: {fileID: 2592971997892988095, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6562628308887814153, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346714229028749077, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346714229028749077, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 881210054, guid: 0b7ea244a02e5174f92f22f856132001, type: 3}
+    - target: {fileID: 7346714229028749077, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346714229028749077, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5945007
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346714229028749077, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_Color.r
+      value: 0.24056602
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453373645576619667, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453373645576619667, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1741205945, guid: 0b7ea244a02e5174f92f22f856132001, type: 3}
+    - target: {fileID: 7596020109659434326, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
