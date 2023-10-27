@@ -16,6 +16,7 @@ public class EnemyDiagonalMovement : Enemy
 	[Header("Diagonal Movement")]
 	public float verticalSpeed = 7;
 	public float horizontalSpeed = 4;
+	[SerializeField] private float speedMultiplierBeforeBoss = 2f;
 	[Header("Tilt")]
 	[SerializeField] private float tiltSpeed;
 	[SerializeField] private float tiltAngleHorizontal;
@@ -103,6 +104,9 @@ public class EnemyDiagonalMovement : Enemy
 	{
 		float zPos = verticalSpeed * Time.deltaTime;
 		float xPos = (horizontalSpeed * Time.deltaTime) * toRight;
+		if (WaveManager.HasStartedBossFight)
+			zPos *= speedMultiplierBeforeBoss;
+
 		transform.Translate(-xPos, 0, zPos);
 	}
 }

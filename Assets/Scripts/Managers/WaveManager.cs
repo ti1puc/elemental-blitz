@@ -49,6 +49,7 @@ public class WaveManager : MonoBehaviour
         }
 	}
 	public static bool HasStartedBossFight => Instance.hasStartedBossFight;
+	public static GameObject Boss => Instance.boss;
 
 	private void Awake()
 	{

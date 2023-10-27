@@ -16,6 +16,7 @@ public class HealthController : MonoBehaviour
     #endregion
 
     #region Properties
+    public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
 	#endregion
 

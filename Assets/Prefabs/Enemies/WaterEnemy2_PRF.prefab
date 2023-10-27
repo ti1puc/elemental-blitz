@@ -80,7 +80,6 @@ MonoBehaviour:
   enemy: {fileID: 2095183221418348164}
   elementManager: {fileID: 5004053444613407630}
   healthController: {fileID: 7756734929034419518}
-  currentElement_: 0
   materialDamage: {fileID: 2100000, guid: 204a0cb46b8d5324ab9b11028de8d7ba, type: 2}
   materialOriginal: {fileID: 2100000, guid: 858b102a3c6665343a286881f63824be, type: 2}
   renderers:
@@ -191,6 +190,7 @@ MonoBehaviour:
   straightVerticalSpeed: 40
   moveStaightUntilPosZ: 100
   minStraightSpeed: 7
+  speedMultiplierBeforeBoss: 6
   toRight: 0
   hasStopped: 0
   stoppedTimer: 0
@@ -259,8 +259,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canChangeElement: 0
   unlockedElements: 01000000
-  selectedElement: 1
-  selectedElementIndex: 0
+  currentElement: 0
+  currentElementIndex: 0
 --- !u!1 &2544966077591855092
 GameObject:
   m_ObjectHideFlags: 0

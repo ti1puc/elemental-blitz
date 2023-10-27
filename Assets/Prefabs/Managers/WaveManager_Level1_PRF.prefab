@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBetweenWaves: 1
+  delayToSpawnBoss: 6
   waves:
   - Name: water tipo 1 e eletricos tipo 1
     Duration: 0.7
@@ -67,6 +68,8 @@ MonoBehaviour:
   totalPlaytimeInMinutes: 0
   levelTotalDuration: 0
   hasStartedBossFight: 0
+  boss: {fileID: 0}
+  bossSpawnTimer: 0
 --- !u!1 &5978264156242462600
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +94,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5978264156242462600}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 75}
+  m_LocalPosition: {x: 0, y: 0, z: 120}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

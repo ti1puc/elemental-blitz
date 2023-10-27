@@ -15,6 +15,7 @@ public class EnemyGroundMovement : Enemy
 	[SerializeField] private float straightVerticalSpeed = 20;
 	[SerializeField] private float moveStaightUntilPosZ = 40;
 	[SerializeField] private float minStraightSpeed = 5;
+	[SerializeField] private float speedMultiplierBeforeBoss = 2f;
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private int toRight;
 	[SerializeField, ReadOnly] private bool hasStopped;
@@ -42,6 +43,16 @@ public class EnemyGroundMovement : Enemy
 		// espera a initializacao da classe mãe Enemy
 		if (hasInitialized == false) return;
 
+		// caso o inimigo não for destruido pelo player
+		if (transform.position.z <= moveRangeZ.x)
+			DestroyEnemy();
+
+		if (WaveManager.HasStartedBossFight)
+		{
+			MoveForward();
+			return;
+		}
+
 		if (transform.position.z < stopOnPosZ && hasStopped == false)
 		{
 			stoppedTimer += Time.deltaTime;
@@ -60,10 +71,6 @@ public class EnemyGroundMovement : Enemy
 
 		if (transform.position.z <= makeHitableAfterPosZ)
 			MakeEnemyHitable();
-
-		// caso o inimigo não for destruido pelo player
-		if (transform.position.z <= moveRangeZ.x)
-			DestroyEnemy();
 	}
 
 	private void Direction()
@@ -104,6 +111,9 @@ public class EnemyGroundMovement : Enemy
 	private void MoveForward()
 	{
 		float zPos = moveSpeed * Time.deltaTime;
+		if (WaveManager.HasStartedBossFight)
+			zPos *= speedMultiplierBeforeBoss;
+
 		transform.Translate(0, 0, zPos);
 	}
 }

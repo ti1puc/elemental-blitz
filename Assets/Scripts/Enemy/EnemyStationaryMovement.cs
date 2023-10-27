@@ -69,7 +69,7 @@ public class EnemyStationaryMovement : Enemy
 		{
 			// espera um tempo pra ir embora se não for destruido
 			aliveTimer += Time.deltaTime;
-			if (aliveTimer > maxAliveTime)
+			if (aliveTimer > maxAliveTime || WaveManager.HasStartedBossFight)
 			{
 				DisableShoot();
 				GoAwayMovement();

@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,12 +12,16 @@ public class UIManager : MonoBehaviour
 	public TextMeshProUGUI scoreText;
 	public float delayScoreSpeed = 20;
 	public Animator scoreAnimator;
-
-	private float scoreDelay = 0;
-
 	[Header("References")]
 	[SerializeField] private Button retryButton;
 	[SerializeField] private Slider levelProgression;
+	[SerializeField] private HealthBar bossHealth;
+	[SerializeField] private TMP_Text bossNameText;
+	[Header("Debug")]
+	[SerializeField, ReadOnly] private float scoreDelay = 0;
+	[SerializeField, ReadOnly] private bool hasChangedBossMaxHealth;
+	[SerializeField, ReadOnly] private bool hasChangedBossName;
+	[SerializeField, ReadOnly] private HealthController bossHealthController;
 
 	#region Unity Messages
 	private void Awake()
@@ -37,8 +42,18 @@ public class UIManager : MonoBehaviour
 	
 	private void Update()
 	{
-		// progressao do level
-		Progression();
+		levelProgression.transform.parent.gameObject.SetActive(WaveManager.HasStartedBossFight == false);
+		bossHealth.transform.parent.gameObject.SetActive(WaveManager.HasStartedBossFight && WaveManager.Boss != null);
+
+		if (WaveManager.HasStartedBossFight && WaveManager.Boss != null)
+		{
+			BossHealth();
+		}
+		else
+		{
+			// progressao do level
+			Progression();
+		}
 
 		// score
 		if (scoreDelay < GameManager.Score)
@@ -80,5 +95,25 @@ public class UIManager : MonoBehaviour
 	private void Progression()
 	{
 		levelProgression.value = WaveManager.TotalPlaytimeInMinutes / WaveManager.LevelTotalDuration;
+	}
+
+	private void BossHealth()
+	{
+		if (bossHealthController == null)
+			bossHealthController = WaveManager.Boss.GetComponent<HealthController>();
+
+		if (!hasChangedBossMaxHealth)
+		{
+			bossHealth.ChangeMaxLife(bossHealthController.MaxHealth);
+			hasChangedBossMaxHealth = true;
+		}
+
+		if (!hasChangedBossName)
+		{
+			bossNameText.text = WaveManager.Boss.GetComponent<Boss>().BossName;
+			hasChangedBossName = true;
+		}
+
+		bossHealth.ChangeLife(bossHealthController.CurrentHealth);
 	}
 }
