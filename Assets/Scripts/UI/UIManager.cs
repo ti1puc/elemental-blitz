@@ -131,9 +131,9 @@ public class UIManager : MonoBehaviour
 		Instance.elementChangerAnimator.SetTrigger("Rotate");
 	}
 
-	public void Retry()
+	public void GoToMenu()
 	{
-		GameManager.Retry();
+		SceneTransition.TransitionToScene(0);
 	}
 
 	public void TogglePause()

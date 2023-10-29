@@ -46,7 +46,10 @@ public class GameManager : MonoBehaviour
     }
 
 	private void Update()
-    {
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+			TogglePause();
+
 		if (isGameStarted == false) return;
 
 		// evita usar GetComponent no Update por que isso vai rodar em todo frame, aí fica muito pesado
@@ -61,9 +64,6 @@ public class GameManager : MonoBehaviour
 
 		if (PlayerManager.Instance != null && PlayerManager.PlayerLife.CurrentHealth <= 0)
             Defeat();
-
-		if (Input.GetKeyDown(KeyCode.Escape))
-			TogglePause();
     }
     #endregion
 
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
 	public static void NextLevel()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		SceneTransition.TransitionToNextLevel();
 	}
 
 	public static void StartGame()
