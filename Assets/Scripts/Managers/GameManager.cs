@@ -49,10 +49,10 @@ public class GameManager : MonoBehaviour
 		// melhor buscar esse component 1 vez só no Awake ou Start
 		//HealthController life = player_.GetComponent<HealthController>();
 
-		if (bossHealthController == null)
+		if (bossHealthController == null && WaveManager.Boss != null)
 			bossHealthController = WaveManager.Boss.GetComponent<HealthController>();
 
-		if (bossHealthController.CurrentHealth <= 0)
+		if (bossHealthController != null && bossHealthController.CurrentHealth <= 0)
 			Win();
 
 		if (PlayerManager.PlayerLife.CurrentHealth <= 0)
