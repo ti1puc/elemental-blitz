@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.5619456, g: 0.7221119, b: 0.81800896, a: 1}
+  m_IndirectSpecularColor: {r: 0.56184906, g: 0.72206545, b: 0.81800187, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: a0e6e4617580d6941a317153ed890300, type: 2}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 1ea03e2e421ba2048b42ad2eb35043e2, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1983,22 +1983,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 661027151207769996, guid: 60061616d96fa564aa3963eefc0424f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 661027151207769997, guid: 60061616d96fa564aa3963eefc0424f6, type: 3}
-      propertyPath: delayBetweenWaves
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 661027151207769997, guid: 60061616d96fa564aa3963eefc0424f6, type: 3}
-      propertyPath: waves.Array.data[0].Duration
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 661027151207769997, guid: 60061616d96fa564aa3963eefc0424f6, type: 3}
-      propertyPath: waves.Array.data[1].Duration
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 661027151207769997, guid: 60061616d96fa564aa3963eefc0424f6, type: 3}
-      propertyPath: waves.Array.data[2].Duration
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 661027151207769998, guid: 60061616d96fa564aa3963eefc0424f6, type: 3}

@@ -25,11 +25,11 @@ public class ElementManager : MonoBehaviour
     public Element CurrentElement => currentElement;
 
     #region Unity Messages
-    public void Start()
+    private void Start()
     {
         if (canChangeElement)
         {
-			lightningRing.SetActive(false);
+			lightningRing.SetActive(true);
 			waterRing.SetActive(false);
 			fireRing.SetActive(false);
 		}
@@ -41,7 +41,6 @@ public class ElementManager : MonoBehaviour
     private void Update()
     {
         ChangeElement();
-
     }
     #endregion
 

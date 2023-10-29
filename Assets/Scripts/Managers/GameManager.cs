@@ -49,13 +49,13 @@ public class GameManager : MonoBehaviour
 		// melhor buscar esse component 1 vez só no Awake ou Start
 		//HealthController life = player_.GetComponent<HealthController>();
 
-		if (bossHealthController == null && WaveManager.Boss != null)
+		if (bossHealthController == null && WaveManager.Instance != null && WaveManager.Boss != null)
 			bossHealthController = WaveManager.Boss.GetComponent<HealthController>();
 
 		if (bossHealthController != null && bossHealthController.CurrentHealth <= 0)
 			Win();
 
-		if (PlayerManager.PlayerLife.CurrentHealth <= 0)
+		if (PlayerManager.Instance != null && PlayerManager.PlayerLife.CurrentHealth <= 0)
             Defeat();
 
 		if (Input.GetKeyDown(KeyCode.Escape))
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
 
 	public static void NextLevel()
 	{
-		// logica pra ir pro prox level
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
 	public static void Win()

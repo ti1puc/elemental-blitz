@@ -143,7 +143,6 @@ public class UIManager : MonoBehaviour
 
 	public void NextLevel()
 	{
-		// ainda sem logica de mudar
 		GameManager.NextLevel();
 	}
 	#endregion
