@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField, ReadOnly] private bool isGameOverWin;
     [SerializeField, ReadOnly] private bool isGameOverDefeat;
     [SerializeField, ReadOnly] private bool isGamePaused;
+    [SerializeField, ReadOnly] private HealthController bossHealthController;
 	#endregion
 
 	#region Properties
@@ -47,6 +48,12 @@ public class GameManager : MonoBehaviour
 		// evita usar GetComponent no Update por que isso vai rodar em todo frame, aí fica muito pesado
 		// melhor buscar esse component 1 vez só no Awake ou Start
 		//HealthController life = player_.GetComponent<HealthController>();
+
+		if (bossHealthController == null)
+			bossHealthController = WaveManager.Boss.GetComponent<HealthController>();
+
+		if (bossHealthController.CurrentHealth <= 0)
+			Win();
 
 		if (PlayerManager.PlayerLife.CurrentHealth <= 0)
             Defeat();

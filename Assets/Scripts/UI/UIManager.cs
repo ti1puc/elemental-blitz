@@ -109,11 +109,10 @@ public class UIManager : MonoBehaviour
 		if (scoreDelay < GameManager.Score)
 			Score();
 
-		if (GameManager.Score >= scoreToWin)
+		if (GameManager.IsGameOverWin)
 		{
 			winScreen.SetActive(true);
 			loseScreen.SetActive(false);
-			GameManager.Win();
 		}
 
 		if (GameManager.IsGameOverDefeat)
