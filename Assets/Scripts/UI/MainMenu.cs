@@ -6,9 +6,14 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-	[SerializeField] private GameObject optionPanel;
-	[SerializeField] private float waitSecondsToStart = 1;
+	[Header("Start Animation")]
 	[SerializeField] private Animator playerMenuAnimator;
+	[SerializeField] private float waitSecondsToStart = 1;
+	[Header("Panels")]
+	[SerializeField] private GameObject optionPanel;
+	[SerializeField] private GameObject helpPanel;
+	[SerializeField] private GameObject creditsPanel;
+	[Header("Options")]
 	[SerializeField] private Slider sfxSlider;
 	[SerializeField] private Slider musicSlider;
 
@@ -17,7 +22,7 @@ public class MainMenu : MonoBehaviour
 
 	private void Awake()
 	{
-		optionPanel.SetActive(false);
+		HideAllPanels();
 
 		sfxSlider.value = PlayerPrefs.GetInt(sfxVolumeKey, 50) / (float)100;
 		musicSlider.value = PlayerPrefs.GetInt(musicVolumeKey, 50) / (float)100;
@@ -34,9 +39,21 @@ public class MainMenu : MonoBehaviour
 		optionPanel.SetActive(true);
 	}
 
-	public void HideOptionPanel()
+	public void ShowHelpPanel()
+	{
+		helpPanel.SetActive(true);
+	}
+
+	public void ShowCreditsPanel()
+	{
+		creditsPanel.SetActive(true);
+	}
+
+	public void HideAllPanels()
 	{
 		optionPanel.SetActive(false);
+		helpPanel.SetActive(false);
+		creditsPanel.SetActive(false);
 	}
 
 	public void SaveSfxVolume(Single value)
