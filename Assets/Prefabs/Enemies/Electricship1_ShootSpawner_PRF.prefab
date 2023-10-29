@@ -44,11 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552d0989f2fb6c845ba44ad615046267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 1
-  useSpawnScale: 1
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
+  lightningInterval: 1
   waterBulletPrefab: {fileID: 0}
+  waterInterval: 1
   fireBulletPrefab: {fileID: 0}
+  fireInterval: 1
+  useSpawnScale: 1
   spawnPosition: {fileID: 4387918712223844226}
   elementManager: {fileID: 0}
   shootCooldown: 0

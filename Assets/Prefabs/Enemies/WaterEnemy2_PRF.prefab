@@ -174,7 +174,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetShootCooldownOnHitable: 1
   scoreToGive: 10
+  defaultWhiteTint: {r: 1, g: 1, b: 1, a: 1}
+  tintWhenNotHitable: {r: 0.20784314, g: 0.20784314, b: 0.20784314, a: 1}
+  colorChangeSpeed: 8
+  colorChangeDuration: 0.5
+  meshRenderers:
+  - {fileID: 9153544066327413974}
   enemyVisual: {fileID: 582572619254119361}
+  animator: {fileID: 0}
   parentEnemySpawner: {fileID: 0}
   powerupDrop: {fileID: 0}
   healthController: {fileID: 0}
@@ -206,11 +213,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552d0989f2fb6c845ba44ad615046267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 4
-  useSpawnScale: 0
   lightningBulletPrefab: {fileID: 0}
+  lightningInterval: 1
   waterBulletPrefab: {fileID: 8097450851172223967, guid: ee8ac79812308514280284c34caf0883, type: 3}
+  waterInterval: 2
   fireBulletPrefab: {fileID: 0}
+  fireInterval: 1
+  useSpawnScale: 0
   spawnPosition: {fileID: 7663904577265911426}
   elementManager: {fileID: 5004053444613407630}
   shootCooldown: 0

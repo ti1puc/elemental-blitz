@@ -44,11 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552d0989f2fb6c845ba44ad615046267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 1
-  useSpawnScale: 1
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
+  lightningInterval: 0.5
   waterBulletPrefab: {fileID: 0}
+  waterInterval: 1
   fireBulletPrefab: {fileID: 0}
+  fireInterval: 1
+  useSpawnScale: 1
   spawnPosition: {fileID: 4814468721082738479}
   elementManager: {fileID: 0}
   shootCooldown: 0
@@ -210,11 +212,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552d0989f2fb6c845ba44ad615046267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 1
-  useSpawnScale: 1
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
+  lightningInterval: 0.5
   waterBulletPrefab: {fileID: 0}
+  waterInterval: 1
   fireBulletPrefab: {fileID: 0}
+  fireInterval: 1
+  useSpawnScale: 1
   spawnPosition: {fileID: 9209353875024389676}
   elementManager: {fileID: 0}
   shootCooldown: 0
@@ -348,7 +352,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetShootCooldownOnHitable: 1
   scoreToGive: 10
+  defaultWhiteTint: {r: 1, g: 1, b: 1, a: 1}
+  tintWhenNotHitable: {r: 0.20784314, g: 0.20784314, b: 0.20784314, a: 1}
+  colorChangeSpeed: 8
+  colorChangeDuration: 0.5
+  meshRenderers:
+  - {fileID: 1225105453952654760}
   enemyVisual: {fileID: 3673950036168700875}
+  animator: {fileID: 0}
   parentEnemySpawner: {fileID: 0}
   powerupDrop: {fileID: 0}
   healthController: {fileID: 0}
@@ -411,8 +422,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canChangeElement: 0
   unlockedElements: 00000000
-  selectedElement: 0
-  selectedElementIndex: 0
+  currentElement: 0
+  currentElementIndex: 0
 --- !u!1 &2858077612448333983
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,11 +468,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552d0989f2fb6c845ba44ad615046267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 1
-  useSpawnScale: 1
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
+  lightningInterval: 0.5
   waterBulletPrefab: {fileID: 0}
+  waterInterval: 1
   fireBulletPrefab: {fileID: 0}
+  fireInterval: 1
+  useSpawnScale: 1
   spawnPosition: {fileID: 5492987463453406408}
   elementManager: {fileID: 0}
   shootCooldown: 0
@@ -510,11 +523,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552d0989f2fb6c845ba44ad615046267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 1
-  useSpawnScale: 1
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
+  lightningInterval: 0.5
   waterBulletPrefab: {fileID: 0}
+  waterInterval: 1
   fireBulletPrefab: {fileID: 0}
+  fireInterval: 1
+  useSpawnScale: 1
   spawnPosition: {fileID: 2305828960178030966}
   elementManager: {fileID: 0}
   shootCooldown: 0
@@ -563,11 +578,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552d0989f2fb6c845ba44ad615046267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 1
-  useSpawnScale: 1
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
+  lightningInterval: 0.5
   waterBulletPrefab: {fileID: 0}
+  waterInterval: 1
   fireBulletPrefab: {fileID: 0}
+  fireInterval: 1
+  useSpawnScale: 1
   spawnPosition: {fileID: 219456407433191352}
   elementManager: {fileID: 0}
   shootCooldown: 0
@@ -652,7 +669,6 @@ MonoBehaviour:
   enemy: {fileID: 5838591165604073167}
   elementManager: {fileID: 8634080915492616532}
   healthController: {fileID: 5858266055589942580}
-  currentElement_: 0
   materialDamage: {fileID: 2100000, guid: 204a0cb46b8d5324ab9b11028de8d7ba, type: 2}
   materialOriginal: {fileID: 2100000, guid: 858b102a3c6665343a286881f63824be, type: 2}
   renderers:
@@ -783,8 +799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1afee2f0990ae842a330d47ea946dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0
-  rotateAxis: 0
+  rotateSpeed: 15
+  rotateAxis: 1
   numberOfPieces: 8
   ringRadius: 5
   createAxis: 1
@@ -941,11 +957,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552d0989f2fb6c845ba44ad615046267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 1
-  useSpawnScale: 1
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
+  lightningInterval: 0.5
   waterBulletPrefab: {fileID: 0}
+  waterInterval: 1
   fireBulletPrefab: {fileID: 0}
+  fireInterval: 1
+  useSpawnScale: 1
   spawnPosition: {fileID: 2735996453706793176}
   elementManager: {fileID: 0}
   shootCooldown: 0
@@ -994,11 +1012,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552d0989f2fb6c845ba44ad615046267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 1
-  useSpawnScale: 1
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
+  lightningInterval: 0.5
   waterBulletPrefab: {fileID: 0}
+  waterInterval: 1
   fireBulletPrefab: {fileID: 0}
+  fireInterval: 1
+  useSpawnScale: 1
   spawnPosition: {fileID: 8767186417626114786}
   elementManager: {fileID: 0}
   shootCooldown: 0
@@ -1224,11 +1244,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552d0989f2fb6c845ba44ad615046267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 1
-  useSpawnScale: 1
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
+  lightningInterval: 0.5
   waterBulletPrefab: {fileID: 0}
+  waterInterval: 1
   fireBulletPrefab: {fileID: 0}
+  fireInterval: 1
+  useSpawnScale: 1
   spawnPosition: {fileID: 7345060651413806827}
   elementManager: {fileID: 0}
   shootCooldown: 0

@@ -31,6 +31,8 @@ public class BulletBase : MonoBehaviour
 
 		if (transform.position.y < 0)
 			transform.Translate(0, yPos, zPos);
+		else if (transform.position.y > 0)
+			transform.Translate(0, -yPos, zPos);
 		else
 			transform.Translate(0, 0, zPos);
 
@@ -46,9 +48,5 @@ public class BulletBase : MonoBehaviour
 	{
 		ObjectPoolManager.DespawnGameObject(gameObject);
 	}
-
-    #endregion
-
-    #region Private Methods
-    #endregion
+	#endregion
 }

@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
 	public TextMeshProUGUI scoreText;
 	public float delayScoreSpeed = 20;
 	public Animator scoreAnimator;
+	[Header("Warning")]
+	[SerializeField] private float bossWarningDuration = 2f;
+	[SerializeField] private Animator bossWarning;
 	[Header("References")]
 	[SerializeField] private Button retryButton;
 	[SerializeField] private Slider levelProgression;
@@ -22,12 +25,14 @@ public class UIManager : MonoBehaviour
 	[SerializeField, ReadOnly] private bool hasChangedBossMaxHealth;
 	[SerializeField, ReadOnly] private bool hasChangedBossName;
 	[SerializeField, ReadOnly] private HealthController bossHealthController;
+	[SerializeField, ReadOnly] private float bossWarningTimer = 0;
 
 	#region Unity Messages
 	private void Awake()
 	{
 		//deixando botão desativado
 		retryButton.gameObject.SetActive(false);
+		bossWarning.gameObject.SetActive(false);
 
 		// colocando o Retry no clique do botão por codigo
 		retryButton.onClick.AddListener(Retry);
@@ -43,11 +48,21 @@ public class UIManager : MonoBehaviour
 	private void Update()
 	{
 		levelProgression.transform.parent.gameObject.SetActive(WaveManager.HasStartedBossFight == false);
-		bossHealth.transform.parent.gameObject.SetActive(WaveManager.HasStartedBossFight && WaveManager.Boss != null);
+		bossHealth.transform.parent.gameObject.SetActive(WaveManager.HasStartedBossFight && WaveManager.BossEnemy != null && WaveManager.BossEnemy.IsHitable);
 
-		if (WaveManager.HasStartedBossFight && WaveManager.Boss != null)
+		if (WaveManager.HasStartedBossFight && WaveManager.BossEnemy != null)
+		{
+			bossWarningTimer += Time.deltaTime;
+			if (bossWarningTimer > bossWarningDuration)
+				bossWarning.SetTrigger("BlinkExit");
+
+			bossWarning.gameObject.SetActive(true);
+		}
+
+		if (WaveManager.HasStartedBossFight && WaveManager.BossEnemy != null && WaveManager.BossEnemy.IsHitable)
 		{
 			BossHealth();
+			bossWarning.gameObject.SetActive(false);
 		}
 		else
 		{

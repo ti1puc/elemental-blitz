@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
 	public static PlayerManager Instance { get; private set; }
 	public static HealthController PlayerLife { get; private set; }
+	public static PlayerCollision PlayerCollision { get; private set; }
 	public static GameObject Player => Instance.gameObject;
 
 	private void Awake()
@@ -21,5 +22,6 @@ public class PlayerManager : MonoBehaviour
 		}
 
 		PlayerLife = GetComponent<HealthController>();
+		PlayerCollision = GetComponentInChildren<PlayerCollision>();
 	}
 }

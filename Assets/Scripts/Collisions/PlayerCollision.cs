@@ -8,6 +8,7 @@ public class PlayerCollision : MonoBehaviour
 {
 	[Header("Settings")]
 	[SerializeField] public int damage = 2;
+	[SerializeField] private int invicibilityFrames = 20;
 	[Header("References")]
 	[SerializeField] private ElementManager elementManager;
 	public HealthController healthController;
@@ -16,7 +17,10 @@ public class PlayerCollision : MonoBehaviour
 	public Material materialOriginal;
 	public Renderer[] renderers;
 	public float durationMax = 0.10f;
-	//[Header("Debug")]
+	[Header("Debug")]
+	[SerializeField, ReadOnly] private bool canBeHit = true;
+
+	public bool CanBeHit => canBeHit;
 
 	#region Unity Messages
 	private void Update()
@@ -37,10 +41,11 @@ public class PlayerCollision : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		//if collide with water element
+		if (!canBeHit) return;
 
 		BulletBase bullet_ = other.gameObject.GetComponent<BulletBase>();
 
+		//if collide with water element
 		#region colision with water
 		if (other.CompareTag("enemyWater"))
 		{
@@ -97,7 +102,6 @@ public class PlayerCollision : MonoBehaviour
 	}
 	#endregion
 
-	#region Private Methods
 	// criei essa funcao só pra facilitar
 	private void TakeDamage(BulletBase bullet, float damageMultiplier, bool showHitVfx)
 	{
@@ -111,6 +115,37 @@ public class PlayerCollision : MonoBehaviour
 
 			durationMax = 0.10f;
 		}
+
+		// se não der dano não ativa frames de invencibilidade
+		if (damageMultiplier > 0)
+		{
+			canBeHit = false;
+			StartCoroutine(WaitInvincibilityFrames());
+		}
 	}
-	#endregion
+
+	private IEnumerator WaitInvincibilityFrames()
+	{
+		for (int i = 0; i < invicibilityFrames; i++)
+			yield return null;
+
+		canBeHit = true;
+	}
+
+	public void TakeDamageExternal(int damage, bool showHitVfx = true)
+	{
+		if (!canBeHit) return;
+		healthController.TakeDamage(damage);
+
+		if (showHitVfx)
+		{
+			foreach (var renderer in renderers)
+				renderer.material = materialDamage;
+
+			durationMax = 0.10f;
+		}
+
+		canBeHit = false;
+		StartCoroutine(WaitInvincibilityFrames());
+	}
 }

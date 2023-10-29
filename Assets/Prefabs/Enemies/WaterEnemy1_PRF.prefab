@@ -300,7 +300,6 @@ MonoBehaviour:
   enemy: {fileID: 2576873844277990944}
   elementManager: {fileID: 2455647442740590178}
   healthController: {fileID: 5063971749467614889}
-  currentElement_: 0
   materialDamage: {fileID: 2100000, guid: 204a0cb46b8d5324ab9b11028de8d7ba, type: 2}
   materialOriginal: {fileID: 2100000, guid: 858b102a3c6665343a286881f63824be, type: 2}
   renderers:
@@ -364,7 +363,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetShootCooldownOnHitable: 1
   scoreToGive: 10
+  defaultWhiteTint: {r: 1, g: 1, b: 1, a: 1}
+  tintWhenNotHitable: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
+  colorChangeSpeed: 8
+  colorChangeDuration: 0.5
+  meshRenderers:
+  - {fileID: 7459424564889671981}
   enemyVisual: {fileID: 2735396492928206934}
+  animator: {fileID: 0}
   parentEnemySpawner: {fileID: 0}
   powerupDrop: {fileID: 0}
   healthController: {fileID: 0}
@@ -373,13 +379,14 @@ MonoBehaviour:
   moveRangeX: {x: 0, y: 0}
   moveRangeZ: {x: 0, y: 0}
   hasInitialized: 0
-  makeHitableAfterPosZ: 58
+  makeHitableAfterPosZ: 50
   straightVerticalSpeed: 60
-  moveStaightUntilPosZ: 50
+  moveStaightUntilPosZ: 48
   minStraightSpeed: 10
   distanceToStartTransition: 7
   verticalSpeed: 7
   horizontalSpeed: 5.5
+  speedMultiplierBeforeBoss: 2
   tiltSpeed: 2
   tiltAngleHorizontal: 16
   tiltAngleVertical: 10
@@ -396,11 +403,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552d0989f2fb6c845ba44ad615046267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 1
-  useSpawnScale: 1
   lightningBulletPrefab: {fileID: 0}
+  lightningInterval: 1
   waterBulletPrefab: {fileID: 931399182766102073, guid: 0299e304698e61a4bb69f43096fc7024, type: 3}
+  waterInterval: 0.8
   fireBulletPrefab: {fileID: 0}
+  fireInterval: 1
+  useSpawnScale: 1
   spawnPosition: {fileID: 5167892324817810709}
   elementManager: {fileID: 2455647442740590178}
   shootCooldown: 0
@@ -449,8 +458,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canChangeElement: 0
   unlockedElements: 01000000
-  selectedElement: 1
-  selectedElementIndex: 0
+  currentElement: 0
+  currentElementIndex: 0
 --- !u!1 &5659960152496562604
 GameObject:
   m_ObjectHideFlags: 0

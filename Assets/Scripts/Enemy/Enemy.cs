@@ -8,8 +8,15 @@ public class Enemy : MonoBehaviour
 	[Header("Settings")]
 	[SerializeField] private bool resetShootCooldownOnHitable = true;
 	[SerializeField] private int scoreToGive = 10;
+	[Header("Hitable VFX")]
+	[SerializeField] private Color defaultWhiteTint = Color.white;
+	[SerializeField] private Color tintWhenNotHitable = Color.grey;
+	[SerializeField] private float colorChangeSpeed = 1f;
+	[SerializeField] private float colorChangeDuration = 1f;
+	[SerializeField] private MeshRenderer[] meshRenderers;
 	[Header("References")]
 	[SerializeField] protected Transform enemyVisual;
+	[SerializeField] protected Animator animator;
 	[SerializeField, ReadOnly] protected EnemySpawner parentEnemySpawner;
 	[SerializeField, ReadOnly] protected PowerupDrop powerupDrop;
 	[SerializeField, ReadOnly] protected HealthController healthController;
@@ -20,6 +27,19 @@ public class Enemy : MonoBehaviour
 	[SerializeField, ReadOnly] protected Vector2 moveRangeZ;
 	[SerializeField, ReadOnly] protected bool hasInitialized;
 
+	// usar isso aqui permite mudar as settings de um material sem mudar pra todos
+	// se n usar isso teria q criar um material pra cada sprite
+	private MaterialPropertyBlock materialPropertyBlock;
+
+	private MaterialPropertyBlock MaterialPropertyBlock
+	{
+		get
+		{
+			if (materialPropertyBlock == null)
+				materialPropertyBlock = new MaterialPropertyBlock();
+			return materialPropertyBlock;
+		}
+	}
 	public bool IsHitable => isHitable;
 	public int ScoreToGive => scoreToGive;
 
@@ -35,6 +55,10 @@ public class Enemy : MonoBehaviour
         // desabilita o tiro até que o inimigo seja hitable
         foreach (var shootBase in shootBases)
 			shootBase.DisableShoot = true;
+
+		MaterialPropertyBlock.SetColor("_Tint", tintWhenNotHitable);
+		foreach (var meshRenderer in meshRenderers)
+			meshRenderer.SetPropertyBlock(MaterialPropertyBlock);
 	}
 	#endregion
 
@@ -95,6 +119,8 @@ public class Enemy : MonoBehaviour
 			foreach (var shootBase in shootBases)
 				shootBase.ShootCooldown = 0;
 		}
+
+		ChangeToColor(tintWhenNotHitable, defaultWhiteTint);
 	}
 
 	/// <summary>
@@ -106,6 +132,8 @@ public class Enemy : MonoBehaviour
 
 		isHitable = false;
 		DisableShoot();
+
+		ChangeToColor(defaultWhiteTint, tintWhenNotHitable);
 	}
 
 	/// <summary>
@@ -124,5 +152,28 @@ public class Enemy : MonoBehaviour
 	{
 		foreach (var shootBase in shootBases)
 			shootBase.DisableShoot = true;
+	}
+
+	private void ChangeToColor(Color currentColor, Color nextColor)
+	{
+		StartCoroutine(ChangeColorCoroutine(currentColor, nextColor));
+	}
+
+	// coroutinas na unity é mt bom pra fazer funcóes em sequencia
+	private IEnumerator ChangeColorCoroutine(Color currentColor, Color nextColor)
+	{
+		float timer = 0;
+
+		while (timer < colorChangeDuration)
+		{
+			Color color = Color.Lerp(currentColor, nextColor, colorChangeSpeed * timer);
+
+			MaterialPropertyBlock.SetColor("_Tint", color);
+			foreach (var meshRenderer in meshRenderers)
+				meshRenderer.SetPropertyBlock(MaterialPropertyBlock);
+
+			timer += Time.deltaTime;
+			yield return null;
+		}
 	}
 }

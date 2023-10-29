@@ -114,9 +114,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3262675143358422707}
   framesDaAnimacao:
   - {fileID: 637819075, guid: bd5850a9a48f3294a84e5b177bb5a1db, type: 3}
-  - {fileID: -2011651213, guid: bd5850a9a48f3294a84e5b177bb5a1db, type: 3}
   - {fileID: -1349071558, guid: bd5850a9a48f3294a84e5b177bb5a1db, type: 3}
-  - {fileID: 1078401972, guid: bd5850a9a48f3294a84e5b177bb5a1db, type: 3}
   velocidadeDaAnimacao: 7.5
 --- !u!114 &5253107126815035437
 MonoBehaviour:

@@ -5,14 +5,17 @@ using NaughtyAttributes;
 
 public abstract class ShootBase : MonoBehaviour
 {
-    [Header("Settings")]
-	[SerializeField] protected float shootInterval;
-	[SerializeField] protected bool useSpawnScale;
-	[Header("Bullets")]
+	[Header("Bullet Lightning")]
 	[SerializeField] protected GameObject lightningBulletPrefab;
+	[SerializeField] protected float lightningInterval = 1;
+	[Header("Bullet Water")]
 	[SerializeField] protected GameObject waterBulletPrefab;
+	[SerializeField] protected float waterInterval = 1;
+	[Header("Bullet Fire")]
 	[SerializeField] protected GameObject fireBulletPrefab;
-	[Header("References")]
+	[SerializeField] protected float fireInterval = 1;
+	[Header("Spawn")]
+	[SerializeField] protected bool useSpawnScale;
 	[SerializeField] protected Transform spawnPosition;
 	[Header("Debug")]
 	[SerializeField, ReadOnly] protected ElementManager elementManager;
@@ -33,7 +36,7 @@ public abstract class ShootBase : MonoBehaviour
 		if (elementManager == null)
 			elementManager = GetComponentInParent<ElementManager>();
 
-		shootCooldown = shootInterval;
+		shootCooldown = SelectInterval();
 		canShoot = false;
 	}
 
@@ -49,7 +52,7 @@ public abstract class ShootBase : MonoBehaviour
 		if (shootCooldown <= 0)
 		{
 			canShoot = true;
-			shootCooldown = shootInterval;
+			shootCooldown = SelectInterval();
 		}
 	}
 
@@ -88,5 +91,20 @@ public abstract class ShootBase : MonoBehaviour
 			bullet.transform.localScale = spawnPosition.localScale;
 		
         canShoot = false;
+	}
+
+	private float SelectInterval()
+	{
+		switch (elementManager.CurrentElement)
+		{
+			case Element.Lightning:
+				return lightningInterval;
+			case Element.Water:
+				return waterInterval;
+			case Element.Fire:
+				return fireInterval;
+		}
+
+		return 0;
 	}
 }

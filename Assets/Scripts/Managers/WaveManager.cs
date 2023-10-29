@@ -1,7 +1,9 @@
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
@@ -16,9 +18,14 @@ public class WaveManager : MonoBehaviour
 	[SerializeField] private float delayBetweenWaves;
 	[SerializeField] private float delayToSpawnBoss = 3;
 	[SerializeField] private List<Wave> waves = new List<Wave>();
-	[Header("References")]
+	[Header("Boss")]
 	[SerializeField] private GameObject bossPrefab;
 	[SerializeField] private Transform bossSpawnPoint;
+	[SerializeField] private Vector2 bossRangeX = new Vector2(-29, 29);
+	[Header("Boss Attack Indicator")]
+	[SerializeField] private Animator bossAtackIndicatorLeft;
+	[SerializeField] private Animator bossAtackIndicatorCenter;
+	[SerializeField] private Animator bossAtackIndicatorRight; 
 	[Header("Debug: Wave")]
 	[SerializeField, ReadOnly] private int currentWaveIndex;
 	[SerializeField, ReadOnly] private Wave currentWave;
@@ -33,7 +40,10 @@ public class WaveManager : MonoBehaviour
 	[Header("Debug: Boss")]
 	[SerializeField, ReadOnly] private bool hasStartedBossFight;
 	[SerializeField, ReadOnly] private GameObject boss;
+	[SerializeField, ReadOnly] private Enemy bossEnemy;
 	[SerializeField, ReadOnly] private float bossSpawnTimer;
+	[SerializeField, ReadOnly] private float blinkTimer;
+	[SerializeField, ReadOnly] private int currentSide;
 
 	public static WaveManager Instance { get; private set; }
 	public static int CurrentWave => Instance.currentWaveIndex;
@@ -43,13 +53,14 @@ public class WaveManager : MonoBehaviour
 		get
 		{
 			Instance.levelTotalDuration = 0;
-            foreach (Wave wave in Instance.waves)
+			foreach (Wave wave in Instance.waves)
 				Instance.levelTotalDuration += wave.Duration;
 			return Instance.levelTotalDuration;
-        }
+		}
 	}
 	public static bool HasStartedBossFight => Instance.hasStartedBossFight;
 	public static GameObject Boss => Instance.boss;
+	public static Enemy BossEnemy => Instance.bossEnemy;
 
 	private void Awake()
 	{
@@ -78,6 +89,8 @@ public class WaveManager : MonoBehaviour
 			if (bossSpawnTimer > delayToSpawnBoss && boss == null)
 			{
 				boss = ObjectPoolManager.Instantiate(bossPrefab, bossSpawnPoint.transform.position, bossSpawnPoint.transform.rotation);
+				bossEnemy = boss.GetComponent<Enemy>();
+				bossEnemy.InitializeEnemy(bossRangeX, Vector2.zero, null);
 			}
 
 			return;
@@ -100,7 +113,22 @@ public class WaveManager : MonoBehaviour
 			// tenta selecionar proxima wave se existir
 			TrySelectNextWave();
 		}
+	}
 
+	public static void BlinkIndicator(int side)
+	{
+		switch (side)
+		{
+			case 0:
+				Instance.bossAtackIndicatorCenter.SetTrigger("Blink");
+				break;
+			case 1:
+				Instance.bossAtackIndicatorLeft.SetTrigger("Blink");
+				break;
+			case 2:
+				Instance.bossAtackIndicatorRight.SetTrigger("Blink");
+				break;
+		}
 	}
 
 	private void TrySelectNextWave()
