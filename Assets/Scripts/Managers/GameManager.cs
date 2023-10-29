@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField, ReadOnly] private float score = 0;
     [SerializeField, ReadOnly] private bool isGameOverWin;
     [SerializeField, ReadOnly] private bool isGameOverDefeat;
+    [SerializeField, ReadOnly] private bool isGamePaused;
 	#endregion
 
 	#region Properties
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
 	public static bool IsGameOver => Instance.isGameOverWin || Instance.isGameOverDefeat;
     public static bool IsGameOverWin => Instance.isGameOverWin;
 	public static bool IsGameOverDefeat => Instance.isGameOverDefeat;
+	public static bool IsGamePaused => Instance.isGamePaused;
 	#endregion
 
 	#region Unity Messages
@@ -48,6 +50,9 @@ public class GameManager : MonoBehaviour
 
 		if (PlayerManager.PlayerLife.CurrentHealth <= 0)
             Defeat();
+
+		if (Input.GetKeyDown(KeyCode.Escape))
+			TogglePause();
     }
     #endregion
 
@@ -60,6 +65,17 @@ public class GameManager : MonoBehaviour
     public static void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
+	public static void TogglePause()
+	{
+		Instance.isGamePaused = !Instance.isGamePaused;
+		Time.timeScale = Instance.isGamePaused ? 0f : 1f;
+	}
+
+	public static void NextLevel()
+	{
+		// logica pra ir pro prox level
 	}
 
 	public static void Win()

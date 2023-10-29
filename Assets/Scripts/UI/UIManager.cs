@@ -16,7 +16,9 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private float bossWarningDuration = 2f;
 	[SerializeField] private Animator bossWarning;
 	[Header("Menu")]
-	[SerializeField] private Button retryButton;
+	[SerializeField] private GameObject pauseScreen;
+	[SerializeField] private GameObject winScreen;
+	[SerializeField] private GameObject loseScreen;
 	[Header("Progression")]
 	[SerializeField] private Slider levelProgression;
 	[SerializeField] private Animator levelProgressionAnimator;
@@ -55,23 +57,14 @@ public class UIManager : MonoBehaviour
 			Instance = this;
 		}
 
-		//deixando botão desativado
-		retryButton.gameObject.SetActive(false);
+		// setup inicial
+		winScreen.SetActive(false);
+		loseScreen.SetActive(false);
+		pauseScreen.SetActive(false);
 		bossWarning.gameObject.SetActive(false);
 
-		// colocando o Retry no clique do botão por codigo
-		retryButton.onClick.AddListener(Retry);
-
-		playerHealth.ChangeMaxLife(PlayerManager.PlayerLife.MaxHealth);
-
 		scoreText.text = "0";
-	}
-
-	private void OnDestroy()
-	{
-		// removendo a funçào do clique quando o objeto for destruido
-		// porque pode acontecer de ficar registrado a funçao e gerar erros
-		retryButton.onClick.RemoveListener(Retry);
+		playerHealth.ChangeMaxLife(PlayerManager.PlayerLife.MaxHealth);
 	}
 	
 	private void Update()
@@ -118,22 +111,43 @@ public class UIManager : MonoBehaviour
 
 		if (GameManager.Score >= scoreToWin)
 		{
-			scoreText.text = "You win!";
+			winScreen.SetActive(true);
+			loseScreen.SetActive(false);
 			GameManager.Win();
 		}
 
 		if (GameManager.IsGameOverDefeat)
-			scoreText.text = "You lose!";
+		{
+			winScreen.SetActive(false);
+			loseScreen.SetActive(true);
+		}
 
-		if (GameManager.IsGameOver)
-			retryButton.gameObject.SetActive(true);
+		pauseScreen.SetActive(!GameManager.IsGameOver && GameManager.IsGamePaused);
 	}
 	#endregion
+
+	#region Public Methods
+	public static void RotateElement()
+	{
+		Instance.elementChangerAnimator.SetTrigger("Rotate");
+	}
 
 	public void Retry()
 	{
 		GameManager.Retry();
 	}
+
+	public void TogglePause()
+	{
+		GameManager.TogglePause();
+	}
+
+	public void NextLevel()
+	{
+		// ainda sem logica de mudar
+		GameManager.NextLevel();
+	}
+	#endregion
 
 	private void Score()
 	{
@@ -172,10 +186,5 @@ public class UIManager : MonoBehaviour
 		}
 
 		bossHealth.ChangeLife(bossHealthController.CurrentHealth);
-	}
-
-	public static void RotateElement()
-	{
-		Instance.elementChangerAnimator.SetTrigger("Rotate");
 	}
 }
