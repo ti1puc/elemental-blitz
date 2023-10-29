@@ -14,7 +14,10 @@ public class ElementManager : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private bool canChangeElement;
-    [Header("Element")]
+    [SerializeField, ShowIf("canChangeElement")] private GameObject lightningRing;
+    [SerializeField, ShowIf("canChangeElement")] private GameObject waterRing;
+    [SerializeField, ShowIf("canChangeElement")] private GameObject fireRing;
+	[Header("Element")]
     [SerializeField] public List<Element> unlockedElements = new List<Element>();
     [SerializeField, ReadOnly] private Element currentElement;
 	[SerializeField, ReadOnly] private int currentElementIndex = 0;
@@ -24,6 +27,13 @@ public class ElementManager : MonoBehaviour
     #region Unity Messages
     public void Start()
     {
+        if (canChangeElement)
+        {
+			lightningRing.SetActive(false);
+			waterRing.SetActive(false);
+			fireRing.SetActive(false);
+		}
+
         currentElement = unlockedElements[0];
 		currentElementIndex = 0;
 	}
@@ -47,6 +57,7 @@ public class ElementManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            bool hasSkipped = false;
             currentElementIndex++;
 
             if (currentElementIndex <= unlockedElements.Count - 1)
@@ -55,9 +66,38 @@ public class ElementManager : MonoBehaviour
 			{
 				currentElement = unlockedElements[0];
 				currentElementIndex = 0;
+                hasSkipped = true;
 			}
-		}
-    }
 
+            lightningRing.SetActive(false);
+			waterRing.SetActive(false);
+			fireRing.SetActive(false);
+			switch (currentElement)
+            {
+                case Element.Lightning:
+					lightningRing.SetActive(true);
+					break;
+                case Element.Water:
+					waterRing.SetActive(true);
+					break;
+                case Element.Fire:
+					fireRing.SetActive(true);
+					break;
+            }
+
+            if (unlockedElements.Count > 1)
+            {
+                UIManager.RotateElement();
+                if (unlockedElements.Count == 2 && hasSkipped)
+                    StartCoroutine(RotateUIWithDelay());
+            }
+		}
+	}
+
+    private IEnumerator RotateUIWithDelay()
+    {
+        yield return new WaitForSeconds(1);
+		UIManager.RotateElement();
+	}
     #endregion
 }

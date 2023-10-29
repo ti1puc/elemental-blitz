@@ -15,14 +15,23 @@ public class UIManager : MonoBehaviour
 	[Header("Warning")]
 	[SerializeField] private float bossWarningDuration = 2f;
 	[SerializeField] private Animator bossWarning;
-	[Header("References")]
+	[Header("Menu")]
 	[SerializeField] private Button retryButton;
+	[Header("Progression")]
 	[SerializeField] private Slider levelProgression;
 	[SerializeField] private Animator levelProgressionAnimator;
+	[Header("Boss")]
 	[SerializeField] private HealthBar bossHealth;
 	[SerializeField] private GameObject bossHealthObj;
 	[SerializeField] private TMP_Text bossNameText;
 	[SerializeField] private HealthBar playerHealth;
+	[Header("Element")]
+	[SerializeField] private Animator elementChangerAnimator;
+	[SerializeField] private Color colorUnlocked = Color.white;
+	[SerializeField] private Color colorLocked = Color.grey;
+	[SerializeField] private Image lightningSprite;
+	[SerializeField] private Image waterSprite;
+	[SerializeField] private Image fireSprite;
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private float scoreDelay = 0;
 	[SerializeField, ReadOnly] private bool hasChangedBossMaxHealth;
@@ -67,6 +76,11 @@ public class UIManager : MonoBehaviour
 	
 	private void Update()
 	{
+		// logica de rotacionar elemento
+		lightningSprite.color = PlayerManager.PlayerElement.unlockedElements.Contains(Element.Lightning) ? colorUnlocked : colorLocked;
+		waterSprite.color = PlayerManager.PlayerElement.unlockedElements.Contains(Element.Water) ? colorUnlocked : colorLocked;
+		fireSprite.color = PlayerManager.PlayerElement.unlockedElements.Contains(Element.Fire) ? colorUnlocked : colorLocked;
+
 		// vida player
 		playerHealth.ChangeLife(PlayerManager.PlayerLife.CurrentHealth);
 
@@ -158,5 +172,10 @@ public class UIManager : MonoBehaviour
 		}
 
 		bossHealth.ChangeLife(bossHealthController.CurrentHealth);
+	}
+
+	public static void RotateElement()
+	{
+		Instance.elementChangerAnimator.SetTrigger("Rotate");
 	}
 }
