@@ -17,8 +17,9 @@ public class GameManager : MonoBehaviour
     // SCORE -> passei as coisas de score pro UIManager
     [Header("Debug")]
 	[SerializeField, ReadOnly] private float score = 0;
+    [SerializeField, ReadOnly] private bool isGameStarted;
     [SerializeField, ReadOnly] private bool isGameOverWin;
-    [SerializeField, ReadOnly] private bool isGameOverDefeat;
+	[SerializeField, ReadOnly] private bool isGameOverDefeat;
     [SerializeField, ReadOnly] private bool isGamePaused;
     [SerializeField, ReadOnly] private HealthController bossHealthController;
 	#endregion
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
     public static bool IsGameOverWin => Instance.isGameOverWin;
 	public static bool IsGameOverDefeat => Instance.isGameOverDefeat;
 	public static bool IsGamePaused => Instance.isGamePaused;
+	public static bool IsGameStarted => Instance.isGameStarted;
 	#endregion
 
 	#region Unity Messages
@@ -45,6 +47,8 @@ public class GameManager : MonoBehaviour
 
 	private void Update()
     {
+		if (isGameStarted == false) return;
+
 		// evita usar GetComponent no Update por que isso vai rodar em todo frame, aí fica muito pesado
 		// melhor buscar esse component 1 vez só no Awake ou Start
 		//HealthController life = player_.GetComponent<HealthController>();
@@ -83,6 +87,12 @@ public class GameManager : MonoBehaviour
 	public static void NextLevel()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	}
+
+	public static void StartGame()
+	{
+		Instance.isGameStarted = true;
+		NextLevel();
 	}
 
 	public static void Win()
