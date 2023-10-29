@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using NaughtyAttributes;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,7 +16,11 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float tiltSpeed;
     [SerializeField] private float tiltAngleHorizontal;
 	[SerializeField] private float tiltAngleVertical;
-	[Header("References")]
+	[Header("Health")]
+	[SerializeField, Range(0, 100)] private int percentShowLowHealth = 30;
+	[SerializeField] private GameObject lowHealthWarning;
+	[SerializeField] private TMP_Text lowHealthText;
+	[Header("Visual")]
 	[SerializeField] private Transform playerVisual;
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private HealthController healthController;
@@ -50,6 +55,12 @@ public class PlayerController : MonoBehaviour
 		// slight tilt player (only visual to not affect movement)
 		Quaternion targetAngle = Quaternion.Euler(xTilt, 0, zTilt);
 		playerVisual.rotation = Quaternion.Lerp(playerVisual.rotation, targetAngle, Time.deltaTime * tiltSpeed);
+
+		// mostrar warning de low health
+		float healthPercent = (healthController.CurrentHealth / (float)healthController.MaxHealth) * 100;
+		lowHealthWarning.SetActive(healthPercent <= percentShowLowHealth);
+		if (healthPercent <= percentShowLowHealth)
+			lowHealthText.text = Mathf.RoundToInt(healthPercent) + "%";
 	}
 	#endregion
 }

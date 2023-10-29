@@ -27,14 +27,7 @@ public class BulletBase : MonoBehaviour
 	protected virtual void Update()
 	{
 		float zPos = moveSpeed * Time.deltaTime;
-		float yPos = moveSpeedUpCorrection * Time.deltaTime;
-
-		if (transform.position.y < 0)
-			transform.Translate(0, yPos, zPos);
-		else if (transform.position.y > 0)
-			transform.Translate(0, -yPos, zPos);
-		else
-			transform.Translate(0, 0, zPos);
+		transform.Translate(0, 0, zPos);
 
 		// if bullet goes too far from obj destroy it
 		distanceFromSpawn = Vector3.Distance(initialPosition, transform.position);

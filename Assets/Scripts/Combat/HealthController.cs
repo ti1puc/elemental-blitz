@@ -9,7 +9,7 @@ public class HealthController : MonoBehaviour
     #region Fields
     [Header("Settings")]
     [SerializeField] private int maxHealth;
-    [Header("References")]
+	[Header("References")]
     public HealthBar healthBar;
     [Header("Debug")]
     [SerializeField, ReadOnly] private int currentHealth;
@@ -24,7 +24,8 @@ public class HealthController : MonoBehaviour
 	private void OnEnable()
 	{
         currentHealth = maxHealth;
-        healthBar.ChangeMaxLife(maxHealth);
+        if (healthBar)
+            healthBar.ChangeMaxLife(maxHealth);
 	}
 	#endregion
 
@@ -34,8 +35,9 @@ public class HealthController : MonoBehaviour
         if (currentHealth < maxHealth)
         {
             currentHealth += heal;
-            healthBar.ChangeLife(currentHealth);
-        }
+			if (healthBar)
+				healthBar.ChangeLife(currentHealth);
+		}
 
         // um fix pra caso a vida passar do máximo
         if (currentHealth > maxHealth)
@@ -49,12 +51,14 @@ public class HealthController : MonoBehaviour
 		if (currentHealth <= 0)
         {
 			onDeath?.Invoke();
-			healthBar.ChangeLife(0);
-            return;
+			if (healthBar)
+				healthBar.ChangeLife(0);
+			return;
 		}
 
-		healthBar.ChangeLife(currentHealth);
-    }
+		if (healthBar)
+			healthBar.ChangeLife(currentHealth);
+	}
     #endregion
 
     #region Private Methods

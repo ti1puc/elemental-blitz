@@ -18,8 +18,11 @@ public class UIManager : MonoBehaviour
 	[Header("References")]
 	[SerializeField] private Button retryButton;
 	[SerializeField] private Slider levelProgression;
+	[SerializeField] private Animator levelProgressionAnimator;
 	[SerializeField] private HealthBar bossHealth;
+	[SerializeField] private GameObject bossHealthObj;
 	[SerializeField] private TMP_Text bossNameText;
+	[SerializeField] private HealthBar playerHealth;
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private float scoreDelay = 0;
 	[SerializeField, ReadOnly] private bool hasChangedBossMaxHealth;
@@ -27,15 +30,32 @@ public class UIManager : MonoBehaviour
 	[SerializeField, ReadOnly] private HealthController bossHealthController;
 	[SerializeField, ReadOnly] private float bossWarningTimer = 0;
 
+	public static UIManager Instance { get; private set; }
+	public static HealthBar PlayerLife => Instance.playerHealth;
+
 	#region Unity Messages
 	private void Awake()
 	{
+		if (Instance == null)
+		{
+			Instance = this;
+		}
+		else if (Instance != this)
+		{
+			Destroy(Instance.gameObject);
+			Instance = this;
+		}
+
 		//deixando botão desativado
 		retryButton.gameObject.SetActive(false);
 		bossWarning.gameObject.SetActive(false);
 
 		// colocando o Retry no clique do botão por codigo
 		retryButton.onClick.AddListener(Retry);
+
+		playerHealth.ChangeMaxLife(PlayerManager.PlayerLife.MaxHealth);
+
+		scoreText.text = "0";
 	}
 
 	private void OnDestroy()
@@ -47,8 +67,16 @@ public class UIManager : MonoBehaviour
 	
 	private void Update()
 	{
-		levelProgression.transform.parent.gameObject.SetActive(WaveManager.HasStartedBossFight == false);
-		bossHealth.transform.parent.gameObject.SetActive(WaveManager.HasStartedBossFight && WaveManager.BossEnemy != null && WaveManager.BossEnemy.IsHitable);
+		// vida player
+		playerHealth.ChangeLife(PlayerManager.PlayerLife.CurrentHealth);
+
+		// vida do boss e progressao
+		bossHealthObj.SetActive(WaveManager.HasStartedBossFight && WaveManager.BossEnemy != null && WaveManager.BossEnemy.IsHitable);
+
+		if (WaveManager.HasStartedBossFight)
+		{
+			levelProgressionAnimator.SetTrigger("ReachBoss");
+		}
 
 		if (WaveManager.HasStartedBossFight && WaveManager.BossEnemy != null)
 		{
