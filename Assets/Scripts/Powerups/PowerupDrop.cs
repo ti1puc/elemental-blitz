@@ -35,7 +35,7 @@ public class PowerupDrop : MonoBehaviour
     #region Private Methods
 	private void SpawnRandomPowerup()
 	{
-        int random = Random.Range(0, powerupsPrefabs.Count-1);
+        int random = Random.Range(0, powerupsPrefabs.Count);
 		SpawnPowerup(random);
 	}
 

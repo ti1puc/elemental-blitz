@@ -10617,7 +10617,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerupsPrefabs:
   - {fileID: 5931513096093191774, guid: 29bf54f93043c474fa49bac4766cac7e, type: 3}
-  dropChance: 20
+  - {fileID: 5931513096093191774, guid: 34340c7a3bb0c0f4f9caf3f0ff8d6a1b, type: 3}
+  dropChance: 100
 --- !u!114 &2975104578274776220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10646,6 +10647,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canChangeElement: 0
+  lightningRing: {fileID: 0}
+  waterRing: {fileID: 0}
+  fireRing: {fileID: 0}
   unlockedElements: 01000000
   currentElement: 0
   currentElementIndex: 0

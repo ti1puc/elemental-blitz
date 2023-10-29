@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5534426516801457449}
   - component: {fileID: 3881438948808772637}
   m_Layer: 0
-  m_Name: PowerupHeal_PRF
+  m_Name: PowerupShield_PRF
   m_TagString: pUpHeal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1839141237, guid: f2dd426232bb1d24aa6eb5c7a92542f5, type: 3}
+  m_Sprite: {fileID: 1852597937, guid: 1ae050c3f2405db4dbcb8c9b4155f88f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -140,6 +140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5534426516801457449}
   framesDaAnimacao:
-  - {fileID: -1839141237, guid: f2dd426232bb1d24aa6eb5c7a92542f5, type: 3}
-  - {fileID: 1851449890, guid: f2dd426232bb1d24aa6eb5c7a92542f5, type: 3}
+  - {fileID: 1852597937, guid: 1ae050c3f2405db4dbcb8c9b4155f88f, type: 3}
+  - {fileID: 94633710, guid: 1ae050c3f2405db4dbcb8c9b4155f88f, type: 3}
   velocidadeDaAnimacao: 2
