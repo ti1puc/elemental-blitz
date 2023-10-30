@@ -34,12 +34,17 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private Image lightningSprite;
 	[SerializeField] private Image waterSprite;
 	[SerializeField] private Image fireSprite;
-	[Header("Debug")]
+    [Header("Power Ups")]
+    [SerializeField] private HealthBar powerUpTimer;
+    [SerializeField] private GameObject Shield;
+
+    [Header("Debug")]
 	[SerializeField, ReadOnly] private float scoreDelay = 0;
 	[SerializeField, ReadOnly] private bool hasChangedBossMaxHealth;
 	[SerializeField, ReadOnly] private bool hasChangedBossName;
-	[SerializeField, ReadOnly] private HealthController bossHealthController;
-	[SerializeField, ReadOnly] private float bossWarningTimer = 0;
+    [SerializeField, ReadOnly] private HealthController bossHealthController;
+    [SerializeField, ReadOnly] private ShieldPowerUp powerUpTimeController;
+    [SerializeField, ReadOnly] private float bossWarningTimer = 0;
 
 	public static UIManager Instance { get; private set; }
 	public static HealthBar PlayerLife => Instance.playerHealth;
@@ -122,7 +127,9 @@ public class UIManager : MonoBehaviour
 		}
 
 		pauseScreen.SetActive(!GameManager.IsGameOver && GameManager.IsGamePaused);
-	}
+
+		PowerUpTimer();
+    }
 	#endregion
 
 	#region Public Methods
@@ -185,4 +192,12 @@ public class UIManager : MonoBehaviour
 
 		bossHealth.ChangeLife(bossHealthController.CurrentHealth);
 	}
+
+	private void PowerUpTimer()
+	{
+		if(powerUpTimeController == null)  powerUpTimeController = Shield.GetComponent<ShieldPowerUp>();
+
+		powerUpTimer.ChangeMaxLife(powerUpTimeController.durationMax);
+		powerUpTimer.ChangeLife(powerUpTimeController.Duration);
+    }
 }

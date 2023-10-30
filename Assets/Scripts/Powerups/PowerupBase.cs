@@ -24,6 +24,12 @@ public class PowerupBase : MonoBehaviour
     {
         ObjectPoolManager.DespawnGameObject(gameObject);
     }
+
+    public void ActiveShield(GameObject shield)
+    {
+        shield.SetActive(true);
+  
+    }
     #endregion
     
     #region Private Methods

@@ -21,6 +21,7 @@ public class PlayerCollision : MonoBehaviour
 	[SerializeField, ReadOnly] private bool canBeHit = true;
 
 	public bool CanBeHit => canBeHit;
+	public GameObject shield_;
 
 	#region Unity Messages
 	private void Update()
@@ -98,8 +99,17 @@ public class PlayerCollision : MonoBehaviour
 			healthController.Heal(pupb_.heal_);
 			pupb_.DestroyPowerup();
 		}
-		#endregion
-	}
+
+        if (other.CompareTag("pUpShield"))
+        {
+            PowerupBase pupb_ = other.gameObject.GetComponent<PowerupBase>();
+			
+            pupb_.ActiveShield(shield_);
+            pupb_.DestroyPowerup();
+            
+        }
+        #endregion
+    }
 	#endregion
 
 	// criei essa funcao só pra facilitar

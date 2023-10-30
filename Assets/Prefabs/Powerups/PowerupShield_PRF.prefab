@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3881438948808772637}
   m_Layer: 0
   m_Name: PowerupShield_PRF
-  m_TagString: pUpHeal
+  m_TagString: pUpShield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heal_: 15
+  shield_: {fileID: 5608593205564126138, guid: 0679fcecfb8fc6346aa4ea67bef4b1fa, type: 3}
 --- !u!114 &1077128928555808744
 MonoBehaviour:
   m_ObjectHideFlags: 0
