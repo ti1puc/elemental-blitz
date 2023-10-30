@@ -2301,6 +2301,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4919675346775554731, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919675346775554731, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_Color.g
+      value: 0.48158765
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919675346775554731, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6040599335295485187, guid: 8de3a32f8322cb5458573228e2ddf6be, type: 3}
       propertyPath: Shield
       value: 
@@ -2483,6 +2495,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5385574090354221306, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b637df27102cad4590f44e5ab510911, type: 2}
     - target: {fileID: 6557878004546176592, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2494,6 +2510,26 @@ PrefabInstance:
     - target: {fileID: 6845371650641689774, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119695281338522825, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: colorLerp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119695281338522825, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: glowFactor
+      value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119695281338522825, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: useOutline
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119695281338522825, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: outlineThickness
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667472038250134707, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
+      propertyPath: velocidadeDaAnimacao
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8348538085054358860, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
       propertyPath: unlockedElements.Array.size

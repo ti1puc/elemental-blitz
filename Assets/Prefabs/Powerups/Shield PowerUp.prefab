@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7909757516752645396}
   - component: {fileID: 6455764829709479918}
   - component: {fileID: 8206721613419402205}
+  - component: {fileID: 8069980094010784163}
+  - component: {fileID: 8737627318961632167}
   m_Layer: 6
   m_Name: visual
   m_TagString: Untagged
@@ -74,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 32afe5dd19b0140429afd0def5527298, type: 3}
+  m_Sprite: {fileID: 437670840, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,17 +99,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ce3c5485692b24984708130572084d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainTexture: {fileID: 2800000, guid: 32afe5dd19b0140429afd0def5527298, type: 3}
+  mainTexture: {fileID: 2800000, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
   colorTint: {r: 1, g: 1, b: 1, a: 0}
   useGlow: 1
-  glowMask: {fileID: 2800000, guid: 4be80d5c9d61b0c46af3c0317f97f2e3, type: 3}
-  glowColor: {r: 0, g: 1, b: 0.97912884, a: 0}
-  glowFactor: 10
-  useOutline: 1
+  glowMask: {fileID: 2800000, guid: aeddbe851b1669048a995494a6783db4, type: 3}
+  glowColor: {r: 1, g: 1, b: 1, a: 0}
+  glowFactor: 0.9
+  useOutline: 0
   outlineColor: {r: 0, g: 0, b: 0, a: 0}
   outlineThickness: 2
   colorLerp: 1
   spriteRenderer: {fileID: 6455764829709479918}
+--- !u!95 &8069980094010784163
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140420882240826674}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 60ab193cb846f3b4c80d44d04343768a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8737627318961632167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140420882240826674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63dad7060998d5d42913bba7e8a91236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6455764829709479918}
+  framesDaAnimacao:
+  - {fileID: 437670840, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: -2026109271, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: -1535506740, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: 1839454623, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: 341555903, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: 1508372979, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: -1815853575, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: -995571861, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: -1739197905, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: -1864054284, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: -674688059, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: 1067928722, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: 1692347337, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: -1738219642, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  - {fileID: -1233245524, guid: ec1a7196bb0b43b48b656bbdebdbce04, type: 3}
+  velocidadeDaAnimacao: 20
 --- !u!1 &5608593205564126138
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898bf8664966d5e43ae716494a508203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Duration: 0
   Shield: {fileID: 0}
   player: {fileID: 0}
-  duration_: 0
+  durationMax: 0
