@@ -10547,7 +10547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetShootCooldownOnHitable: 1
-  scoreToGive: 10
+  scoreToGive: 100
   defaultWhiteTint: {r: 1, g: 1, b: 1, a: 1}
   tintWhenNotHitable: {r: 0.20784314, g: 0.20784314, b: 0.20784314, a: 1}
   colorChangeSpeed: 8
@@ -10631,7 +10631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2dae31910796148872b906f2a9fdd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
   healthBar: {fileID: 5163799220831280416}
   currentHealth: 0
 --- !u!114 &5556123585270221911
