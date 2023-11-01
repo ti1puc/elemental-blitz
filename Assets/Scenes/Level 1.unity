@@ -450,6 +450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OceanShader_Visual_PRF
       objectReference: {fileID: 0}
+    - target: {fileID: 8101201462033953526, guid: 13f0a68d110dcbd498e3a292c019e3be, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13f0a68d110dcbd498e3a292c019e3be, type: 3}
 --- !u!4 &532624921 stripped
@@ -2505,7 +2509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6819835299775535921, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6845371650641689774, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
       propertyPath: m_IsActive
@@ -2533,7 +2537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8348538085054358860, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
       propertyPath: unlockedElements.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8348538085054358860, guid: 3cf85b06da64a09459ec5634c645a5f4, type: 3}
       propertyPath: unlockedElements.Array.data[1]

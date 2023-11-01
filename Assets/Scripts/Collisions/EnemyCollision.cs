@@ -12,8 +12,9 @@ public class EnemyCollision : MonoBehaviour
 	[SerializeField] private float zPosCorrection;
 	[Header("References")]
 	public Enemy enemy;
-	public ElementManager elementManager;
-	public HealthController healthController;
+	[SerializeField] public ElementManager elementManager;
+    [SerializeField] public Element currentElement;
+    public HealthController healthController;
 	[Header("feedback damage")]
 	public Material materialDamage;
 	public Material materialOriginal;
@@ -25,10 +26,21 @@ public class EnemyCollision : MonoBehaviour
 	[SerializeField, ReadOnly] private float distanceXZero;
 	[SerializeField, ReadOnly] private float differenceXZero;
 	[SerializeField, ReadOnly] private float direction;
-	#endregion
+    #endregion
 
-	#region Properties
-	private void Update()
+    #region Properties
+
+    private void Start()
+    {
+		elementManager = enemy.GetComponent<ElementManager>();
+		currentElement = elementManager.CurrentElement;
+
+		Debug.Log("Sou do elemento " + currentElement);
+
+    }
+
+
+    private void Update()
 	{
 		// mantem a colisao no Y zero
 		transform.position = new Vector3(transform.position.x, 0, transform.position.z);
@@ -72,45 +84,55 @@ public class EnemyCollision : MonoBehaviour
 		if (other.CompareTag("Water"))
 		{
 			// if current element = lighning
-			if (elementManager.CurrentElement == Element.Lightning)
+			if (currentElement == Element.Lightning)
 				TakeDamage(bullet_, 0, false);
+				AudioManager.Instance.PlaySFXEnemy("snd_NoDamage");
 
-			if (elementManager.CurrentElement == Element.Fire)
-				TakeDamage(bullet_, 1, true);
 
-			if (elementManager.CurrentElement == Element.Water)
+            if (currentElement == Element.Fire)
+				TakeDamage(bullet_, 2, true);
+	            AudioManager.Instance.PlaySFXEnemy("snd_CriticalDamage");
+
+            if (currentElement == Element.Water)
 				TakeDamage(bullet_, .5f, true);
-		}
+	            AudioManager.Instance.PlaySFXEnemy("snd_Damage");
+        }
 		#endregion
 
 		#region colision with lighning
 		if (other.CompareTag("Lightning"))
 		{
 			// if current element = lighning
-			if (elementManager.CurrentElement == Element.Lightning)
+			if (currentElement == Element.Lightning)
 				TakeDamage(bullet_, .5f, true);
+		        AudioManager.Instance.PlaySFXEnemy("snd_Damage");
 
-			if (elementManager.CurrentElement == Element.Fire)
+            if (currentElement == Element.Fire)
 				TakeDamage(bullet_, 0, false);
+	            AudioManager.Instance.PlaySFXEnemy("snd_NoDamage");
 
-			if (elementManager.CurrentElement == Element.Water)
-				TakeDamage(bullet_, 1, true);
-		}
+            if (currentElement == Element.Water)
+				TakeDamage(bullet_, 2, true);
+		        AudioManager.Instance.PlaySFXEnemy("snd_CriticalDamage");
+        }
 		#endregion
 
 		#region colision with fire
 		if (other.CompareTag("Fire"))
 		{
 			// if current element = lighning
-			if (elementManager.CurrentElement == Element.Lightning)
-				TakeDamage(bullet_, 1, true);
+			if (currentElement == Element.Lightning)
+				TakeDamage(bullet_, 2, true);
+			    AudioManager.Instance.PlaySFXEnemy("snd_CriticalDamage");
 
-			if (elementManager.CurrentElement == Element.Fire)
+            if (currentElement == Element.Fire)
 				TakeDamage(bullet_, .5f, true);
+			    AudioManager.Instance.PlaySFXEnemy("snd_Damage");
 
-			if (elementManager.CurrentElement == Element.Water)
+            if (currentElement == Element.Water)
 				TakeDamage(bullet_, 0, false);
-		}
+			    AudioManager.Instance.PlaySFXEnemy("snd_NoDamage");
+        }
 		#endregion
 	}
 	#endregion

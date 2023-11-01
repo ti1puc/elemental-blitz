@@ -83,8 +83,8 @@ public class Enemy : MonoBehaviour
 			powerupDrop.TrySpawnPowerup();
 
 		GameManager.IncreaseScore(ScoreToGive);
-
-		DestroyEnemy();
+        AudioManager.Instance.PlaySFXPowerUp("snd_Explosion01");
+        DestroyEnemy();
 	}
 
 	[Button]
@@ -97,7 +97,7 @@ public class Enemy : MonoBehaviour
 			parentEnemySpawner.DecreaseEnemyCount();
 
 		ObjectPoolManager.DespawnGameObject(gameObject);
-	}
+    }
 
 	/// <summary>
 	/// usar essa funcao nas classes herdadas ao invés de Awake, Start ou OnEnable

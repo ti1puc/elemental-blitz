@@ -53,13 +53,16 @@ public class PlayerCollision : MonoBehaviour
 			// if current element = lighning
 			if (elementManager.CurrentElement == Element.Lightning)
 				TakeDamage(bullet_, 0, false);
+            AudioManager.Instance.PlaySFX("snd_NoDamage");
 
-			if (elementManager.CurrentElement == Element.Fire)
+            if (elementManager.CurrentElement == Element.Fire)
 				TakeDamage(bullet_, 1, true);
+            AudioManager.Instance.PlaySFX("snd_CriticalDamage");
 
-			if (elementManager.CurrentElement == Element.Water)
+            if (elementManager.CurrentElement == Element.Water)
 				TakeDamage(bullet_, .5f, true);
-		}
+            AudioManager.Instance.PlaySFX("snd_Damage");
+        }
 		#endregion
 
 		#region colision with lighning
@@ -68,13 +71,16 @@ public class PlayerCollision : MonoBehaviour
 			// if current element = lighning
 			if (elementManager.CurrentElement == Element.Lightning)
 				TakeDamage(bullet_, .5f, true);
+            AudioManager.Instance.PlaySFX("snd_Damage");
 
-			if (elementManager.CurrentElement == Element.Fire)
+            if (elementManager.CurrentElement == Element.Fire)
 				TakeDamage(bullet_, 0, false);
+            AudioManager.Instance.PlaySFX("snd_NoDamage");
 
-			if (elementManager.CurrentElement == Element.Water)
+            if (elementManager.CurrentElement == Element.Water)
 				TakeDamage(bullet_, 1, true);
-		}
+            AudioManager.Instance.PlaySFX("snd_CriticalDamage");
+        }
 		#endregion
 
 		#region colision with fire
@@ -83,22 +89,28 @@ public class PlayerCollision : MonoBehaviour
 			// if current element = lighning
 			if (elementManager.CurrentElement == Element.Lightning)
 				TakeDamage(bullet_, 1, true);
+            AudioManager.Instance.PlaySFX("snd_CriticalDamage");
 
-			if (elementManager.CurrentElement == Element.Fire)
+            if (elementManager.CurrentElement == Element.Fire)
 				TakeDamage(bullet_, .5f, true);
+            AudioManager.Instance.PlaySFX("snd_Damage");
 
-			if (elementManager.CurrentElement == Element.Water)
+            if (elementManager.CurrentElement == Element.Water)
 				TakeDamage(bullet_, 0, false);
-		}
-		#endregion
+            AudioManager.Instance.PlaySFX("snd_NoDamage");
+        }
+        #endregion
 
-		#region colision with power ups
-		if (other.CompareTag("pUpHeal"))
+        
+
+        #region colision with power ups
+        if (other.CompareTag("pUpHeal"))
 		{
 			PowerupBase pupb_ = other.gameObject.GetComponent<PowerupBase>();
 			healthController.Heal(pupb_.heal_);
 			pupb_.DestroyPowerup();
-		}
+            AudioManager.Instance.PlaySFXPowerUp("snd_PowerUp01");
+        }
 
         if (other.CompareTag("pUpShield"))
         {
@@ -106,7 +118,8 @@ public class PlayerCollision : MonoBehaviour
 			
             pupb_.ActiveShield(shield_);
             pupb_.DestroyPowerup();
-            
+            AudioManager.Instance.PlaySFXPowerUp("snd_PowerUp01");
+
         }
         #endregion
     }

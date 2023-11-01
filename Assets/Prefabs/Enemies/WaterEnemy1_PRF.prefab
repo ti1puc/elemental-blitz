@@ -298,7 +298,8 @@ MonoBehaviour:
   xPosCorrection: 0
   zPosCorrection: 0
   enemy: {fileID: 2576873844277990944}
-  elementManager: {fileID: 2455647442740590178}
+  elementManager: {fileID: 0}
+  currentElement: 1
   healthController: {fileID: 5063971749467614889}
   materialDamage: {fileID: 2100000, guid: 204a0cb46b8d5324ab9b11028de8d7ba, type: 2}
   materialOriginal: {fileID: 2100000, guid: 858b102a3c6665343a286881f63824be, type: 2}

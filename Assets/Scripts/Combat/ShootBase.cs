@@ -91,7 +91,8 @@ public abstract class ShootBase : MonoBehaviour
 			bullet.transform.localScale = spawnPosition.localScale;
 		
         canShoot = false;
-	}
+        AudioManager.Instance.PlaySFX("snd_shot01");
+    }
 
 	private float SelectInterval()
 	{

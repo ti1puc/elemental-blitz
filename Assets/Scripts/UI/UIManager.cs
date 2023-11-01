@@ -103,7 +103,8 @@ public class UIManager : MonoBehaviour
 		{
 			BossHealth();
 			bossWarning.gameObject.SetActive(false);
-		}
+            
+        }
 		else
 		{
 			// progressao do level
@@ -182,7 +183,8 @@ public class UIManager : MonoBehaviour
 		{
 			bossHealth.ChangeMaxLife(bossHealthController.MaxHealth);
 			hasChangedBossMaxHealth = true;
-		}
+            AudioManager.Instance.PlayMusic("snd_BossFight1");
+        }
 
 		if (!hasChangedBossName)
 		{

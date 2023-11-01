@@ -711,7 +711,7 @@ MonoBehaviour:
   lightningRing: {fileID: 2397895282993027617}
   waterRing: {fileID: 3889978643023100621}
   fireRing: {fileID: 3021129742713180824}
-  unlockedElements: 00000000
+  unlockedElements: 000000000100000002000000
   currentElement: 0
   currentElementIndex: 0
 --- !u!114 &-2899747635400695227

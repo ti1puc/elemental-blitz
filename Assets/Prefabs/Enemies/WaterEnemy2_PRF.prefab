@@ -78,7 +78,8 @@ MonoBehaviour:
   xPosCorrection: 15
   zPosCorrection: 0.8
   enemy: {fileID: 2095183221418348164}
-  elementManager: {fileID: 5004053444613407630}
+  elementManager: {fileID: 0}
+  currentElement: 1
   healthController: {fileID: 7756734929034419518}
   materialDamage: {fileID: 2100000, guid: 204a0cb46b8d5324ab9b11028de8d7ba, type: 2}
   materialOriginal: {fileID: 2100000, guid: 858b102a3c6665343a286881f63824be, type: 2}
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetShootCooldownOnHitable: 1
-  scoreToGive: 10
+  scoreToGive: 20
   defaultWhiteTint: {r: 1, g: 1, b: 1, a: 1}
   tintWhenNotHitable: {r: 0.20784314, g: 0.20784314, b: 0.20784314, a: 1}
   colorChangeSpeed: 8
