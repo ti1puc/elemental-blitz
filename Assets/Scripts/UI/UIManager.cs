@@ -139,6 +139,11 @@ public class UIManager : MonoBehaviour
 		Instance.elementChangerAnimator.SetTrigger("Rotate");
 	}
 
+	public void PlayClickSound()
+	{
+		AudioManager.Instance.PlaySFX("snd_UIClick");
+	}
+
 	public void GoToMenu()
 	{
 		SceneTransition.TransitionToScene(0);
@@ -152,6 +157,11 @@ public class UIManager : MonoBehaviour
 	public void NextLevel()
 	{
 		GameManager.NextLevel();
+	}
+
+	public void Retry()
+	{
+		GameManager.Retry();
 	}
 	#endregion
 

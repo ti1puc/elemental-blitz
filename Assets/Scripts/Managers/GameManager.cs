@@ -72,8 +72,8 @@ public class GameManager : MonoBehaviour
     }
 
     public static void Retry()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	{
+		SceneTransition.TransitionToScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	public static void TogglePause()

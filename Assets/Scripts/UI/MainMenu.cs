@@ -56,6 +56,11 @@ public class MainMenu : MonoBehaviour
 		creditsPanel.SetActive(false);
 	}
 
+	public void PlayClickSound()
+	{
+		AudioManager.Instance.PlaySFX("snd_UIClick");
+	}
+
 	public void SaveSfxVolume(Single value)
 	{
 		int actualValue = Mathf.RoundToInt(value * 100);
