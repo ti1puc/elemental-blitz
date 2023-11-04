@@ -46,16 +46,16 @@ public class AudioManager : MonoBehaviour
 
     public void Update()
     {
-       
-            float sfxVolume = PlayerPrefs.GetInt(sfxVolumeKey, 50) / 100.0f;
-            float musicVolume = PlayerPrefs.GetInt(musicVolumeKey, 50) / 100.0f;
+        float sfxVolume = PlayerPrefs.GetInt(sfxVolumeKey, 50) / 100.0f;
+        float musicVolume = PlayerPrefs.GetInt(musicVolumeKey, 50) / 100.0f;
 
-            sfxAudioSource.volume = sfxVolume;
-            musicAudioSource.volume = musicVolume;
+        sfxAudioSource.volume = sfxVolume;
+        musicAudioSource.volume = musicVolume;
 
-            sfxAudioSourceEnemy.volume = sfxVolume;
-            sfxAudioSourcePowerUp.volume = sfxVolume;
-    }
+        sfxAudioSourceEnemy.volume = sfxVolume;
+        sfxAudioSourcePowerUp.volume = sfxVolume;
+		sfxAudioSourceUI.volume = sfxVolume;
+	}
 
     public void PlayMusic(string audioName)
 	{
