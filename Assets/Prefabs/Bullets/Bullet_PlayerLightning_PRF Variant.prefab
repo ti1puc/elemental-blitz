@@ -128,8 +128,12 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3666379006384357963, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
+      propertyPath: m_LocalEulerAnglesHint.x
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666379006384357963, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4635188853923083530, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: damage

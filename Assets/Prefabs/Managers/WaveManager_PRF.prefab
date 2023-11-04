@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 661027151207769996}
   - component: {fileID: 661027151207769997}
   m_Layer: 0
-  m_Name: WaveManager_Level1_PRF
+  m_Name: WaveManager_PRF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,14 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayBetweenWaves: 1
   delayToSpawnBoss: 6
-  waves:
-  - Name: water tipo 1 e eletricos tipo 1
-    Duration: 0.7
-  - Name: water tipo 2 e eletricos tipo 1
-    Duration: 0.5
-  - Name: water tipo 1, elec tipo 1, water tipo 2
-    Duration: 0.5
-  bossPrefab: {fileID: 6569098725781666904, guid: a9a1a957fc199064486feaeafd748a3a, type: 3}
+  waves: []
+  bossPrefab: {fileID: 0}
   bossSpawnPoint: {fileID: 8184712177431767827}
   bossRangeX: {x: -29, y: 29}
   bossAtackIndicatorLeft: {fileID: 8417868228328799043}

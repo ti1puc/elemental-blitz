@@ -1,14 +1,22 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+	[Header("Debug")]
+	[SerializeField, ReadOnly] private HealthController playerLife;
+	[SerializeField, ReadOnly] private PlayerCollision playerCollision;
+	[SerializeField, ReadOnly] private ElementManager playerElement;
+	[SerializeField, ReadOnly] private ShieldPowerUp playerShield;
+
 	public static PlayerManager Instance { get; private set; }
-	public static HealthController PlayerLife { get; private set; }
-	public static PlayerCollision PlayerCollision { get; private set; }
-	public static ElementManager PlayerElement { get; private set; }
 	public static GameObject Player => Instance.gameObject;
+	public static HealthController PlayerLife => Instance.playerLife;
+	public static PlayerCollision PlayerCollision => Instance.playerCollision;
+	public static ElementManager PlayerElement => Instance.playerElement;
+	public static ShieldPowerUp PlayerShield => Instance.playerShield;
 
 	private void Awake()
 	{
@@ -22,8 +30,9 @@ public class PlayerManager : MonoBehaviour
 			Instance = this;
 		}
 
-		PlayerLife = GetComponent<HealthController>();
-		PlayerCollision = GetComponentInChildren<PlayerCollision>();
-		PlayerElement = GetComponent<ElementManager>();
+		playerLife = GetComponent<HealthController>();
+		playerCollision = GetComponentInChildren<PlayerCollision>();
+		playerElement = GetComponent<ElementManager>();
+		playerShield = GetComponentInChildren<ShieldPowerUp>(true);
 	}
 }

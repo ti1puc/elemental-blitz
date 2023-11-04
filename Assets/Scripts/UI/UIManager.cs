@@ -36,14 +36,12 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private Image fireSprite;
     [Header("Power Ups")]
     [SerializeField] private HealthBar powerUpTimer;
-    [SerializeField] private GameObject Shield;
 
     [Header("Debug")]
 	[SerializeField, ReadOnly] private float scoreDelay = 0;
 	[SerializeField, ReadOnly] private bool hasChangedBossMaxHealth;
 	[SerializeField, ReadOnly] private bool hasChangedBossName;
     [SerializeField, ReadOnly] private HealthController bossHealthController;
-    [SerializeField, ReadOnly] private ShieldPowerUp powerUpTimeController;
     [SerializeField, ReadOnly] private float bossWarningTimer = 0;
 
 	public static UIManager Instance { get; private set; }
@@ -207,9 +205,9 @@ public class UIManager : MonoBehaviour
 
 	private void PowerUpTimer()
 	{
-		if(powerUpTimeController == null)  powerUpTimeController = Shield.GetComponent<ShieldPowerUp>();
+		if (PlayerManager.PlayerShield == null) return;
 
-		powerUpTimer.ChangeMaxLife(powerUpTimeController.durationMax);
-		powerUpTimer.ChangeLife(powerUpTimeController.Duration);
+		powerUpTimer.ChangeMaxLife(PlayerManager.PlayerShield.durationMax);
+		powerUpTimer.ChangeLife(PlayerManager.PlayerShield.Duration);
     }
 }

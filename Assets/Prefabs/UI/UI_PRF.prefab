@@ -1896,8 +1896,7 @@ MonoBehaviour:
   lightningSprite: {fileID: 4265229098739415882}
   waterSprite: {fileID: 5023495764767417532}
   fireSprite: {fileID: 7283232596030912927}
-  powerUpTimer: {fileID: 0}
-  Shield: {fileID: 0}
+  powerUpTimer: {fileID: 1373884804}
   scoreDelay: 0
   hasChangedBossMaxHealth: 0
   hasChangedBossName: 0
@@ -4036,7 +4035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9433962, g: 0.12904951, b: 0.12904951, a: 1}
+  m_Color: {r: 0, g: 0.48158765, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
