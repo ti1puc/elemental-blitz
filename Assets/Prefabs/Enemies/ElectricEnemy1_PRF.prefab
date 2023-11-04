@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
-  lightningInterval: 0.5
+  lightningInterval: 1.5
   waterBulletPrefab: {fileID: 0}
   waterInterval: 1
   fireBulletPrefab: {fileID: 0}
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
-  lightningInterval: 0.5
+  lightningInterval: 1.5
   waterBulletPrefab: {fileID: 0}
   waterInterval: 1
   fireBulletPrefab: {fileID: 0}
@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
-  lightningInterval: 0.5
+  lightningInterval: 1.5
   waterBulletPrefab: {fileID: 0}
   waterInterval: 1
   fireBulletPrefab: {fileID: 0}
@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
-  lightningInterval: 0.5
+  lightningInterval: 1.5
   waterBulletPrefab: {fileID: 0}
   waterInterval: 1
   fireBulletPrefab: {fileID: 0}
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
-  lightningInterval: 0.5
+  lightningInterval: 1.5
   waterBulletPrefab: {fileID: 0}
   waterInterval: 1
   fireBulletPrefab: {fileID: 0}
@@ -963,7 +963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
-  lightningInterval: 0.5
+  lightningInterval: 1.5
   waterBulletPrefab: {fileID: 0}
   waterInterval: 1
   fireBulletPrefab: {fileID: 0}
@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
-  lightningInterval: 0.5
+  lightningInterval: 1.5
   waterBulletPrefab: {fileID: 0}
   waterInterval: 1
   fireBulletPrefab: {fileID: 0}
@@ -1250,7 +1250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningBulletPrefab: {fileID: 4490079625947345704, guid: b4cec650137c6e940b2cb09b635cecf5, type: 3}
-  lightningInterval: 0.5
+  lightningInterval: 1.5
   waterBulletPrefab: {fileID: 0}
   waterInterval: 1
   fireBulletPrefab: {fileID: 0}

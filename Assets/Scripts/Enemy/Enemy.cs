@@ -51,14 +51,6 @@ public class Enemy : MonoBehaviour
 		shootBases = GetComponents<ShootBase>();
 		if (shootBases.Length <= 0)
 			shootBases = GetComponentsInChildren<ShootBase>();
-
-        // desabilita o tiro até que o inimigo seja hitable
-        foreach (var shootBase in shootBases)
-			shootBase.DisableShoot = true;
-
-		MaterialPropertyBlock.SetColor("_Tint", tintWhenNotHitable);
-		foreach (var meshRenderer in meshRenderers)
-			meshRenderer.SetPropertyBlock(MaterialPropertyBlock);
 	}
 	#endregion
 
@@ -68,6 +60,14 @@ public class Enemy : MonoBehaviour
 		this.moveRangeX = moveRangeX;
 		this.moveRangeZ = moveRangeZ;
 		parentEnemySpawner = enemySpawner;
+
+		// desabilita o tiro até que o inimigo seja hitable
+		foreach (var shootBase in shootBases)
+			shootBase.DisableShoot = true;
+
+		MaterialPropertyBlock.SetColor("_Tint", tintWhenNotHitable);
+		foreach (var meshRenderer in meshRenderers)
+			meshRenderer.SetPropertyBlock(MaterialPropertyBlock);
 
 		hasInitialized = true;
 		AfterInitialization();
