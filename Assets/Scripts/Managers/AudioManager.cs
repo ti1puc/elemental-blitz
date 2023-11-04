@@ -11,8 +11,9 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicAudioSource;
     public AudioSource sfxAudioSourceEnemy;
     public AudioSource sfxAudioSourcePowerUp;
+    public AudioSource sfxAudioSourceUI;
 
-    private const string sfxVolumeKey = "SFXVolumeValue";
+	private const string sfxVolumeKey = "SFXVolumeValue";
     private const string musicVolumeKey = "MusicVolumeValue";
 
     private static AudioManager _instance;
@@ -56,61 +57,52 @@ public class AudioManager : MonoBehaviour
             sfxAudioSourcePowerUp.volume = sfxVolume;
     }
 
-    public void PlaySFX(string audioName)
-    {
-        AudioClip sfxClip = Resources.Load<AudioClip>("Sounds/Sfx/" + audioName);
-        if (sfxClip != null)
-        {
-            sfxAudioSource.clip = sfxClip;
-            sfxAudioSource.Play();
-        }
-        else
-        {
-            Debug.LogError("Áudio '" + audioName + "' não encontrado.");
-        }
-    }
-
     public void PlayMusic(string audioName)
-    {
-        AudioClip MusicClip = Resources.Load<AudioClip>("Sounds/Musics/" + audioName);
-        if (MusicClip != null)
-        {
-            musicAudioSource.clip = MusicClip;
-            musicAudioSource.Play();
-            musicAudioSource.loop = true;
-        }
-        else
-        {
-            Debug.LogError("Áudio '" + audioName + "' não encontrado.");
-        }
-    }
+	{
+		AudioClip MusicClip = Resources.Load<AudioClip>("Sounds/Musics/" + audioName);
+		if (MusicClip != null)
+		{
+			musicAudioSource.clip = MusicClip;
+			musicAudioSource.Play();
+			musicAudioSource.loop = true;
+		}
+		else
+		{
+			Debug.LogError("Áudio '" + audioName + "' não encontrado.");
+		}
+	}
 
-    public void PlaySFXEnemy(string audioName)
+	public void PlaySFX(string audioName)
+	{
+		PlaySound(audioName, sfxAudioSource);
+	}
+
+	public void PlaySFXEnemy(string audioName)
     {
-        AudioClip sfxClip = Resources.Load<AudioClip>("Sounds/Sfx/" + audioName);
-        if (sfxClip != null)
-        {
-            sfxAudioSourceEnemy.clip = sfxClip;
-            sfxAudioSourceEnemy.Play();
-        }
-        else
-        {
-            Debug.LogError("Áudio '" + audioName + "' não encontrado.");
-        }
-    }
+		PlaySound(audioName, sfxAudioSourceEnemy);
+	}
 
     public void PlaySFXPowerUp(string audioName)
     {
-        AudioClip sfxClip = Resources.Load<AudioClip>("Sounds/Sfx/" + audioName);
-        if (sfxClip != null)
-        {
-            sfxAudioSourcePowerUp.clip = sfxClip;
-            sfxAudioSourcePowerUp.Play();
-        }
-        else
-        {
-            Debug.LogError("Áudio '" + audioName + "' não encontrado.");
-        }
-    }
+		PlaySound(audioName, sfxAudioSourcePowerUp);
+	}
 
+	public void PlaySFXUI(string audioName)
+	{
+        PlaySound(audioName, sfxAudioSourceUI);
+	}
+
+    private void PlaySound(string audioName, AudioSource audioSource)
+	{
+		AudioClip sfxClip = Resources.Load<AudioClip>("Sounds/Sfx/" + audioName);
+		if (sfxClip != null)
+		{
+			audioSource.clip = sfxClip;
+			audioSource.Play();
+		}
+		else
+		{
+			Debug.LogError("Áudio '" + audioName + "' não encontrado.");
+		}
+	}
 }

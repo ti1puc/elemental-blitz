@@ -139,7 +139,7 @@ public class UIManager : MonoBehaviour
 
 	public void PlayClickSound()
 	{
-		AudioManager.Instance.PlaySFX("snd_UIClick");
+		AudioManager.Instance.PlaySFXUI("snd_UIClick");
 	}
 
 	public void GoToMenu()

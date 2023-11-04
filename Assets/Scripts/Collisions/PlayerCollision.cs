@@ -109,7 +109,7 @@ public class PlayerCollision : MonoBehaviour
 			PowerupBase pupb_ = other.gameObject.GetComponent<PowerupBase>();
 			healthController.Heal(pupb_.heal_);
 			pupb_.DestroyPowerup();
-            AudioManager.Instance.PlaySFXPowerUp("snd_PowerUp01");
+            AudioManager.Instance.PlaySFXPowerUp("snd_PowerUp03");
         }
 
         if (other.CompareTag("pUpShield"))
@@ -118,7 +118,7 @@ public class PlayerCollision : MonoBehaviour
 			
             pupb_.ActiveShield(shield_);
             pupb_.DestroyPowerup();
-            AudioManager.Instance.PlaySFXPowerUp("snd_PowerUp01");
+            AudioManager.Instance.PlaySFXPowerUp("snd_PowerUp03");
 
         }
         #endregion
