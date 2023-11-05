@@ -22,8 +22,8 @@ MonoBehaviour:
     m_Bits: 256
   outlineSettings:
     outlineColor: {r: 0, g: 0, b: 0, a: 1}
-    outlineScale: 2
-    depthThreshold: 55.9
+    outlineScale: 1
+    depthThreshold: 68.1
     robertsCrossMultiplier: 144
     normalThreshold: 1
     steepAngleThreshold: 2
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de640fe3d0db1804a85f9fc8f5cadab6, type: 3}
-  m_Name: URP Renderer Featured
+  m_Name: URP Renderer Featured Level 2
   m_EditorClassIdentifier: 
   debugShaders:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
