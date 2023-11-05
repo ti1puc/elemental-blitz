@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 	[Header("References")]
 	[SerializeField] protected Transform enemyVisual;
 	[SerializeField] protected Animator animator;
+	[SerializeField] protected GameObject explosionParticle;
 	[SerializeField, ReadOnly] protected EnemySpawner parentEnemySpawner;
 	[SerializeField, ReadOnly] protected PowerupDrop powerupDrop;
 	[SerializeField, ReadOnly] protected HealthController healthController;
@@ -84,6 +85,10 @@ public class Enemy : MonoBehaviour
 
 		GameManager.IncreaseScore(ScoreToGive);
         AudioManager.Instance.PlaySFXPowerUp("snd_Explosion01");
+
+		if (explosionParticle != null)
+			Instantiate(explosionParticle, transform.position, transform.rotation);
+
         DestroyEnemy();
 	}
 

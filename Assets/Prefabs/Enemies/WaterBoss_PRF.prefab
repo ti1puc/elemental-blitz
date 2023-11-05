@@ -10558,6 +10558,7 @@ MonoBehaviour:
   - {fileID: 7326247060092732890}
   enemyVisual: {fileID: 5402474839204196963}
   animator: {fileID: 7345962071719842919}
+  explosionParticle: {fileID: 3364597697318598190, guid: 4abb1106015b6b2498aecb56b98abdb8, type: 3}
   parentEnemySpawner: {fileID: 0}
   powerupDrop: {fileID: 0}
   healthController: {fileID: 0}
