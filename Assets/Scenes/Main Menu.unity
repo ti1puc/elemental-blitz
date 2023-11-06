@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  resetWhenZPosition: -207.33
+  resetWhenZPos: -207.33
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &154831125
 GameObject:
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  resetWhenZPosition: -207.33
+  resetWhenZPos: -207.33
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &337810415
 GameObject:
@@ -3836,7 +3836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  resetWhenZPosition: -207.33
+  resetWhenZPos: -207.33
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1594552825
 GameObject:
@@ -4510,7 +4510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  resetWhenZPosition: -207.33
+  resetWhenZPos: -207.33
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1849673590
 GameObject:
@@ -4862,7 +4862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 12
-  resetWhenZPosition: -207.33
+  resetWhenZPos: -207.33
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1970553001
 GameObject:

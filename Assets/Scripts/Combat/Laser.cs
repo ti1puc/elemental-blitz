@@ -110,6 +110,7 @@ public class Laser : MonoBehaviour
 			{
 				// deal damage
 				PlayerManager.PlayerCollision.TakeDamageExternal(Damage);
+				AudioManager.Instance.PlaySFX("snd_CriticalDamage");
 			}
 		}
 		else
@@ -126,6 +127,9 @@ public class Laser : MonoBehaviour
 	{
 		laserChargeVfx.gameObject.SetActive(true);
 		laserChargeVfx.Play();
+
+		AudioManager.Instance.PlaySFXBoss("snd_LaserCharge");
+
 		isLaserCharging = true;
 	}
 
@@ -137,6 +141,7 @@ public class Laser : MonoBehaviour
 		laserChargeVfx.gameObject.SetActive(false);
 		laserChargeVfx.transform.localScale = initialChargeScale;
 
+		AudioManager.Instance.StopSoundBoss();
 		lineRenderer.enabled = false;
 		isLaserEnabled = false;
 
@@ -157,6 +162,7 @@ public class Laser : MonoBehaviour
 		StartCoroutine(DisableLaserChargeVfx());
 		laserChargeVfx.transform.localScale = initialChargeScale;
 
+		AudioManager.Instance.PlaySFXBoss("snd_Laser");
 		lineRenderer.enabled = true;
 		isLaserEnabled = true;
 

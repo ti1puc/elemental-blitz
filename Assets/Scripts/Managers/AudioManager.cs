@@ -9,8 +9,9 @@ public class AudioManager : MonoBehaviour
     public AudioSource sfxAudioSource;
     public AudioSource musicAudioSource;
     public AudioSource sfxAudioSourceEnemy;
-    public AudioSource sfxAudioSourcePowerUp;
+	public AudioSource sfxAudioSourcePowerUp;
     public AudioSource sfxAudioSourceUI;
+    public AudioSource sfxAudioSourceBoss;
 
 	private const string sfxVolumeKey = "SFXVolumeValue";
     private const string musicVolumeKey = "MusicVolumeValue";
@@ -52,6 +53,7 @@ public class AudioManager : MonoBehaviour
         musicAudioSource.volume = musicVolume;
 
         sfxAudioSourceEnemy.volume = sfxVolume;
+		sfxAudioSourceBoss.volume = sfxVolume;
         sfxAudioSourcePowerUp.volume = sfxVolume;
 		sfxAudioSourceUI.volume = sfxVolume;
 	}
@@ -81,7 +83,17 @@ public class AudioManager : MonoBehaviour
 		PlaySound(audioName, sfxAudioSourceEnemy);
 	}
 
-    public void PlaySFXPowerUp(string audioName)
+	public void PlaySFXBoss(string audioName)
+	{
+		PlaySound(audioName, sfxAudioSourceBoss);
+	}
+
+	public void StopSoundBoss()
+	{
+		sfxAudioSourceBoss.Stop();
+	}
+
+	public void PlaySFXPowerUp(string audioName)
     {
 		PlaySound(audioName, sfxAudioSourcePowerUp);
 	}

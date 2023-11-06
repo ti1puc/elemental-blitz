@@ -80,6 +80,13 @@ public class WaveManager : MonoBehaviour
 
 	private void Update()
 	{
+		// cheat pra ir pro boss
+		if (Input.GetKeyDown(KeyCode.F5))
+		{
+			hasStartedBossFight = true;
+			currentWaveIndex = waves.Count;
+		}
+
 		totalPlaytime += Time.deltaTime;
 		totalPlaytimeInMinutes = totalPlaytime / 60f;
 
