@@ -8,7 +8,7 @@ public class BackgroundMovementMenu : MonoBehaviour
     #region Fields
     [Header("Settings")]
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float resetWhenZPosition;
+    [SerializeField] private float resetWhenZPos = -207.33f;
 	//[Header("References")]
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private Vector3 initialPosition;
@@ -20,24 +20,18 @@ public class BackgroundMovementMenu : MonoBehaviour
 	#region Unity Messages
 	private void Awake()
 	{
-		initialPosition = transform.localPosition;
+		initialPosition = transform.position;
 	}
 
 	private void Update()
 	{
 		// background goes backward
 		float zPos = moveSpeed * Time.deltaTime;
-		transform.localPosition += transform.forward * zPos;
+		transform.position += transform.right * zPos;
 
 		// if past a certain point, resets position
-		if (transform.localPosition.z <= resetWhenZPosition)
-			transform.localPosition = initialPosition;
-	}
-
-	private void OnValidate()
-	{
-		if (resetWhenZPosition > 0)
-			resetWhenZPosition = -resetWhenZPosition;
+		if (transform.position.z <= resetWhenZPos)
+			transform.position = initialPosition;
 	}
 	#endregion
 
