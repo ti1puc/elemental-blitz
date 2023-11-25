@@ -390,7 +390,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4188625169015406835}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3593602551390657882
 GameObject:
@@ -463,7 +463,7 @@ MonoBehaviour:
   canBeHit: 1
   hitOnTouchTimer: 0
   tookDamageOnStay: 0
-  shield_: {fileID: 0}
+  shield_: {fileID: 6845371650641689774}
 --- !u!1 &4272083228328229997
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +613,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3947205129360928943}
+  - {fileID: 3847922822653106748}
   - {fileID: 116628696592959415}
   - {fileID: 1007360777806786334}
   - {fileID: 3859916290352708238}
@@ -734,6 +735,67 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &7220613321796024515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3847922822653106748}
+  - component: {fileID: 5008548031075769206}
+  - component: {fileID: 6461791130269507455}
+  m_Layer: 3
+  m_Name: Collision ForceField
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3847922822653106748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7220613321796024515}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4188625169015406835}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5008548031075769206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7220613321796024515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb7f9b942340fa498313989d6c8c0c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCollision: {fileID: 2728666622151783766}
+  elementManager: {fileID: 8348538085054358860}
+  noDamageVfx: {fileID: 3498761798871883066, guid: e2b90109d86d829459b924acd01b4016, type: 3}
+--- !u!135 &6461791130269507455
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7220613321796024515}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7619456777033401584
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +828,7 @@ Transform:
   - {fileID: 6735039737556153680}
   - {fileID: 1284985358175728662}
   m_Father: {fileID: 4188625169015406835}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8864973431774151005
 GameObject:
@@ -898,7 +960,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2790878936519685530, guid: 0679fcecfb8fc6346aa4ea67bef4b1fa, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2790878936519685530, guid: 0679fcecfb8fc6346aa4ea67bef4b1fa, type: 3}
       propertyPath: m_LocalPosition.x

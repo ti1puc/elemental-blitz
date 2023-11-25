@@ -75,17 +75,26 @@ public class PlayerCollision : MonoBehaviour
 		if (other.CompareTag("enemyWater"))
 		{
 			// if current element = lighning
-			if (elementManager.CurrentElement == Element.Lightning)
-				TakeDamage(bullet_, 0, false);
-            AudioManager.Instance.PlaySFX("snd_NoDamage");
+
+
+			// essa logica mudei pro PlayerCollisionField
+			//if (elementManager.CurrentElement == Element.Lightning)
+			//{
+			//	TakeDamage(bullet_, 0, false);
+			//	AudioManager.Instance.PlaySFX("snd_NoDamage");
+			//}
 
             if (elementManager.CurrentElement == Element.Fire)
+			{
 				TakeDamage(bullet_, 1, true);
-            AudioManager.Instance.PlaySFX("snd_CriticalDamage");
+				AudioManager.Instance.PlaySFX("snd_CriticalDamage");
+			}
 
             if (elementManager.CurrentElement == Element.Water)
+			{
 				TakeDamage(bullet_, .5f, true);
-            AudioManager.Instance.PlaySFX("snd_Damage");
+				AudioManager.Instance.PlaySFX("snd_Damage");
+			}
         }
 		#endregion
 
@@ -94,16 +103,23 @@ public class PlayerCollision : MonoBehaviour
 		{
 			// if current element = lighning
 			if (elementManager.CurrentElement == Element.Lightning)
+			{
 				TakeDamage(bullet_, .5f, true);
-            AudioManager.Instance.PlaySFX("snd_Damage");
+				AudioManager.Instance.PlaySFX("snd_Damage");
+			}
 
-            if (elementManager.CurrentElement == Element.Fire)
-				TakeDamage(bullet_, 0, false);
-            AudioManager.Instance.PlaySFX("snd_NoDamage");
+			// essa logica mudei pro PlayerCollisionField
+			//if (elementManager.CurrentElement == Element.Fire)
+			//{
+			//	TakeDamage(bullet_, 0, false);
+			//	AudioManager.Instance.PlaySFX("snd_NoDamage");
+			//}
 
             if (elementManager.CurrentElement == Element.Water)
+			{
 				TakeDamage(bullet_, 1, true);
-            AudioManager.Instance.PlaySFX("snd_CriticalDamage");
+				AudioManager.Instance.PlaySFX("snd_CriticalDamage");
+			}
         }
 		#endregion
 
@@ -112,16 +128,23 @@ public class PlayerCollision : MonoBehaviour
 		{
 			// if current element = lighning
 			if (elementManager.CurrentElement == Element.Lightning)
+			{
 				TakeDamage(bullet_, 1, true);
-            AudioManager.Instance.PlaySFX("snd_CriticalDamage");
+				AudioManager.Instance.PlaySFX("snd_CriticalDamage");
+			}
 
             if (elementManager.CurrentElement == Element.Fire)
+			{
 				TakeDamage(bullet_, .5f, true);
-            AudioManager.Instance.PlaySFX("snd_Damage");
+				AudioManager.Instance.PlaySFX("snd_Damage");
+			}
 
-            if (elementManager.CurrentElement == Element.Water)
-				TakeDamage(bullet_, 0, false);
-            AudioManager.Instance.PlaySFX("snd_NoDamage");
+			// essa logica mudei pro PlayerCollisionField
+			// if (elementManager.CurrentElement == Element.Water)
+			//{
+			//	TakeDamage(bullet_, 0, false);
+			//	AudioManager.Instance.PlaySFX("snd_NoDamage");
+			//}
         }
 		#endregion
 

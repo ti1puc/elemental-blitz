@@ -35,7 +35,7 @@ public class EnemyCollision : MonoBehaviour
 		elementManager = enemy.GetComponent<ElementManager>();
 		currentElement = elementManager.CurrentElement;
 
-		Debug.Log("Sou do elemento " + currentElement);
+		//Debug.Log("Sou do elemento " + currentElement);
 
     }
 
@@ -85,17 +85,23 @@ public class EnemyCollision : MonoBehaviour
 		{
 			// if current element = lighning
 			if (currentElement == Element.Lightning)
+			{
 				TakeDamage(bullet_, 0, false);
 				AudioManager.Instance.PlaySFXEnemy("snd_NoDamage");
+			}
 
 
             if (currentElement == Element.Fire)
+			{
 				TakeDamage(bullet_, 2, true);
 	            AudioManager.Instance.PlaySFXEnemy("snd_CriticalDamage");
+			}
 
             if (currentElement == Element.Water)
+			{
 				TakeDamage(bullet_, .5f, true);
 	            AudioManager.Instance.PlaySFXEnemy("snd_Damage");
+			}
         }
 		#endregion
 
@@ -104,16 +110,22 @@ public class EnemyCollision : MonoBehaviour
 		{
 			// if current element = lighning
 			if (currentElement == Element.Lightning)
+			{
 				TakeDamage(bullet_, .5f, true);
 		        AudioManager.Instance.PlaySFXEnemy("snd_Damage");
+			}
 
             if (currentElement == Element.Fire)
+			{
 				TakeDamage(bullet_, 0, false);
 	            AudioManager.Instance.PlaySFXEnemy("snd_NoDamage");
+			}
 
             if (currentElement == Element.Water)
+			{
 				TakeDamage(bullet_, 2, true);
 		        AudioManager.Instance.PlaySFXEnemy("snd_CriticalDamage");
+			}
         }
 		#endregion
 
@@ -122,16 +134,22 @@ public class EnemyCollision : MonoBehaviour
 		{
 			// if current element = lighning
 			if (currentElement == Element.Lightning)
+			{
 				TakeDamage(bullet_, 2, true);
 			    AudioManager.Instance.PlaySFXEnemy("snd_CriticalDamage");
+			}
 
             if (currentElement == Element.Fire)
+			{
 				TakeDamage(bullet_, .5f, true);
 			    AudioManager.Instance.PlaySFXEnemy("snd_Damage");
+			}
 
             if (currentElement == Element.Water)
+			{
 				TakeDamage(bullet_, 0, false);
 			    AudioManager.Instance.PlaySFXEnemy("snd_NoDamage");
+			}
         }
 		#endregion
 	}
