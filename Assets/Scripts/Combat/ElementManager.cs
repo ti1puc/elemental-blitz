@@ -54,7 +54,7 @@ public class ElementManager : MonoBehaviour
     {
         if (canChangeElement == false) return;
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetButtonDown("Fire2"))
         {
             bool hasSkipped = false;
             currentElementIndex++;
@@ -88,15 +88,15 @@ public class ElementManager : MonoBehaviour
             {
                 UIManager.RotateElement();
                 if (unlockedElements.Count == 2 && hasSkipped)
-                    StartCoroutine(RotateUIWithDelay());
+				    StartCoroutine(RotateUIWithDelay());
             }
 		}
 	}
 
     private IEnumerator RotateUIWithDelay()
     {
-        yield return new WaitForSeconds(1);
-		UIManager.RotateElement();
+        yield return new WaitForSeconds(.25f);
+        UIManager.RotateElement();
 	}
     #endregion
 }

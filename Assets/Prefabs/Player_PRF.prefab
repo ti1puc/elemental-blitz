@@ -436,8 +436,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.4208574, y: 2, z: 3.5097065}
-  m_Center: {x: -0.10429633, y: 0, z: -0.25485325}
+  m_Size: {x: 1.5247264, y: 2, z: 2.5746918}
+  m_Center: {x: 0.13374901, y: 0, z: -0.33735466}
 --- !u!114 &2728666622151783766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   invicibilityFrames: 10
+  hitOnTouchEvery: 1
   elementManager: {fileID: 8348538085054358860}
   healthController: {fileID: 4783412602324264936}
   materialDamage: {fileID: 2100000, guid: 204a0cb46b8d5324ab9b11028de8d7ba, type: 2}
@@ -460,6 +461,8 @@ MonoBehaviour:
   - {fileID: 2677802944415863685}
   durationMax: 0.1
   canBeHit: 1
+  hitOnTouchTimer: 0
+  tookDamageOnStay: 0
   shield_: {fileID: 0}
 --- !u!1 &4272083228328229997
 GameObject:
@@ -664,6 +667,7 @@ MonoBehaviour:
   canShoot: 1
   canHoldKey: 1
   shootKey: 122
+  canUseMouse: 1
 --- !u!114 &4783412602324264936
 MonoBehaviour:
   m_ObjectHideFlags: 0

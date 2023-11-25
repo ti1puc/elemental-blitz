@@ -9,6 +9,7 @@ public class PlayerCollision : MonoBehaviour
 	[Header("Settings")]
 	[SerializeField] public int damage = 2;
 	[SerializeField] private int invicibilityFrames = 20;
+	[SerializeField] private float hitOnTouchEvery = 3f;
 	[Header("References")]
 	[SerializeField] private ElementManager elementManager;
 	public HealthController healthController;
@@ -19,6 +20,8 @@ public class PlayerCollision : MonoBehaviour
 	public float durationMax = 0.10f;
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private bool canBeHit = true;
+	[SerializeField, ReadOnly] private float hitOnTouchTimer = 0;
+	[SerializeField, ReadOnly] private bool tookDamageOnStay;
 
 	public bool CanBeHit => canBeHit;
 	public GameObject shield_;
@@ -37,6 +40,27 @@ public class PlayerCollision : MonoBehaviour
 		{
 			foreach (var renderer in renderers)
 				renderer.material = materialOriginal;
+		}
+
+		if (tookDamageOnStay)
+		{
+			hitOnTouchTimer += Time.deltaTime;
+			if (hitOnTouchTimer > hitOnTouchEvery)
+			{
+				hitOnTouchTimer = 0f;
+				tookDamageOnStay = false;
+			}
+		}
+	}
+
+	private void OnTriggerStay(Collider other)
+	{
+		// touch enemy
+		if (other.CompareTag("Enemy") && !tookDamageOnStay)
+		{
+			TakeDamageExternal(1);
+			AudioManager.Instance.PlaySFX("snd_Damage");
+			tookDamageOnStay = true;
 		}
 	}
 
@@ -99,12 +123,10 @@ public class PlayerCollision : MonoBehaviour
 				TakeDamage(bullet_, 0, false);
             AudioManager.Instance.PlaySFX("snd_NoDamage");
         }
-        #endregion
+		#endregion
 
-        
-
-        #region colision with power ups
-        if (other.CompareTag("pUpHeal"))
+		#region colision with power ups
+		if (other.CompareTag("pUpHeal"))
 		{
 			PowerupBase pupb_ = other.gameObject.GetComponent<PowerupBase>();
 			healthController.Heal(pupb_.heal_);

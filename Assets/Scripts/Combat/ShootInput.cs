@@ -9,7 +9,8 @@ public class ShootInput : ShootBase
 	[Header("Input Settings")]
 	[SerializeField] private bool canHoldKey;
 	[SerializeField] private KeyCode shootKey = KeyCode.Z;
-    //[Header("References")]
+	[SerializeField] private bool canUseMouse;
+	//[Header("References")]
 	#endregion
 
 	#region Properties
@@ -20,11 +21,11 @@ public class ShootInput : ShootBase
 	{
 		base.Update();
 
-        if (canHoldKey && Input.GetKey(shootKey))
+        if (canHoldKey && (Input.GetKey(shootKey) || (canUseMouse && Input.GetButton("Fire1"))))
 		{
             Shoot();
         }
-		else if (Input.GetKeyDown(shootKey))
+		else if (Input.GetKeyDown(shootKey) || (canUseMouse && Input.GetButtonDown("Fire1")))
 		{
             Shoot();
         }
