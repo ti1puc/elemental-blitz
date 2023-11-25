@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
 	[SerializeField] private Animator playerMenuAnimator;
 	[SerializeField] private float waitSecondsToStart = 1;
 	[Header("Panels")]
+	[SerializeField] private GameObject mainPanel;
 	[SerializeField] private GameObject optionPanel;
 	[SerializeField] private GameObject helpPanel;
 	[SerializeField] private GameObject creditsPanel;
@@ -36,16 +37,22 @@ public class MainMenu : MonoBehaviour
 
 	public void ShowOptionPanel()
 	{
+		HideAllPanels();
+		mainPanel.SetActive(false);
 		optionPanel.SetActive(true);
 	}
 
 	public void ShowHelpPanel()
 	{
+		HideAllPanels();
+		mainPanel.SetActive(false);
 		helpPanel.SetActive(true);
 	}
 
 	public void ShowCreditsPanel()
 	{
+		HideAllPanels();
+		mainPanel.SetActive(false);
 		creditsPanel.SetActive(true);
 	}
 
@@ -54,6 +61,7 @@ public class MainMenu : MonoBehaviour
 		optionPanel.SetActive(false);
 		helpPanel.SetActive(false);
 		creditsPanel.SetActive(false);
+		mainPanel.SetActive(true);
 	}
 
 	public void PlayClickSound()
