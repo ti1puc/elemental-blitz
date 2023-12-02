@@ -40,8 +40,9 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private GameObject noDmgDebuff;
 	[Header("Power Ups")]
     [SerializeField] private HealthBar powerUpTimer;
-
-    [Header("Debug")]
+	[SerializeField] private GameObject dashInfo1;
+	[SerializeField] private GameObject dashInfo2;
+	[Header("Debug")]
 	[SerializeField, ReadOnly] private float scoreDelay = 0;
 	[SerializeField, ReadOnly] private bool hasChangedBossMaxHealth;
 	[SerializeField, ReadOnly] private bool hasChangedBossName;
@@ -73,6 +74,9 @@ public class UIManager : MonoBehaviour
 		slowDebuff.SetActive(false);
 		stunDebuff.SetActive(false);
 		noDmgDebuff.SetActive(false);
+
+		dashInfo1.SetActive(false);
+		dashInfo2.SetActive(false);
 
 		scoreText.text = "0";
 		playerHealth.ChangeMaxLife(PlayerManager.PlayerLife.MaxHealth);
@@ -135,7 +139,10 @@ public class UIManager : MonoBehaviour
 
 		pauseScreen.SetActive(!GameManager.IsGameOver && GameManager.IsGamePaused);
 
+		// powerups
 		PowerUpTimer();
+		dashInfo1.SetActive(PlayerManager.PlayerController.DashTimes >= 1);
+		dashInfo2.SetActive(PlayerManager.PlayerController.DashTimes == 2);
 
 		// debuffs
 		slowDebuff.SetActive(PlayerManager.PlayerController.HasSlowDebuff);

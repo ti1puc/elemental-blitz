@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - pUpHeal
   - pUpShield
+  - pUpDash
   layers:
   - Default
   - TransparentFX

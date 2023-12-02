@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private GameObject slowDebuff;
 	[SerializeField] private GameObject stunDebuff;
 	[SerializeField] private GameObject noDmgDebuff;
+	[Header("Dash")]
+	[SerializeField] private float dashDuration = 1;
+	[SerializeField] private float dashSpeed = 100;
 	[Header("References")]
 	[SerializeField] private Transform playerVisual;
 	[SerializeField] private ShootInput shootInput;
@@ -38,11 +41,15 @@ public class PlayerController : MonoBehaviour
 	[SerializeField, ReadOnly] private float slowDebuffCounter;
 	[SerializeField, ReadOnly] private float stunDebuffCounter;
 	[SerializeField, ReadOnly] private float noDmgDebuffCounter;
+	[SerializeField, ReadOnly] private float dashTimer;
+	[SerializeField, ReadOnly] private int dashTimes;
+	[SerializeField, ReadOnly] private bool isDashing;
 	#endregion
 
 	public bool HasSlowDebuff => slowDebuffCounter > 0;
 	public bool HasStunDebuff => stunDebuffCounter > 0;
 	public bool HasNoDmgDebuff => noDmgDebuffCounter > 0;
+	public int DashTimes => dashTimes;
 
 	#region Unity Messages
 	private void Awake()
@@ -50,6 +57,8 @@ public class PlayerController : MonoBehaviour
 		healthController = GetComponent<HealthController>();
 
 		defaultMoveSpeed = moveSpeed;
+		dashTimer = 0f;
+		dashTimes = 0;
 
 		slowDebuffCounter = 0f;
 		stunDebuffCounter = 0f;
@@ -127,10 +136,29 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 
-		// debuffs
+		// UI debuffs
 		slowDebuff.SetActive(PlayerManager.PlayerController.HasSlowDebuff);
 		stunDebuff.SetActive(PlayerManager.PlayerController.HasStunDebuff);
 		noDmgDebuff.SetActive(PlayerManager.PlayerController.HasNoDmgDebuff);
+
+		// dash
+		if (dashTimes > 0 && Input.GetKeyDown(KeyCode.Space) && !isDashing)
+		{
+			dashTimer = dashDuration;
+			moveSpeed = dashSpeed;
+			isDashing = true;
+		}
+
+		if (dashTimer > 0)
+		{
+			dashTimer -= Time.deltaTime;
+			if (dashTimer <= 0)
+			{
+				moveSpeed = defaultMoveSpeed;
+				isDashing = false;
+				dashTimes--;
+			}
+		}
 	}
 	#endregion
 
@@ -150,5 +178,10 @@ public class PlayerController : MonoBehaviour
 	{
 		if (!enableDebuffs) return;
 		noDmgDebuffCounter = noDmgDuration;
+	}
+
+	public void Dash()
+	{
+		dashTimes = 2;
 	}
 }

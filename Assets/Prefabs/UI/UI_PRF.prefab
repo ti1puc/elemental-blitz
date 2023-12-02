@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 545469563}
   - component: {fileID: 545469564}
   m_Layer: 5
-  m_Name: Something List Horizontal
+  m_Name: Dash List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 1386980893}
   - component: {fileID: 1386980892}
   m_Layer: 5
-  m_Name: Something (1)
+  m_Name: Dash 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -937,7 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9433962, g: 0.12904951, b: 0.12904951, a: 1}
+  m_Color: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1155,7 +1155,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Powerup
+  m_text: SHIELD
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aefc79a5a036f3249b31efa6268482e9, type: 2}
   m_sharedMaterial: {fileID: -8532719203908079007, guid: aefc79a5a036f3249b31efa6268482e9, type: 2}
@@ -1371,7 +1371,7 @@ GameObject:
   - component: {fileID: 1878889618}
   - component: {fileID: 1878889617}
   m_Layer: 5
-  m_Name: Something (2)
+  m_Name: Dash 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1418,7 +1418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9433962, g: 0.12904951, b: 0.12904951, a: 1}
+  m_Color: {r: 0.67058825, g: 0.67058825, b: 0.67058825, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1900,6 +1900,8 @@ MonoBehaviour:
   stunDebuff: {fileID: 354230204}
   noDmgDebuff: {fileID: 612585742}
   powerUpTimer: {fileID: 1373884804}
+  dashInfo1: {fileID: 1386980890}
+  dashInfo2: {fileID: 1878889615}
   scoreDelay: 0
   hasChangedBossMaxHealth: 0
   hasChangedBossName: 0

@@ -1163,6 +1163,8 @@ MonoBehaviour:
   slowDebuff: {fileID: 2924143984935309604}
   stunDebuff: {fileID: 5860918161352972431}
   noDmgDebuff: {fileID: 4801508352717167535}
+  dashDuration: 0.05
+  dashSpeed: 350
   playerVisual: {fileID: 1007360777806786334}
   shootInput: {fileID: 3028015762788472842}
   healthController: {fileID: 0}
@@ -1170,6 +1172,9 @@ MonoBehaviour:
   slowDebuffCounter: 0
   stunDebuffCounter: 0
   noDmgDebuffCounter: 0
+  dashTimer: 0
+  dashTimes: 0
+  isDashing: 0
 --- !u!114 &3028015762788472842
 MonoBehaviour:
   m_ObjectHideFlags: 0

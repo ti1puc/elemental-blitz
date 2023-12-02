@@ -174,9 +174,19 @@ public class PlayerCollision : MonoBehaviour
             pupb_.DestroyPowerup();
             AudioManager.Instance.PlaySFXPowerUp("snd_PowerUp03");
 
-        }
-        #endregion
-    }
+		}
+
+		if (other.CompareTag("pUpDash"))
+		{
+			PowerupBase pupb_ = other.gameObject.GetComponent<PowerupBase>();
+
+			playerController.Dash();
+			pupb_.DestroyPowerup();
+			AudioManager.Instance.PlaySFXPowerUp("snd_PowerUp03");
+
+		}
+		#endregion
+	}
 	#endregion
 
 	// criei essa funcao só pra facilitar

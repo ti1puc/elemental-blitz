@@ -431,6 +431,7 @@ MonoBehaviour:
   powerupsPrefabs:
   - {fileID: 5931513096093191774, guid: 29bf54f93043c474fa49bac4766cac7e, type: 3}
   - {fileID: 5931513096093191774, guid: 34340c7a3bb0c0f4f9caf3f0ff8d6a1b, type: 3}
+  - {fileID: 5931513096093191774, guid: bdb81b2ad49a626478fa170afb3aaa84, type: 3}
   dropChance: 10.8
 --- !u!114 &5063971749467614889
 MonoBehaviour:
