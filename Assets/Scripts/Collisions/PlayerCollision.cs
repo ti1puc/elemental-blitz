@@ -55,9 +55,14 @@ public class PlayerCollision : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
+
 		// touch enemy
 		if (other.CompareTag("Enemy") && !tookDamageOnStay)
 		{
+			Enemy enemy = other.GetComponentInParent<Enemy>();
+			if (enemy.IsHitable == false)
+				return;
+
 			TakeDamageExternal(1);
 			AudioManager.Instance.PlaySFX("snd_Damage");
 			tookDamageOnStay = true;

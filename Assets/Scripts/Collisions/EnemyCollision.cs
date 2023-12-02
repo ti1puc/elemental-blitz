@@ -26,11 +26,13 @@ public class EnemyCollision : MonoBehaviour
 	[SerializeField, ReadOnly] private float distanceXZero;
 	[SerializeField, ReadOnly] private float differenceXZero;
 	[SerializeField, ReadOnly] private float direction;
-    #endregion
+	#endregion
 
-    #region Properties
+	#region Properties
+	#endregion
 
-    private void Start()
+	#region Unity Messages
+	private void Start()
     {
 		elementManager = enemy.GetComponent<ElementManager>();
 		currentElement = elementManager.CurrentElement;
@@ -67,9 +69,7 @@ public class EnemyCollision : MonoBehaviour
 				renderer.material = materialOriginal;
 		}
 	}
-	#endregion
 
-	#region Unity Messages
 	private void OnTriggerEnter(Collider other)
 	{
 		// os inimigos primeiro aparecem na tela, aí rola um feedback mostrando que é possivel atirar nele

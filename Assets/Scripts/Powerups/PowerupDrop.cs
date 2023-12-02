@@ -44,7 +44,7 @@ public class PowerupDrop : MonoBehaviour
 		//if (index >= powerupsPrefabs.Count) // n vai achar o pooler pq o index requisitado é maior, por isso return
 		//return;
 
-		ObjectPoolManager.SpawnGameObject(powerupsPrefabs[index]);
+		ObjectPoolManager.SpawnGameObject(powerupsPrefabs[index], transform.position, powerupsPrefabs[index].transform.rotation);
 
 	}
     #endregion
