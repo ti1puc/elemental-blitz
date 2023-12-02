@@ -12,6 +12,7 @@ public class PlayerCollision : MonoBehaviour
 	[SerializeField] private float hitOnTouchEvery = 3f;
 	[Header("References")]
 	[SerializeField] private ElementManager elementManager;
+	[SerializeField] private PlayerController playerController;
 	public HealthController healthController;
 	[Header("feedback damage")]
 	public Material materialDamage;
@@ -79,17 +80,17 @@ public class PlayerCollision : MonoBehaviour
 		#region colision with water
 		if (other.CompareTag("enemyWater"))
 		{
+			playerController.StartSlowDebuff();
+
 			// if current element = lighning
 
+			if (elementManager.CurrentElement == Element.Lightning)
+			{
+				TakeDamage(bullet_, 0, false);
+				AudioManager.Instance.PlaySFX("snd_NoDamage");
+			}
 
-			// essa logica mudei pro PlayerCollisionField
-			//if (elementManager.CurrentElement == Element.Lightning)
-			//{
-			//	TakeDamage(bullet_, 0, false);
-			//	AudioManager.Instance.PlaySFX("snd_NoDamage");
-			//}
-
-            if (elementManager.CurrentElement == Element.Fire)
+			if (elementManager.CurrentElement == Element.Fire)
 			{
 				TakeDamage(bullet_, 1, true);
 				AudioManager.Instance.PlaySFX("snd_CriticalDamage");
@@ -106,6 +107,8 @@ public class PlayerCollision : MonoBehaviour
 		#region colision with lighning
 		if (other.CompareTag("enemyLightning"))
 		{
+			playerController.StartStunDebuff();
+
 			// if current element = lighning
 			if (elementManager.CurrentElement == Element.Lightning)
 			{
@@ -113,14 +116,13 @@ public class PlayerCollision : MonoBehaviour
 				AudioManager.Instance.PlaySFX("snd_Damage");
 			}
 
-			// essa logica mudei pro PlayerCollisionField
-			//if (elementManager.CurrentElement == Element.Fire)
-			//{
-			//	TakeDamage(bullet_, 0, false);
-			//	AudioManager.Instance.PlaySFX("snd_NoDamage");
-			//}
+			if (elementManager.CurrentElement == Element.Fire)
+			{
+				TakeDamage(bullet_, 0, false);
+				AudioManager.Instance.PlaySFX("snd_NoDamage");
+			}
 
-            if (elementManager.CurrentElement == Element.Water)
+			if (elementManager.CurrentElement == Element.Water)
 			{
 				TakeDamage(bullet_, 1, true);
 				AudioManager.Instance.PlaySFX("snd_CriticalDamage");
@@ -131,6 +133,8 @@ public class PlayerCollision : MonoBehaviour
 		#region colision with fire
 		if (other.CompareTag("enemyFire"))
 		{
+			playerController.StartNoDmgDebuff();
+
 			// if current element = lighning
 			if (elementManager.CurrentElement == Element.Lightning)
 			{

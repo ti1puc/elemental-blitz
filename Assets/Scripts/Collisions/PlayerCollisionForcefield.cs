@@ -6,6 +6,7 @@ using NaughtyAttributes;
 
 public class PlayerCollisionForcefield : MonoBehaviour
 {
+	[SerializeField] private PlayerController playerController;
 	[SerializeField] private PlayerCollision playerCollision;
 	[SerializeField] private ElementManager elementManager;
 	[SerializeField] private ParticleSystem noDamageVfx;
@@ -32,7 +33,7 @@ public class PlayerCollisionForcefield : MonoBehaviour
 		#region colision with lighning
 		if (other.CompareTag("enemyLightning"))
 		{
-            if (elementManager.CurrentElement == Element.Fire)
+			if (elementManager.CurrentElement == Element.Fire)
 			{
 				NoDamage(bullet);
 			}

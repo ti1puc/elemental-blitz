@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private HealthController playerLife;
+	[SerializeField, ReadOnly] private PlayerController playerController;
 	[SerializeField, ReadOnly] private PlayerCollision playerCollision;
 	[SerializeField, ReadOnly] private ElementManager playerElement;
 	[SerializeField, ReadOnly] private ShieldPowerUp playerShield;
@@ -14,6 +15,7 @@ public class PlayerManager : MonoBehaviour
 	public static PlayerManager Instance { get; private set; }
 	public static GameObject Player => Instance.gameObject;
 	public static HealthController PlayerLife => Instance.playerLife;
+	public static PlayerController PlayerController => Instance.playerController;
 	public static PlayerCollision PlayerCollision => Instance.playerCollision;
 	public static ElementManager PlayerElement => Instance.playerElement;
 	public static ShieldPowerUp PlayerShield => Instance.playerShield;
@@ -34,5 +36,6 @@ public class PlayerManager : MonoBehaviour
 		playerCollision = GetComponentInChildren<PlayerCollision>();
 		playerElement = GetComponent<ElementManager>();
 		playerShield = GetComponentInChildren<ShieldPowerUp>(true);
+		playerController = GetComponent<PlayerController>();
 	}
 }

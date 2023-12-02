@@ -19,6 +19,7 @@ public class ShootInput : ShootBase
 	#region Unity Messages
 	protected override void Update()
 	{
+		if (DisableShoot) return;
 		base.Update();
 
         if (canHoldKey && (Input.GetKey(shootKey) || (canUseMouse && Input.GetButton("Fire1"))))

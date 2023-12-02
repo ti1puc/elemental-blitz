@@ -34,7 +34,11 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private Image lightningSprite;
 	[SerializeField] private Image waterSprite;
 	[SerializeField] private Image fireSprite;
-    [Header("Power Ups")]
+	[Header("Debuffs")]
+	[SerializeField] private GameObject slowDebuff;
+	[SerializeField] private GameObject stunDebuff;
+	[SerializeField] private GameObject noDmgDebuff;
+	[Header("Power Ups")]
     [SerializeField] private HealthBar powerUpTimer;
 
     [Header("Debug")]
@@ -65,6 +69,10 @@ public class UIManager : MonoBehaviour
 		loseScreen.SetActive(false);
 		pauseScreen.SetActive(false);
 		bossWarning.gameObject.SetActive(false);
+
+		slowDebuff.SetActive(false);
+		stunDebuff.SetActive(false);
+		noDmgDebuff.SetActive(false);
 
 		scoreText.text = "0";
 		playerHealth.ChangeMaxLife(PlayerManager.PlayerLife.MaxHealth);
@@ -128,7 +136,12 @@ public class UIManager : MonoBehaviour
 		pauseScreen.SetActive(!GameManager.IsGameOver && GameManager.IsGamePaused);
 
 		PowerUpTimer();
-    }
+
+		// debuffs
+		slowDebuff.SetActive(PlayerManager.PlayerController.HasSlowDebuff);
+		stunDebuff.SetActive(PlayerManager.PlayerController.HasStunDebuff);
+		noDmgDebuff.SetActive(PlayerManager.PlayerController.HasNoDmgDebuff);
+	}
 	#endregion
 
 	#region Public Methods

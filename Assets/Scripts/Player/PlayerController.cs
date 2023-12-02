@@ -20,16 +20,44 @@ public class PlayerController : MonoBehaviour
 	[SerializeField, Range(0, 100)] private int percentShowLowHealth = 30;
 	[SerializeField] private GameObject lowHealthWarning;
 	[SerializeField] private TMP_Text lowHealthText;
-	[Header("Visual")]
+	[Header("Debuffs")]
+	[SerializeField] private bool enableDebuffs = true;
+	[SerializeField] private float slowMoveSpeed = 7;
+	[SerializeField] private float slowDuration = 1;
+	[SerializeField] private float stunDuration = 1;
+	[SerializeField] private float noDmgDuration = 1;
+	[SerializeField] private GameObject slowDebuff;
+	[SerializeField] private GameObject stunDebuff;
+	[SerializeField] private GameObject noDmgDebuff;
+	[Header("References")]
 	[SerializeField] private Transform playerVisual;
+	[SerializeField] private ShootInput shootInput;
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private HealthController healthController;
+	[SerializeField, ReadOnly] private float defaultMoveSpeed;
+	[SerializeField, ReadOnly] private float slowDebuffCounter;
+	[SerializeField, ReadOnly] private float stunDebuffCounter;
+	[SerializeField, ReadOnly] private float noDmgDebuffCounter;
 	#endregion
+
+	public bool HasSlowDebuff => slowDebuffCounter > 0;
+	public bool HasStunDebuff => stunDebuffCounter > 0;
+	public bool HasNoDmgDebuff => noDmgDebuffCounter > 0;
 
 	#region Unity Messages
 	private void Awake()
 	{
 		healthController = GetComponent<HealthController>();
+
+		defaultMoveSpeed = moveSpeed;
+
+		slowDebuffCounter = 0f;
+		stunDebuffCounter = 0f;
+		noDmgDebuffCounter = 0f;
+
+		slowDebuff.SetActive(false);
+		stunDebuff.SetActive(false);
+		noDmgDebuff.SetActive(false);
 	}
 
 	private void Update()
@@ -53,7 +81,7 @@ public class PlayerController : MonoBehaviour
 		transform.position = new Vector3(clampedX, 0, clampedZ);
 
 		// slight tilt player (only visual to not affect movement)
-		Quaternion targetAngle = Quaternion.Euler(xTilt, 0, zTilt);
+		Quaternion targetAngle = Quaternion.Euler(stunDebuffCounter > 0 ? 0 : xTilt, 0, stunDebuffCounter > 0 ? 0 : zTilt); // rotate to 0 if stunned
 		playerVisual.rotation = Quaternion.Lerp(playerVisual.rotation, targetAngle, Time.deltaTime * tiltSpeed);
 
 		// mostrar warning de low health
@@ -61,6 +89,66 @@ public class PlayerController : MonoBehaviour
 		lowHealthWarning.SetActive(healthPercent <= percentShowLowHealth);
 		if (healthPercent <= percentShowLowHealth)
 			lowHealthText.text = Mathf.RoundToInt(healthPercent) + "%";
+
+		// check debuffs
+		if (slowDebuffCounter > 0)
+		{
+			moveSpeed = slowMoveSpeed;
+
+			slowDebuffCounter -= Time.deltaTime;
+			if (slowDebuffCounter <= 0)
+			{
+				moveSpeed = defaultMoveSpeed;
+				slowDebuffCounter = 0f;
+			}
+		}
+
+		if (stunDebuffCounter > 0)
+		{
+			moveSpeed = 0;
+
+			stunDebuffCounter -= Time.deltaTime;
+			if (stunDebuffCounter <= 0)
+			{
+				moveSpeed = defaultMoveSpeed;
+				stunDebuffCounter = 0f;
+			}
+		}
+
+		if (noDmgDebuffCounter > 0)
+		{
+			shootInput.DisableShoot = true;
+
+			noDmgDebuffCounter -= Time.deltaTime;
+			if (noDmgDebuffCounter <= 0)
+			{
+				moveSpeed = defaultMoveSpeed;
+				shootInput.DisableShoot = false;
+			}
+		}
+
+		// debuffs
+		slowDebuff.SetActive(PlayerManager.PlayerController.HasSlowDebuff);
+		stunDebuff.SetActive(PlayerManager.PlayerController.HasStunDebuff);
+		noDmgDebuff.SetActive(PlayerManager.PlayerController.HasNoDmgDebuff);
 	}
 	#endregion
+
+	public void StartSlowDebuff()
+	{
+		if (!enableDebuffs) return;
+		slowDebuffCounter = slowDuration;
+	}
+
+	public void StartStunDebuff()
+	{
+		if (!enableDebuffs) return;
+		stunDebuffCounter = stunDuration;
+	}
+
+	public void StartNoDmgDebuff()
+	{
+		if (!enableDebuffs) return;
+		noDmgDebuffCounter = noDmgDuration;
+	}
 }

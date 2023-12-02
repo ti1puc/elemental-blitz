@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 354230207}
   - component: {fileID: 354230206}
   m_Layer: 5
-  m_Name: Something (2)
+  m_Name: Stun Debuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9433962, g: 0.12904951, b: 0.12904951, a: 1}
+  m_Color: {r: 0.94509804, g: 0.92407024, b: 0.12941176, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 612585745}
   - component: {fileID: 612585744}
   m_Layer: 5
-  m_Name: Something (3)
+  m_Name: NoDmg Debuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -709,7 +709,7 @@ GameObject:
   - component: {fileID: 1261120328}
   - component: {fileID: 1261120327}
   m_Layer: 5
-  m_Name: Something (1)
+  m_Name: Slow Debuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -756,7 +756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9433962, g: 0.12904951, b: 0.12904951, a: 1}
+  m_Color: {r: 0.12941176, g: 0.28994367, b: 0.94509804, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1446,7 +1446,7 @@ GameObject:
   - component: {fileID: 1906353556}
   - component: {fileID: 1906353557}
   m_Layer: 5
-  m_Name: Something List Vertical
+  m_Name: Debuffs List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1896,12 +1896,14 @@ MonoBehaviour:
   lightningSprite: {fileID: 4265229098739415882}
   waterSprite: {fileID: 5023495764767417532}
   fireSprite: {fileID: 7283232596030912927}
+  slowDebuff: {fileID: 1261120325}
+  stunDebuff: {fileID: 354230204}
+  noDmgDebuff: {fileID: 612585742}
   powerUpTimer: {fileID: 1373884804}
   scoreDelay: 0
   hasChangedBossMaxHealth: 0
   hasChangedBossName: 0
   bossHealthController: {fileID: 0}
-  powerUpTimeController: {fileID: 0}
   bossWarningTimer: 0
 --- !u!1 &1244174532585908779
 GameObject:
