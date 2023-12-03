@@ -223,6 +223,7 @@ MonoBehaviour:
   fireInterval: 1
   useSpawnScale: 0
   spawnPosition: {fileID: 7663904577265911426}
+  disableSound: 0
   elementManager: {fileID: 5004053444613407630}
   shootCooldown: 0
   canShoot: 1
@@ -242,7 +243,7 @@ MonoBehaviour:
   - {fileID: 5931513096093191774, guid: 29bf54f93043c474fa49bac4766cac7e, type: 3}
   - {fileID: 5931513096093191774, guid: 34340c7a3bb0c0f4f9caf3f0ff8d6a1b, type: 3}
   - {fileID: 5931513096093191774, guid: bdb81b2ad49a626478fa170afb3aaa84, type: 3}
-  dropChance: 49.8
+  dropChance: 0
 --- !u!114 &7756734929034419518
 MonoBehaviour:
   m_ObjectHideFlags: 0

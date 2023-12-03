@@ -26,6 +26,9 @@ public class PowerupDrop : MonoBehaviour
     [Button]
 	public void TrySpawnPowerup()
     {
+        if (dropChance <= 0)
+            return;
+
         int random = Random.Range(0, 101); // 101 pq random.Range usando int é exclusivo. vira 0-100
         if (random < dropChance)
 			SpawnRandomPowerup();
@@ -41,10 +44,11 @@ public class PowerupDrop : MonoBehaviour
 
 	private void SpawnPowerup(int index = 0)
 	{
-		//if (index >= powerupsPrefabs.Count) // n vai achar o pooler pq o index requisitado é maior, por isso return
-		//return;
+        //if (index >= powerupsPrefabs.Count) // n vai achar o pooler pq o index requisitado é maior, por isso return
+        //return;
 
-		ObjectPoolManager.SpawnGameObject(powerupsPrefabs[index], transform.position, powerupsPrefabs[index].transform.rotation);
+        Vector3 spawn = new Vector3(transform.position.x, 0, transform.position.z);
+		ObjectPoolManager.SpawnGameObject(powerupsPrefabs[index], spawn, powerupsPrefabs[index].transform.rotation);
 
 	}
     #endregion

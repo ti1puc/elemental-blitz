@@ -37,12 +37,13 @@ public class AudioManager : MonoBehaviour
         scene = SceneManager.GetActiveScene().buildIndex;
 
         if (scene == 0) PlayMusic("snd_menu");
-        if (scene == 1) PlayMusic("snd_Level_1");
-        if (scene == 2) PlayMusic("snd_Level_2");
-        if (scene == 3) PlayMusic("snd_Level_3");
-
-        
-    }
+		if (scene == 1) PlayMusic("snd_Cutscene");
+		if (scene == 2) PlayMusic("snd_Level_1");
+        if (scene == 3) PlayMusic("snd_Cutscene");
+		if (scene == 4) PlayMusic("snd_Level_2");
+		if (scene == 5) PlayMusic("snd_Cutscene");
+		if (scene == 6) PlayMusic("snd_Level_3");
+	}
 
     public void Update()
     {
