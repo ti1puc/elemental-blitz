@@ -52,6 +52,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 661027151207769997, guid: 60061616d96fa564aa3963eefc0424f6, type: 3}
+      propertyPath: bossOnNextScene
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 661027151207769997, guid: 60061616d96fa564aa3963eefc0424f6, type: 3}
+      propertyPath: nextSceneOnBoss
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 661027151207769997, guid: 60061616d96fa564aa3963eefc0424f6, type: 3}
       propertyPath: waves.Array.size
       value: 5
       objectReference: {fileID: 0}

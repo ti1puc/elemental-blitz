@@ -19,6 +19,7 @@ public class WaveManager : MonoBehaviour
 	[SerializeField] private float delayToSpawnBoss = 3;
 	[SerializeField] private List<Wave> waves = new List<Wave>();
 	[Header("Boss")]
+	[SerializeField] private bool bossOnNextScene;
 	[SerializeField] private GameObject bossPrefab;
 	[SerializeField] private Transform bossSpawnPoint;
 	[SerializeField] private Vector2 bossRangeX = new Vector2(-29, 29);
@@ -61,6 +62,7 @@ public class WaveManager : MonoBehaviour
 	public static bool HasStartedBossFight => Instance.hasStartedBossFight;
 	public static GameObject Boss => Instance.boss;
 	public static Enemy BossEnemy => Instance.bossEnemy;
+	public static bool BossOnNextScene => Instance.bossOnNextScene;
 
 	private void Awake()
 	{
@@ -95,6 +97,12 @@ public class WaveManager : MonoBehaviour
 			bossSpawnTimer += Time.deltaTime;
 			if (bossSpawnTimer > delayToSpawnBoss && boss == null)
 			{
+				if (bossOnNextScene)
+				{
+					GameManager.NextLevel();
+					return;
+				}
+
 				boss = ObjectPoolManager.Instantiate(bossPrefab, bossSpawnPoint.transform.position, bossSpawnPoint.transform.rotation);
 				bossEnemy = boss.GetComponent<Enemy>();
 				bossEnemy.InitializeEnemy(bossRangeX, Vector2.zero, null);

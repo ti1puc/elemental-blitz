@@ -104,7 +104,7 @@ public class UIManager : MonoBehaviour
 			levelProgressionAnimator.SetTrigger("ReachBoss");
 		}
 
-		if (WaveManager.HasStartedBossFight && WaveManager.BossEnemy != null)
+		if (WaveManager.HasStartedBossFight && (WaveManager.BossEnemy != null || WaveManager.BossOnNextScene))
 		{
 			bossWarningTimer += Time.deltaTime;
 			if (bossWarningTimer > bossWarningDuration)
