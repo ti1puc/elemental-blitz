@@ -17,6 +17,8 @@ public abstract class ShootBase : MonoBehaviour
 	[Header("Spawn")]
 	[SerializeField] protected bool useSpawnScale;
 	[SerializeField] protected Transform spawnPosition;
+	[Header("Sound")]
+	[SerializeField] protected bool disableSound;
 	[Header("Debug")]
 	[SerializeField, ReadOnly] protected ElementManager elementManager;
 	[SerializeField, ReadOnly] private float shootCooldown = 0;
@@ -91,7 +93,8 @@ public abstract class ShootBase : MonoBehaviour
 			bullet.transform.localScale = spawnPosition.localScale;
 		
         canShoot = false;
-        AudioManager.Instance.PlaySFX("snd_shot01");
+		if (!disableSound)
+			AudioManager.Instance.PlaySFX("snd_shot01");
     }
 
 	private float SelectInterval()

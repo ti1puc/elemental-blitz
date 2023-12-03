@@ -195,7 +195,9 @@ public class PlayerCollision : MonoBehaviour
 	// criei essa funcao só pra facilitar
 	private void TakeDamage(BulletBase bullet, float damageMultiplier, bool showHitVfx)
 	{
-		healthController.TakeDamage(Mathf.CeilToInt(bullet.Damage * damageMultiplier));
+		if (HackManager.HasInfiniteHealth == false)
+			healthController.TakeDamage(Mathf.CeilToInt(bullet.Damage * damageMultiplier));
+
 		bullet.DestroyBullet();
 
 		if (showHitVfx)
@@ -225,7 +227,9 @@ public class PlayerCollision : MonoBehaviour
 	public void TakeDamageExternal(int damage, bool showHitVfx = true)
 	{
 		if (!canBeHit) return;
-		healthController.TakeDamage(damage);
+
+		if (HackManager.HasInfiniteHealth == false)
+			healthController.TakeDamage(damage);
 
 		if (showHitVfx)
 		{

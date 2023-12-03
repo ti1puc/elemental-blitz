@@ -25,6 +25,9 @@ public class Laser : MonoBehaviour
 	[SerializeField] private GameObject startVfx;
 	[SerializeField] private GameObject endVfx;
 	[SerializeField] private ParticleSystem laserChargeVfx;
+	[Header("Menu")]
+	[SerializeField] private bool isBossMenu;
+	[SerializeField] private float raycastMenuDistance;
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private Vector3 initialChargeScale;
 	[SerializeField, ReadOnly] private bool isLaserCharging;
@@ -115,7 +118,7 @@ public class Laser : MonoBehaviour
 		}
 		else
 		{
-			Vector3 hitPoint = Vector3.forward * raycastMaxDistance;
+			Vector3 hitPoint = Vector3.forward * (isBossMenu ? raycastMenuDistance : raycastMaxDistance);
 
 			lineRenderer.SetPosition(1, hitPoint);
 			endVfx.transform.localPosition = hitPoint;
@@ -141,7 +144,8 @@ public class Laser : MonoBehaviour
 		laserChargeVfx.gameObject.SetActive(false);
 		laserChargeVfx.transform.localScale = initialChargeScale;
 
-		AudioManager.Instance.StopSoundBoss();
+		if (AudioManager.Instance)
+			AudioManager.Instance.StopSoundBoss();
 		lineRenderer.enabled = false;
 		isLaserEnabled = false;
 

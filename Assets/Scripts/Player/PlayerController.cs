@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
 	[Header("References")]
 	[SerializeField] private Transform playerVisual;
 	[SerializeField] private ShootInput shootInput;
+	[Header("Menu")]
+	[SerializeField] private bool isPlayerMenu;
+	[SerializeField] private bool isDashTutorial;
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private HealthController healthController;
 	[SerializeField, ReadOnly] private float defaultMoveSpeed;
@@ -75,6 +78,12 @@ public class PlayerController : MonoBehaviour
 			trail.emitting = false;
 	}
 
+	private void OnEnable()
+	{
+		if (isPlayerMenu)
+			healthController.Heal(999);
+	}
+
 	private void Update()
     {
         // horizontal calculations
@@ -88,16 +97,40 @@ public class PlayerController : MonoBehaviour
 		float xTilt = vertical * tiltAngleVertical;
 
 		// translate position
-		transform.Translate(xPos, 0, zPos);
+		if (!isPlayerMenu)
+		{
+			transform.Translate(xPos, 0, zPos);
+		}
+		else
+		{
+			transform.localPosition += new Vector3(xPos, zPos, 0);
+		}
 
-        // clamp position
-        float clampedX = Mathf.Clamp(transform.position.x, minMaxRangeHorizontal.x, minMaxRangeHorizontal.y);
-        float clampedZ = Mathf.Clamp(transform.position.z, minMaxRangeVertical.x, minMaxRangeVertical.y);
-		transform.position = new Vector3(clampedX, 0, clampedZ);
+		// clamp position
+		if (!isPlayerMenu)
+		{
+			float clampedX = Mathf.Clamp(transform.position.x, minMaxRangeHorizontal.x, minMaxRangeHorizontal.y);
+			float clampedZ = Mathf.Clamp(transform.position.z, minMaxRangeVertical.x, minMaxRangeVertical.y);
+			transform.position = new Vector3(clampedX, 0, clampedZ);
+		}
+		else
+		{
+			float clampedX = Mathf.Clamp(transform.localPosition.x, minMaxRangeHorizontal.x, minMaxRangeHorizontal.y);
+			float clampedZ = Mathf.Clamp(transform.localPosition.y, minMaxRangeVertical.x, minMaxRangeVertical.y);
+			transform.localPosition = new Vector3(clampedX, clampedZ, 0);
+		}
 
 		// slight tilt player (only visual to not affect movement)
-		Quaternion targetAngle = Quaternion.Euler(stunDebuffCounter > 0 ? 0 : xTilt, 0, stunDebuffCounter > 0 ? 0 : zTilt); // rotate to 0 if stunned
-		playerVisual.rotation = Quaternion.Lerp(playerVisual.rotation, targetAngle, Time.deltaTime * tiltSpeed);
+		if (!isPlayerMenu)
+		{
+			Quaternion targetAngle = Quaternion.Euler(stunDebuffCounter > 0 ? 0 : xTilt, 0, stunDebuffCounter > 0 ? 0 : zTilt); // rotate to 0 if stunned
+			playerVisual.rotation = Quaternion.Lerp(playerVisual.rotation, targetAngle, Time.deltaTime * tiltSpeed);
+		}
+		else
+		{
+			Quaternion targetAngle = Quaternion.Euler(xTilt, 0, zTilt);
+			playerVisual.localRotation = Quaternion.Lerp(playerVisual.localRotation, targetAngle, Time.deltaTime * tiltSpeed);
+		}
 
 		// mostrar warning de low health
 		float healthPercent = (healthController.CurrentHealth / (float)healthController.MaxHealth) * 100;
@@ -132,26 +165,30 @@ public class PlayerController : MonoBehaviour
 
 		if (noDmgDebuffCounter > 0)
 		{
-			shootInput.DisableShoot = true;
+			if (shootInput != null)
+				shootInput.DisableShoot = true;
 
 			noDmgDebuffCounter -= Time.deltaTime;
 			if (noDmgDebuffCounter <= 0)
 			{
 				moveSpeed = defaultMoveSpeed;
-				shootInput.DisableShoot = false;
+				if (shootInput != null)
+					shootInput.DisableShoot = false;
 			}
 		}
 
 		// UI debuffs
-		slowDebuff.SetActive(PlayerManager.PlayerController.HasSlowDebuff);
-		stunDebuff.SetActive(PlayerManager.PlayerController.HasStunDebuff);
-		noDmgDebuff.SetActive(PlayerManager.PlayerController.HasNoDmgDebuff);
+		slowDebuff.SetActive(HasSlowDebuff);
+		stunDebuff.SetActive(HasStunDebuff);
+		noDmgDebuff.SetActive(HasNoDmgDebuff);
 
 		// dash
+		if (isDashTutorial)
+			dashTimes = 2;
 		if (dashTimes > 0 && Input.GetKeyDown(KeyCode.Space) && !isDashing)
 		{
 			dashTimer = dashDuration;
-			moveSpeed = dashSpeed;
+			moveSpeed = isDashTutorial ? defaultMoveSpeed * 10 : dashSpeed;
 			isDashing = true;
 
 			Instantiate(dashVfx, transform.position, dashVfx.transform.rotation);

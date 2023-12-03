@@ -50,6 +50,8 @@ public class HealthController : MonoBehaviour
 
 		if (currentHealth <= 0)
         {
+            currentHealth = 0;
+
 			onDeath?.Invoke();
 			if (healthBar)
 				healthBar.ChangeLife(0);

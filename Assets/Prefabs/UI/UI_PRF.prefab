@@ -1902,6 +1902,7 @@ MonoBehaviour:
   powerUpTimer: {fileID: 1373884804}
   dashInfo1: {fileID: 1386980890}
   dashInfo2: {fileID: 1878889615}
+  playerHealthText: {fileID: 1866414703}
   scoreDelay: 0
   hasChangedBossMaxHealth: 0
   hasChangedBossName: 0

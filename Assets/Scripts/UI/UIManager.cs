@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private GameObject dashInfo1;
 	[SerializeField] private GameObject dashInfo2;
 	[Header("Debug")]
+	[SerializeField] private TMP_Text playerHealthText;
 	[SerializeField, ReadOnly] private float scoreDelay = 0;
 	[SerializeField, ReadOnly] private bool hasChangedBossMaxHealth;
 	[SerializeField, ReadOnly] private bool hasChangedBossName;
@@ -51,6 +52,7 @@ public class UIManager : MonoBehaviour
 
 	public static UIManager Instance { get; private set; }
 	public static HealthBar PlayerLife => Instance.playerHealth;
+	public static bool InstanceIsValid => Instance != null;
 
 	#region Unity Messages
 	private void Awake()
@@ -84,6 +86,8 @@ public class UIManager : MonoBehaviour
 	
 	private void Update()
 	{
+		playerHealthText.text = HackManager.HasInfiniteHealth ? "INFINITE" : "PLAYER";
+
 		// logica de rotacionar elemento
 		lightningSprite.color = PlayerManager.PlayerElement.unlockedElements.Contains(Element.Lightning) ? colorUnlocked : colorLocked;
 		waterSprite.color = PlayerManager.PlayerElement.unlockedElements.Contains(Element.Water) ? colorUnlocked : colorLocked;
@@ -154,6 +158,7 @@ public class UIManager : MonoBehaviour
 	#region Public Methods
 	public static void RotateElement()
 	{
+		if (InstanceIsValid == false) return;
 		Instance.elementChangerAnimator.SetTrigger("Rotate");
 	}
 
