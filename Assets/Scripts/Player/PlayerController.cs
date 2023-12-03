@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
 	[Header("Dash")]
 	[SerializeField] private float dashDuration = 1;
 	[SerializeField] private float dashSpeed = 100;
+	[SerializeField] private ParticleSystem dashVfx;
+	[SerializeField] private TrailRenderer[] dashTrails;
 	[Header("References")]
 	[SerializeField] private Transform playerVisual;
 	[SerializeField] private ShootInput shootInput;
@@ -50,6 +52,7 @@ public class PlayerController : MonoBehaviour
 	public bool HasStunDebuff => stunDebuffCounter > 0;
 	public bool HasNoDmgDebuff => noDmgDebuffCounter > 0;
 	public int DashTimes => dashTimes;
+	public bool IsDashing => isDashing;
 
 	#region Unity Messages
 	private void Awake()
@@ -67,6 +70,9 @@ public class PlayerController : MonoBehaviour
 		slowDebuff.SetActive(false);
 		stunDebuff.SetActive(false);
 		noDmgDebuff.SetActive(false);
+
+		foreach (var trail in dashTrails)
+			trail.emitting = false;
 	}
 
 	private void Update()
@@ -147,7 +153,11 @@ public class PlayerController : MonoBehaviour
 			dashTimer = dashDuration;
 			moveSpeed = dashSpeed;
 			isDashing = true;
-		}
+
+			Instantiate(dashVfx, transform.position, dashVfx.transform.rotation);
+            foreach (var trail in dashTrails)
+				trail.emitting = true;
+        }
 
 		if (dashTimer > 0)
 		{
@@ -157,6 +167,9 @@ public class PlayerController : MonoBehaviour
 				moveSpeed = defaultMoveSpeed;
 				isDashing = false;
 				dashTimes--;
+
+				foreach (var trail in dashTrails)
+					trail.emitting = false;
 			}
 		}
 	}
@@ -180,7 +193,7 @@ public class PlayerController : MonoBehaviour
 		noDmgDebuffCounter = noDmgDuration;
 	}
 
-	public void Dash()
+	public void SetupDash()
 	{
 		dashTimes = 2;
 	}

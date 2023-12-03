@@ -56,6 +56,8 @@ public class PlayerCollision : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
+		if (playerController.IsDashing) return;
+		if (!canBeHit) return;
 
 		// touch enemy
 		if (other.CompareTag("Enemy") && !tookDamageOnStay)
@@ -72,6 +74,7 @@ public class PlayerCollision : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		if (playerController.IsDashing) return;
 		if (!canBeHit) return;
 
 		BulletBase bullet_ = other.gameObject.GetComponent<BulletBase>();
@@ -180,7 +183,7 @@ public class PlayerCollision : MonoBehaviour
 		{
 			PowerupBase pupb_ = other.gameObject.GetComponent<PowerupBase>();
 
-			playerController.Dash();
+			playerController.SetupDash();
 			pupb_.DestroyPowerup();
 			AudioManager.Instance.PlaySFXPowerUp("snd_PowerUp03");
 
