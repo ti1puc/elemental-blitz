@@ -76,14 +76,18 @@ public class MainMenu : MonoBehaviour
 
 		wasOnHelpPage = true;
 		playerMenuAnimator.SetTrigger("Out");
-	}
+
+        AudioManager.Instance.PlayMusic("snd_Tutorial -  Prebattle");
+    }
 
 	public void ShowCreditsPanel()
 	{
 		HideAllPanels();
 		mainPanel.SetActive(false);
 		creditsPanel.SetActive(true);
-	}
+
+        AudioManager.Instance.PlayMusic("snd_ Thanks");
+    }
 
 	public void HideAllPanels()
 	{
@@ -97,7 +101,9 @@ public class MainMenu : MonoBehaviour
 		helpPanel.SetActive(false);
 		creditsPanel.SetActive(false);
 		mainPanel.SetActive(true);
-	}
+
+		AudioManager.Instance.PlayMusic("snd_menu");
+    }
 
 	public void PlayClickSound()
 	{

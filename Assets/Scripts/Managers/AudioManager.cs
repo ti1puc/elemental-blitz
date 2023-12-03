@@ -59,21 +59,31 @@ public class AudioManager : MonoBehaviour
 	}
 
     public void PlayMusic(string audioName)
-	{
-		AudioClip MusicClip = Resources.Load<AudioClip>("Sounds/Musics/" + audioName);
-		if (MusicClip != null)
-		{
-			musicAudioSource.clip = MusicClip;
-			musicAudioSource.Play();
-			musicAudioSource.loop = true;
-		}
-		else
-		{
-			Debug.LogError("Áudio '" + audioName + "' não encontrado.");
-		}
-	}
+    {
+        AudioClip musicClip = Resources.Load<AudioClip>("Sounds/Musics/" + audioName);
 
-	public void PlaySFX(string audioName)
+        if (musicClip != null)
+        {
+            if (musicAudioSource.isPlaying && musicAudioSource.clip == musicClip)
+            {
+                // A música específica já está tocando
+                Debug.Log("A música '" + audioName + "' já está tocando.");
+            }
+            else
+            {
+                // A música não está tocando ou é diferente, reproduza-a
+                musicAudioSource.clip = musicClip;
+                musicAudioSource.Play();
+                musicAudioSource.loop = true;
+            }
+        }
+        else
+        {
+            Debug.LogError("Áudio '" + audioName + "' não encontrado.");
+        }
+    }
+
+    public void PlaySFX(string audioName)
 	{
 		PlaySound(audioName, sfxAudioSource);
 	}

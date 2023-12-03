@@ -519,14 +519,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.35106063, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1022382598, guid: 0b7ea244a02e5174f92f22f856132001, type: 3}
+  m_Sprite: {fileID: -1090706748, guid: 8b4ec1c8800bf6141a894648e3a5ca95, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -817,14 +817,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1022382598, guid: 0b7ea244a02e5174f92f22f856132001, type: 3}
+  m_Sprite: {fileID: 2141253619, guid: 8b4ec1c8800bf6141a894648e3a5ca95, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -928,14 +928,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.97617424, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1022382598, guid: 0b7ea244a02e5174f92f22f856132001, type: 3}
+  m_Sprite: {fileID: 1657012661, guid: 8b4ec1c8800bf6141a894648e3a5ca95, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1172,6 +1172,8 @@ MonoBehaviour:
   - {fileID: 1753697869390994292}
   playerVisual: {fileID: 1007360777806786334}
   shootInput: {fileID: 3028015762788472842}
+  isPlayerMenu: 0
+  isDashTutorial: 0
   healthController: {fileID: 0}
   defaultMoveSpeed: 0
   slowDebuffCounter: 0
@@ -1200,6 +1202,7 @@ MonoBehaviour:
   fireInterval: 0.25
   useSpawnScale: 0
   spawnPosition: {fileID: 116628696592959415}
+  disableSound: 0
   elementManager: {fileID: 8348538085054358860}
   shootCooldown: 0
   canShoot: 1
