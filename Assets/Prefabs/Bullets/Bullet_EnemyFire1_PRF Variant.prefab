@@ -25,11 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 600731701126100429, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8433915
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 600731701126100429, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.53729963
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 600731701126100429, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: m_LocalRotation.y
@@ -41,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 600731701126100429, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 65
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 600731701126100429, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -134,6 +134,10 @@ PrefabInstance:
     - target: {fileID: 4804628582512739663, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: m_TagString
       value: enemyFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 6076182304652072206, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
+      propertyPath: m_Radius
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7593276277968822142, guid: 9da45686715845a48bcc2cbaf8365be2, type: 3}
       propertyPath: m_Sprite
