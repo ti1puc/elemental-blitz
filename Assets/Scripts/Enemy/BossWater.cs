@@ -50,6 +50,7 @@ public class BossWater : Boss
 	[SerializeField, ReadOnly] private int currentSide;
 	[SerializeField, ReadOnly] private float shootLaserTimer;
 	[SerializeField, ReadOnly] private float healthPercentage;
+	[SerializeField, ReadOnly] private bool hasChangedMusic;
 
 	private Coroutine deathLaserCoroutine;
 
@@ -112,6 +113,12 @@ public class BossWater : Boss
 
 		if (IsHitable)
 		{
+			if (!hasChangedMusic)
+			{
+				AudioManager.Instance.PlayMusic("snd_BossFight1");
+				hasChangedMusic = true;
+			}
+
 			switch (currentPhase)
 			{
 				case Phases.Phase1:
