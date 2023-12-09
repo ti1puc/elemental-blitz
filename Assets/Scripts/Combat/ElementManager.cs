@@ -22,7 +22,11 @@ public class ElementManager : MonoBehaviour
     [SerializeField, ReadOnly] private Element currentElement;
 	[SerializeField, ReadOnly] private int currentElementIndex = 0;
 
-    public Element CurrentElement => currentElement;
+    public Element CurrentElement
+	{
+		get => currentElement;
+		set => currentElement = value;
+	}
 
     #region Unity Messages
     private void Start()
@@ -40,56 +44,68 @@ public class ElementManager : MonoBehaviour
 
     private void Update()
     {
-        ChangeElement();
+		ChangeElementPlayer();
     }
     #endregion
 
     #region Public Methods
+    public Element ChangeElementExternal()
+	{
+		currentElementIndex++;
 
-    #endregion
+		if (currentElementIndex <= unlockedElements.Count - 1)
+			currentElement = unlockedElements[currentElementIndex];
+		else
+		{
+			currentElement = unlockedElements[0];
+			currentElementIndex = 0;
+		}
 
-    #region Private Methods
+		return unlockedElements[currentElementIndex];
+	}
+	#endregion
 
-    private void ChangeElement()
+	#region Private Methods
+	private void ChangeElementPlayer()
     {
         if (canChangeElement == false) return;
 
-        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetButtonDown("Fire2"))
-        {
-            bool hasSkipped = false;
-            currentElementIndex++;
+		if (Input.GetKeyDown(KeyCode.Tab) || Input.GetButtonDown("Fire2"))
+		{
+			bool hasSkipped = false;
+			currentElementIndex++;
 
-            if (currentElementIndex <= unlockedElements.Count - 1)
-			    currentElement = unlockedElements[currentElementIndex];
-            else
+			if (currentElementIndex <= unlockedElements.Count - 1)
+				currentElement = unlockedElements[currentElementIndex];
+			else
 			{
 				currentElement = unlockedElements[0];
 				currentElementIndex = 0;
-                hasSkipped = true;
+				hasSkipped = true;
 			}
 
-            lightningRing.SetActive(false);
+			lightningRing.SetActive(false);
 			waterRing.SetActive(false);
 			fireRing.SetActive(false);
 			switch (currentElement)
-            {
-                case Element.Lightning:
+			{
+				case Element.Lightning:
 					lightningRing.SetActive(true);
 					break;
-                case Element.Water:
+				case Element.Water:
 					waterRing.SetActive(true);
 					break;
-                case Element.Fire:
+				case Element.Fire:
 					fireRing.SetActive(true);
 					break;
-            }
+			}
 
-            if (unlockedElements.Count > 1)
-            {
-                UIManager.RotateElement();
-                if (unlockedElements.Count == 2 && hasSkipped)
-				    StartCoroutine(RotateUIWithDelay());
-            }
+			if (unlockedElements.Count > 1)
+			{
+				UIManager.RotateElement();
+				if (unlockedElements.Count == 2 && hasSkipped)
+					StartCoroutine(RotateUIWithDelay());
+			}
 		}
 	}
 

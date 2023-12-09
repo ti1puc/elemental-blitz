@@ -1,9 +1,11 @@
 using NaughtyAttributes;
+using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -95,6 +97,12 @@ public class GameManager : MonoBehaviour
 
 	public static void Win()
 	{
+		if (SceneManager.GetActiveScene().buildIndex == 6)
+		{
+			Instance.StartCoroutine(Instance.DoAfter(1, NextLevel));
+			return;
+		}
+
 		// pause game
 		Time.timeScale = 0f;
 
@@ -129,6 +137,12 @@ public class GameManager : MonoBehaviour
 			if (dontDestroyOnLoad)
 				DontDestroyOnLoad(gameObject);
 		}
+	}
+
+	private IEnumerator DoAfter(float seconds, Action action)
+	{
+		yield return new WaitForSeconds(seconds);
+		action?.Invoke();
 	}
 	#endregion
 }

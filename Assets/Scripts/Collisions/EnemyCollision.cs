@@ -44,6 +44,8 @@ public class EnemyCollision : MonoBehaviour
 
     private void Update()
 	{
+		currentElement = elementManager.CurrentElement;
+
 		// mantem a colisao no Y zero
 		transform.position = new Vector3(transform.position.x, 0, transform.position.z);
 

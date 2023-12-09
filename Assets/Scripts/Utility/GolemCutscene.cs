@@ -31,6 +31,8 @@ public class GolemCutscene : MonoBehaviour
 	private void Start()
 	{
 		emissionTimer = 0;
+		MaterialPropertyBlock.SetColor("_Emission", emissionNull);
+		meshRenderer.SetPropertyBlock(MaterialPropertyBlock, 1);
 	}
 
 	private void Update()

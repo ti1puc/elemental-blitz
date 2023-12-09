@@ -20,6 +20,7 @@ public class WaveManager : MonoBehaviour
 	[SerializeField] private List<Wave> waves = new List<Wave>();
 	[Header("Boss")]
 	[SerializeField] private bool bossOnNextScene;
+	[SerializeField] private bool startWithBoss;
 	[SerializeField] private GameObject bossPrefab;
 	[SerializeField] private Transform bossSpawnPoint;
 	[SerializeField] private Vector2 bossRangeX = new Vector2(-29, 29);
@@ -60,6 +61,7 @@ public class WaveManager : MonoBehaviour
 		}
 	}
 	public static bool HasStartedBossFight => Instance.hasStartedBossFight;
+	public static bool StartWithBoss => Instance.startWithBoss;
 	public static GameObject Boss => Instance.boss;
 	public static Enemy BossEnemy => Instance.bossEnemy;
 	public static bool BossOnNextScene => Instance.bossOnNextScene;
@@ -76,8 +78,22 @@ public class WaveManager : MonoBehaviour
 			Instance = this;
 		}
 
-		currentWaveIndex = 0;
-		currentWave = waves[currentWaveIndex];
+		if (startWithBoss)
+			hasStartedBossFight = true;
+		else
+		{
+			currentWaveIndex = 0;
+			currentWave = waves[currentWaveIndex];
+		}
+	}
+
+	private void Start()
+	{
+		if (startWithBoss)
+		{
+			boss = FindObjectOfType<Boss>().gameObject;
+			bossEnemy = FindObjectOfType<Enemy>();
+		}
 	}
 
 	private void Update()
@@ -92,7 +108,7 @@ public class WaveManager : MonoBehaviour
 		totalPlaytime += Time.deltaTime;
 		totalPlaytimeInMinutes = totalPlaytime / 60f;
 
-		if (HasStartedBossFight)
+		if (HasStartedBossFight && !startWithBoss)
 		{
 			bossSpawnTimer += Time.deltaTime;
 			if (bossSpawnTimer > delayToSpawnBoss && boss == null)

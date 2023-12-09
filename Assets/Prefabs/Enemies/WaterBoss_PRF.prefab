@@ -161,6 +161,7 @@ MonoBehaviour:
   fireInterval: 1
   useSpawnScale: 1
   spawnPosition: {fileID: 8516292353267341568}
+  disableSound: 0
   elementManager: {fileID: 5556123585270221911}
   shootCooldown: 0
   canShoot: 1
@@ -5502,6 +5503,8 @@ MonoBehaviour:
   startVfx: {fileID: 1829137679431882713}
   endVfx: {fileID: 707015924276993657}
   laserChargeVfx: {fileID: 989465239304907088}
+  isBossMenu: 0
+  raycastMenuDistance: 0
   initialChargeScale: {x: 0, y: 0, z: 0}
   isLaserCharging: 0
   laserChargeTimer: 0
@@ -5682,6 +5685,7 @@ MonoBehaviour:
   fireInterval: 1
   useSpawnScale: 1
   spawnPosition: {fileID: 2933932499978293024}
+  disableSound: 0
   elementManager: {fileID: 5556123585270221911}
   shootCooldown: 0
   canShoot: 1
@@ -10567,7 +10571,7 @@ MonoBehaviour:
   moveRangeX: {x: 0, y: 0}
   moveRangeZ: {x: 0, y: 0}
   hasInitialized: 0
-  bossName: Boss 01
+  bossName: Balder
   makeHitableAfterPosZ: 50
   verticalSpeed: 10
   horizontalSpeed: 10
@@ -10605,6 +10609,7 @@ MonoBehaviour:
   currentSide: 0
   shootLaserTimer: 0
   healthPercentage: 0
+  hasChangedMusic: 0
 --- !u!114 &4925479659322123331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10634,7 +10639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2dae31910796148872b906f2a9fdd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 650
   healthBar: {fileID: 5163799220831280416}
   currentHealth: 0
 --- !u!114 &5556123585270221911

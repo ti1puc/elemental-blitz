@@ -99,30 +99,38 @@ public class UIManager : MonoBehaviour
 		// vida do boss e progressao
 		bossHealthObj.SetActive(WaveManager.HasStartedBossFight && WaveManager.BossEnemy != null && WaveManager.BossEnemy.IsHitable);
 
-		if (WaveManager.HasStartedBossFight)
-		{
-			levelProgressionAnimator.SetTrigger("ReachBoss");
-		}
-
-		if (WaveManager.HasStartedBossFight && (WaveManager.BossEnemy != null || WaveManager.BossOnNextScene))
-		{
-			bossWarningTimer += Time.deltaTime;
-			if (bossWarningTimer > bossWarningDuration)
-				bossWarning.SetTrigger("BlinkExit");
-
-			bossWarning.gameObject.SetActive(true);
-		}
-
-		if (WaveManager.HasStartedBossFight && WaveManager.BossEnemy != null && WaveManager.BossEnemy.IsHitable)
+		if (WaveManager.StartWithBoss)
 		{
 			BossHealth();
-			bossWarning.gameObject.SetActive(false);
-            
-        }
+			levelProgressionAnimator.gameObject.SetActive(false);
+		}
 		else
 		{
-			// progressao do level
-			Progression();
+			if (WaveManager.HasStartedBossFight)
+			{
+				levelProgressionAnimator.SetTrigger("ReachBoss");
+			}
+
+			if (WaveManager.HasStartedBossFight && (WaveManager.BossEnemy != null || WaveManager.BossOnNextScene))
+			{
+				bossWarningTimer += Time.deltaTime;
+				if (bossWarningTimer > bossWarningDuration)
+					bossWarning.SetTrigger("BlinkExit");
+
+				bossWarning.gameObject.SetActive(true);
+			}
+
+			if (WaveManager.HasStartedBossFight && WaveManager.BossEnemy != null && WaveManager.BossEnemy.IsHitable)
+			{
+				BossHealth();
+				bossWarning.gameObject.SetActive(false);
+            
+			}
+			else
+			{
+				// progressao do level
+				Progression();
+			}
 		}
 
 		// score

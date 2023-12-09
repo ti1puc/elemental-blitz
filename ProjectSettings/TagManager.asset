@@ -14,6 +14,7 @@ TagManager:
   - pUpHeal
   - pUpShield
   - pUpDash
+  - PunchExplosion
   layers:
   - Default
   - TransparentFX

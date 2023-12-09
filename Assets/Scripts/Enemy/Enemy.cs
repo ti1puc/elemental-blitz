@@ -17,7 +17,10 @@ public class Enemy : MonoBehaviour
 	[Header("References")]
 	[SerializeField] protected Transform enemyVisual;
 	[SerializeField] protected Animator animator;
-	[SerializeField] protected GameObject explosionParticle;
+	[SerializeField] protected bool multipleParticles;
+	[SerializeField, HideIf("multipleParticles")] protected GameObject explosionParticle;
+	[SerializeField, ShowIf("multipleParticles")] protected GameObject[] explosionParticles;
+	[SerializeField, ShowIf("multipleParticles")] protected Vector3 particlesOffset = new Vector3(0, 30, 0);
 	[SerializeField, ReadOnly] protected EnemySpawner parentEnemySpawner;
 	[SerializeField, ReadOnly] protected PowerupDrop powerupDrop;
 	[SerializeField, ReadOnly] protected HealthController healthController;
@@ -86,8 +89,13 @@ public class Enemy : MonoBehaviour
 		GameManager.IncreaseScore(ScoreToGive);
         AudioManager.Instance.PlaySFXPowerUp("snd_Explosion01");
 
-		if (explosionParticle != null)
+		if (!multipleParticles && explosionParticle != null)
 			Instantiate(explosionParticle, transform.position, transform.rotation);
+		else if (multipleParticles)
+		{
+            foreach (var particles in explosionParticles)
+				Instantiate(particles, transform.position + particlesOffset, transform.rotation);
+		}
 
         DestroyEnemy();
 	}

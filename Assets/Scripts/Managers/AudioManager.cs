@@ -43,6 +43,7 @@ public class AudioManager : MonoBehaviour
 		if (scene == 4) PlayMusic("snd_Level_2");
 		if (scene == 5) PlayMusic("snd_Cutscene");
 		if (scene == 6) PlayMusic("snd_Level_3");
+		if (scene == 7) PlayMusic("snd_ Thanks");
 	}
 
     public void Update()

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -27,6 +28,7 @@ public class MainMenu : MonoBehaviour
 	[Header("Debug")]
 	[SerializeField, ReadOnly] private int helpPage;
 	[SerializeField, ReadOnly] private bool wasOnHelpPage;
+	[SerializeField, ReadOnly] private EventSystem eventSystem;
 
 	private const string sfxVolumeKey = "SFXVolumeValue";
 	private const string musicVolumeKey = "MusicVolumeValue";
@@ -37,10 +39,13 @@ public class MainMenu : MonoBehaviour
 
 		sfxSlider.value = PlayerPrefs.GetInt(sfxVolumeKey, 50) / (float)100;
 		musicSlider.value = PlayerPrefs.GetInt(musicVolumeKey, 50) / (float)100;
+
+		eventSystem = FindObjectOfType<EventSystem>();
 	}
 
 	private void Update()
 	{
+		eventSystem.SetSelectedGameObject(null);
 		arrowLeft.gameObject.SetActive(helpPage > 0);
 		arrowRight.gameObject.SetActive(helpPage < helpPages.Count-1);
 
@@ -136,6 +141,8 @@ public class MainMenu : MonoBehaviour
 
 	private void UpdateHelpPanel()
 	{
+		DestroyBullets();
+
 		for (int i = 0; i < helpPages.Count; i++)
         {
 			helpPages[i].SetActive(i == helpPage);
@@ -147,4 +154,13 @@ public class MainMenu : MonoBehaviour
 		yield return new WaitForSeconds(waitSecondsToStart);
 		GameManager.StartGame();
 	}
+
+	private void DestroyBullets()
+	{
+		BulletBase[] bullets = FindObjectsOfType<BulletBase>();
+        foreach (var bullet in bullets)
+        {
+			Destroy(bullet.gameObject);
+        }
+    }
 }

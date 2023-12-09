@@ -189,6 +189,12 @@ public class PlayerCollision : MonoBehaviour
 
 		}
 		#endregion
+
+		if (other.CompareTag("PunchExplosion"))
+		{
+			TakeDamageExternal(999);
+			AudioManager.Instance.PlaySFX("snd_CriticalDamage");
+		}
 	}
 	#endregion
 
