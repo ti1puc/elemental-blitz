@@ -1158,9 +1158,9 @@ MonoBehaviour:
   m_text: 'PRODUCED BY:
 
 
-    LUCAS COUTINHO
+    CAIO VIEIRA
 
-    CAIO VIEIRA'
+    LUCAS COUTINHO'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aefc79a5a036f3249b31efa6268482e9, type: 2}
   m_sharedMaterial: {fileID: -8532719203908079007, guid: aefc79a5a036f3249b31efa6268482e9, type: 2}
@@ -12202,6 +12202,7 @@ MonoBehaviour:
   musicSlider: {fileID: 933521843}
   helpPage: 0
   wasOnHelpPage: 0
+  eventSystem: {fileID: 0}
 --- !u!1 &2137217108
 GameObject:
   m_ObjectHideFlags: 0
